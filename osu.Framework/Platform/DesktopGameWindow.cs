@@ -2,8 +2,10 @@
 // Licensed under the MIT Licence - https://raw.githubusercontent.com/ppy/osu-framework/master/LICENCE
 
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using osu.Framework.Configuration;
 using osu.Framework.Input;
 using OpenTK;
@@ -32,6 +34,26 @@ namespace osu.Framework.Platform
         protected new OpenTK.GameWindow Implementation => (OpenTK.GameWindow)base.Implementation;
 
         public readonly BindableBool MapAbsoluteInputToWindow = new BindableBool();
+
+        public List<DisplayResolution> AvailableDisplayResolutions
+        {
+            get
+            {
+                var distinctFromOpenTk = DisplayDevice.Default.AvailableResolutions.Distinct().ToList();
+                var uniqueWidthHeightPairs = distinctFromOpenTk.Select(r => new Vector2(r.Width, r.Height)).Distinct().ToList();
+
+                var result = new List<DisplayResolution>(uniqueWidthHeightPairs.Count);
+
+                foreach (var uniqueWidthHeightPair in uniqueWidthHeightPairs)
+                {
+                    var resolutions = distinctFromOpenTk.Where(r => r.Width == uniqueWidthHeightPair.X && r.Height == uniqueWidthHeightPair.Y).ToList();
+                    var maxRefreshRate = resolutions.Max(r => r.RefreshRate);
+                    result.Add(resolutions.First(r => r.RefreshRate == maxRefreshRate));
+                }
+
+                return result;
+            }
+        }
 
         protected DesktopGameWindow()
             : base(default_width, default_height)
