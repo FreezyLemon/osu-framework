@@ -9,6 +9,7 @@ FFMPEG_FLAGS=(
     --enable-shared
     --disable-all
     --disable-autodetect
+    --enable-lto
 
     # Libraries
     --enable-avcodec
