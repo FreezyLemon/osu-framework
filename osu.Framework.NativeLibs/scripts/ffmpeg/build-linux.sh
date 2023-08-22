@@ -20,8 +20,12 @@ FFMPEG_FLAGS+=(
 pushd . > /dev/null
 prep_ffmpeg linux-x64
 build_ffmpeg
-popd
+popd > /dev/null
 
 # gcc creates multiple symlinks per .so file for versioning.
 # We want to delete the symlinks to prevent weird behaviour with GitHub actions.
+rm linux-x64/*.so
+for f in linux-x64/*.so.*.*.*; do
+    mv -v "$f" "${f%.*.*.*}"
+done
 rm linux-x64/*.so.*
