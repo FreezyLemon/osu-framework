@@ -42,7 +42,7 @@ popd
 
 echo "-> Fixing dylibs paths..."
 BUILDPATH="macOS-$arch"
-LIBS="libavcodec.58.dylib libavdevice.58.dylib libavfilter.7.dylib libavformat.58.dylib libavutil.56.dylib libswresample.3.dylib libswscale.5.dylib"
+LIBS="libavcodec.58.dylib libavfilter.7.dylib libavformat.58.dylib libavutil.56.dylib libswscale.5.dylib"
 for f in $LIBS; do
     install_name_tool "$BUILDPATH/$f" -id "@loader_path/$f" \
         -change $BUILDPATH/libavcodec.58.dylib @loader_path/libavcodec.58.dylib \
