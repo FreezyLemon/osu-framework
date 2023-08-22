@@ -1,14 +1,14 @@
 #!/bin/bash
+set -eu
 
-pushd $(dirname $0) > /dev/null
+pushd "$(dirname "$0")" > /dev/null
 SCRIPT_PATH=$(pwd)
 popd > /dev/null
-source $SCRIPT_PATH/../common.sh
+source "$SCRIPT_PATH/common.sh"
 
 if [ -z "$arch" ]; then
     PS3='Build for which arch? '
-    archs=("x86" "x64" "arm64")
-    select arch in "${archs[@]}"; do
+    select arch in "x86" "x64" "arm64"; do
         case $arch in
             "x86")
                 break;;
@@ -31,7 +31,7 @@ case $arch in
         ;;
 
     x64)
-        cross_arch='x86'
+        cross_arch='x86_64'
         cross_prefix='x86_64-w64-mingw32-'
         ;;
 
@@ -45,9 +45,9 @@ FFMPEG_FLAGS+=(
     --arch=$cross_arch
     --target-os=mingw32
     --cross-prefix=$cross_prefix
-    --prefix=build-$arch
 )
 
+prep_ffmpeg "win-$arch"
 build_ffmpeg
 
 mkdir -p ../build-$arch

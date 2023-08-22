@@ -1,4 +1,5 @@
 #!/bin/sh
+set -eu
 
 mkdir -p macOS-universal
 

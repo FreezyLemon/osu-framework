@@ -1,14 +1,14 @@
 #!/bin/bash
+set -eu
 
-pushd $(dirname $0) > /dev/null
+pushd "$(dirname "$0")" > /dev/null
 SCRIPT_PATH=$(pwd)
 popd > /dev/null
-source $SCRIPT_PATH/../common.sh
+source "$SCRIPT_PATH/common.sh"
 
 if [ -z "$arch" ]; then
     PS3='Build for which arch? '
-    archs=("arm64" "x86_64")
-    select arch in "${archs[@]}"; do
+    select arch in "arm64" "x86_64"; do
         case $arch in
             "arm64")
                 break;;
@@ -23,12 +23,11 @@ FFMPEG_FLAGS+=(
     --target-os=darwin
     --arch=$arch
     --enable-cross-compile
-    --extra-cflags='-arch $arch'
-    --extra-ldflags='-arch $arch'
-    --prefix=build-$arch
-    --libdir=build-$arch/lib
+    --extra-cflags="-arch $arch"
+    --extra-ldflags="-arch $arch"
 )
 
+prep_ffmpeg "macOS-$arch"
 build_ffmpeg
 
 mv build-$arch/lib/libavcodec.58.91.100.dylib build-$arch/lib/libavcodec.58.dylib
