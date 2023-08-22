@@ -6,16 +6,14 @@ SCRIPT_PATH=$(pwd)
 popd > /dev/null
 source "$SCRIPT_PATH/common.sh"
 
-if [ -z "$arch" ]; then
+if [ -z "${arch-}" ]; then
     PS3='Build for which arch? '
     select arch in "arm64" "x86_64"; do
-        case $arch in
-            "arm64")
-                break;;
-            "x86_64")
-                break;;
-            *) echo "invalid option";;
-        esac
+        if [ -z "$arch" ]; then
+            echo "invalid option"
+        else
+            break
+        fi
     done
 fi
 
