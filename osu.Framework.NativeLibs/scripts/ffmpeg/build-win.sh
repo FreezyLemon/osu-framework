@@ -64,4 +64,4 @@ for res in lib*/*res.rc; do
 done
 
 build_ffmpeg
-popd
+popd > /dev/null

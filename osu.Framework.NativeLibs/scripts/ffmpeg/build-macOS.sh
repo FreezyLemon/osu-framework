@@ -43,7 +43,7 @@ for f in *.*.*.*.dylib; do
     [ -f "$f" ] || continue
     mv -v "$f" "${f%.*.*.*}.dylib"
 done
-popd
+popd > /dev/null
 
 echo "-> Fixing dylibs paths..."
 BUILDPATH="macOS-$arch"
