@@ -21,3 +21,7 @@ pushd . > /dev/null
 prep_ffmpeg linux-x64
 build_ffmpeg
 popd
+
+# gcc creates multiple symlinks per .so file for versioning.
+# We want to delete the symlinks to prevent weird behaviour with GitHub actions.
+rm linux-x64/*.so.*
