@@ -18,9 +18,14 @@ if [ -z "${arch-}" ]; then
 fi
 
 FFMPEG_FLAGS+=(
+    --enable-videotoolbox
+    --enable-hwaccel=h264_videotoolbox
+    --enable-hwaccel=hevc_videotoolbox
+    --enable-hwaccel=vp9_videotoolbox
+
+    --enable-cross-compile
     --target-os=darwin
     --arch=$arch
-    --enable-cross-compile
     --extra-cflags="-arch $arch"
     --extra-ldflags="-arch $arch"
 )
@@ -42,11 +47,10 @@ popd
 
 echo "-> Fixing dylibs paths..."
 BUILDPATH="macOS-$arch"
-LIBS="libavcodec.58.dylib libavfilter.7.dylib libavformat.58.dylib libavutil.56.dylib libswscale.5.dylib"
+LIBS="libavcodec.58.dylib libavformat.58.dylib libavutil.56.dylib libswscale.5.dylib"
 for f in $LIBS; do
     install_name_tool "$BUILDPATH/$f" -id "@loader_path/$f" \
         -change $BUILDPATH/libavcodec.58.dylib @loader_path/libavcodec.58.dylib \
-        -change $BUILDPATH/libavfilter.7.dylib @loader_path/libavfilter.7.dylib \
         -change $BUILDPATH/libavformat.58.dylib @loader_path/libavformat.58.dylib \
         -change $BUILDPATH/libavutil.56.dylib @loader_path/libavutil.56.dylib \
         -change $BUILDPATH/libswscale.5.dylib @loader_path/libswscale.5.dylib
