@@ -33,7 +33,7 @@ FFMPEG_FLAGS+=(
 pushd . > /dev/null
 prep_ffmpeg "macOS-$arch"
 build_ffmpeg
-popd
+popd > /dev/null
 
 # Rename dylibs that have a full version string (A.B.C) in their filename
 # Example: avcodec.58.10.72.dylib -> avcodec.58.dylib
