@@ -65,3 +65,5 @@ done
 
 build_ffmpeg
 popd > /dev/null
+
+find "win-$arch" -not -name "win-arch" -not -name '*.dll' -delete
