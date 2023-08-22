@@ -47,8 +47,16 @@ FFMPEG_FLAGS+=(
     --cross-prefix=$cross_prefix
 )
 
+pushd . > /dev/null
 prep_ffmpeg "win-$arch"
-build_ffmpeg
 
-mkdir -p ../build-$arch
-cp build-$arch/bin/*.dll ../build-$arch/
+# FFmpeg doesn't do this correctly when building, so we do it instead.
+# A newer FFmpeg release might make this unnecessary.
+echo '-> Creating resource objects...'
+make .version
+for res in lib*/*res.rc; do
+    "${cross_prefix}windres" -I. "$res" "${res%.rc}.o"
+done
+
+build_ffmpeg
+popd
