@@ -2,6 +2,7 @@
 // See the LICENCE file in the repository root for full licence text.
 
 using System;
+using System.Numerics;
 
 namespace osu.Framework.Graphics.Colour
 {
@@ -31,9 +32,13 @@ namespace osu.Framework.Graphics.Colour
         /// <summary>
         /// Create an instance of <see cref="SRGBColour"/> from 8-bit RGBA values.
         /// </summary>
+        /// <param name="r">The red component, in the 0-255 range.</param>
+        /// <param name="g">The green component, in the 0-255 range.</param>
+        /// <param name="b">The blue component, in the 0-255 range.</param>
+        /// <param name="a">The alpha component, in the 0-255 range.</param>
         public SRGBColour(byte r, byte g, byte b, byte a)
         {
-            SRGB = new Colour4(r, g, b, a);
+            SRGB = new Colour4(new Vector4(r, g, b, a) / byte.MaxValue);
         }
 
         /// <summary>

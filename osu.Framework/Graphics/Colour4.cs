@@ -58,22 +58,6 @@ namespace osu.Framework.Graphics
         }
 
         /// <summary>
-        /// Creates a new <see cref="Colour4"/> with the specified RGBA components in the 0-255 range.
-        /// </summary>
-        /// <param name="r">The red component, in the 0-255 range.</param>
-        /// <param name="g">The green component, in the 0-255 range.</param>
-        /// <param name="b">The blue component, in the 0-255 range.</param>
-        /// <param name="a">The alpha component, in the 0-255 range.</param>
-        public Colour4(byte r, byte g, byte b, byte a)
-        {
-            Vector = new Vector4(
-                r / (float)byte.MaxValue,
-                g / (float)byte.MaxValue,
-                b / (float)byte.MaxValue,
-                a / (float)byte.MaxValue);
-        }
-
-        /// <summary>
         /// Creates a new <see cref="Colour4"/> with the specified <see cref="Vector4"/>,
         /// where XYZW maps to RGBA.
         /// </summary>
