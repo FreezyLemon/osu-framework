@@ -7,6 +7,7 @@ using System;
 using System.Linq;
 using NUnit.Framework;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Cursor;
 using osu.Framework.Graphics.Shapes;
@@ -15,7 +16,6 @@ using osu.Framework.Graphics.UserInterface;
 using osu.Framework.Localisation;
 using osu.Framework.Testing;
 using osuTK;
-using osuTK.Graphics;
 
 namespace osu.Framework.Tests.Visual.UserInterface
 {
@@ -150,7 +150,7 @@ namespace osu.Framework.Tests.Visual.UserInterface
             Size = new Vector2(0.2f),
             Anchor = anchor,
             Origin = anchor,
-            Colour = Color4.Blue,
+            Colour = SRGBColour.Blue,
             TooltipText = $"{anchor}",
         };
 
@@ -181,7 +181,7 @@ namespace osu.Framework.Tests.Visual.UserInterface
                             new TooltipBox
                             {
                                 TooltipText = "Outer Tooltip",
-                                Colour = Color4.CornflowerBlue,
+                                Colour = SRGBColour.CornflowerBlue,
                                 Size = new Vector2(300, 300),
                                 Anchor = Anchor.Centre,
                                 Origin = Anchor.Centre
@@ -337,7 +337,7 @@ namespace osu.Framework.Tests.Visual.UserInterface
                     {
                         Anchor = Anchor.BottomLeft,
                         Font = FontUsage.Default.With(size: 12),
-                        Colour = Color4.Yellow,
+                        Colour = SRGBColour.Yellow,
                         Text = $"Custom tooltip instance {i++}"
                     },
                 };
@@ -354,7 +354,7 @@ namespace osu.Framework.Tests.Visual.UserInterface
             {
                 AutoSizeAxes = Axes.Both;
 
-                Colour = Color4.Red;
+                Colour = SRGBColour.Red;
             }
         }
 

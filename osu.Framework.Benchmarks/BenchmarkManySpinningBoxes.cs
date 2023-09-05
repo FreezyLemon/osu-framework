@@ -4,10 +4,10 @@
 using BenchmarkDotNet.Attributes;
 using NUnit.Framework;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 using osuTK;
-using osuTK.Graphics;
 
 namespace osu.Framework.Benchmarks
 {
@@ -60,7 +60,7 @@ namespace osu.Framework.Benchmarks
                     var box = new Box
                     {
                         Size = new Vector2(100),
-                        Colour = Color4.Black
+                        Colour = SRGBColour.Black
                     };
 
                     MainContent.Add(box);

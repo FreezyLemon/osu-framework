@@ -5,8 +5,8 @@
 
 using System;
 using NUnit.Framework;
-using osu.Framework.Extensions.Color4Extensions;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
@@ -14,7 +14,6 @@ using osu.Framework.Input;
 using osu.Framework.Input.Events;
 using osu.Framework.Testing;
 using osuTK;
-using osuTK.Graphics;
 using osuTK.Input;
 
 namespace osu.Framework.Tests.Visual.Drawables
@@ -260,7 +259,7 @@ namespace osu.Framework.Tests.Visual.Drawables
                     new Box
                     {
                         RelativeSizeAxes = Axes.Both,
-                        Colour = Color4.Gray.Opacity(0.5f),
+                        Colour = SRGBColour.Gray.Opacity(0.5f),
                     },
                     box = new Box
                     {
@@ -268,7 +267,7 @@ namespace osu.Framework.Tests.Visual.Drawables
                         Size = new Vector2(0.4f),
                         Anchor = Anchor.Centre,
                         Origin = Anchor.Centre,
-                        Colour = Color4.Blue,
+                        Colour = SRGBColour.Blue,
                     },
                     new SpriteText
                     {
@@ -329,7 +328,7 @@ namespace osu.Framework.Tests.Visual.Drawables
 
             public RequestingFocusBox()
             {
-                Box.Colour = Color4.Green;
+                Box.Colour = SRGBColour.Green;
 
                 AddInternal(new SpriteText
                 {
@@ -351,7 +350,7 @@ namespace osu.Framework.Tests.Visual.Drawables
                 {
                     RelativeSizeAxes = Axes.Both,
                     Alpha = 0.5f,
-                    Colour = Color4.Red
+                    Colour = SRGBColour.Red
                 });
 
                 RelativeSizeAxes = Axes.Both;

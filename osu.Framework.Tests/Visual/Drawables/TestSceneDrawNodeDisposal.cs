@@ -9,11 +9,11 @@ using System.Linq;
 using NUnit.Framework;
 using osu.Framework.Allocation;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Rendering;
 using osu.Framework.Graphics.Shapes;
 using osuTK;
-using osuTK.Graphics;
 
 namespace osu.Framework.Tests.Visual.Drawables
 {
@@ -38,14 +38,14 @@ namespace osu.Framework.Tests.Visual.Drawables
                 {
                     RelativeSizeAxes = Axes.Both,
                     Width = 0.5f,
-                    Colour = Color4.Blue
+                    Colour = SRGBColour.Blue
                 },
                 new Box
                 {
                     RelativeSizeAxes = Axes.Both,
                     X = 0.5f,
                     Width = 0.5f,
-                    Colour = Color4.Blue
+                    Colour = SRGBColour.Blue
                 },
             }
         });
@@ -63,14 +63,14 @@ namespace osu.Framework.Tests.Visual.Drawables
                 {
                     RelativeSizeAxes = Axes.Both,
                     Width = 0.5f,
-                    Colour = Color4.Blue
+                    Colour = SRGBColour.Blue
                 },
                 new Box
                 {
                     RelativeSizeAxes = Axes.Both,
                     X = 0.5f,
                     Width = 0.5f,
-                    Colour = Color4.Blue
+                    Colour = SRGBColour.Blue
                 },
             }
         });

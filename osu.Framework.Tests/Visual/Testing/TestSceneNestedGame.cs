@@ -7,10 +7,10 @@ using System;
 using NUnit.Framework;
 using osu.Framework.Allocation;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Testing;
 using osuTK;
-using osuTK.Graphics;
 
 namespace osu.Framework.Tests.Visual.Testing
 {
@@ -100,7 +100,7 @@ namespace osu.Framework.Tests.Visual.Testing
                     Anchor = Anchor.Centre,
                     Origin = Anchor.Centre,
                     Size = new Vector2(150, 150),
-                    Colour = Color4.Tomato
+                    Colour = SRGBColour.Tomato
                 });
             }
 

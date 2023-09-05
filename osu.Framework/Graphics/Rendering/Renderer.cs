@@ -10,6 +10,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using osu.Framework.Development;
 using osu.Framework.Extensions.TypeExtensions;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Primitives;
 using osu.Framework.Graphics.Rendering.Vertices;
 using osu.Framework.Graphics.Shaders;
@@ -269,7 +270,7 @@ namespace osu.Framework.Graphics.Rendering
             PushDepthInfo(DepthInfo.Default);
             PushStencilInfo(StencilInfo.Default);
 
-            Clear(new ClearInfo(Color4.Black));
+            Clear(new ClearInfo(SRGBColour.Black));
 
             freeUnusedVertexBuffers();
             vboInUse.Value = vertexBuffersInUse.Count;

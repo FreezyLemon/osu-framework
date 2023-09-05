@@ -5,6 +5,7 @@
 
 using NUnit.Framework;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Layout;
@@ -12,7 +13,6 @@ using osu.Framework.Testing;
 using osu.Framework.Tests.Visual;
 using osu.Framework.Utils;
 using osuTK;
-using osuTK.Graphics;
 
 namespace osu.Framework.Tests.Layout
 {
@@ -42,25 +42,25 @@ namespace osu.Framework.Tests.Layout
                             boxes[0] = new Box
                             {
                                 RelativeSizeAxes = Axes.Both,
-                                Colour = Color4.Beige,
+                                Colour = SRGBColour.Beige,
                                 Width = 0.2f,
                             },
                             boxes[1] = new Box
                             {
                                 RelativeSizeAxes = Axes.Both,
-                                Colour = Color4.Bisque,
+                                Colour = SRGBColour.Bisque,
                                 Width = 0.2f,
                             },
                             boxes[2] = new Box
                             {
                                 RelativeSizeAxes = Axes.Both,
-                                Colour = Color4.Aquamarine,
+                                Colour = SRGBColour.Aquamarine,
                                 Width = 0.2f,
                             },
                             boxes[3] = new Box
                             {
                                 RelativeSizeAxes = Axes.Both,
-                                Colour = Color4.Cornsilk,
+                                Colour = SRGBColour.Cornsilk,
                                 Width = 0.2f,
                             },
                         }

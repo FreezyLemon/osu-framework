@@ -3,14 +3,13 @@
 
 #nullable disable
 
-using osuTK.Graphics;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
 using osu.Framework.Graphics.UserInterface;
 using System;
 using osu.Framework.Bindables;
-using osu.Framework.Extensions.Color4Extensions;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Input.Events;
 using osuTK.Input;
 
@@ -40,12 +39,12 @@ namespace osu.Framework.Testing.Drawables.Steps
                 background = new Box
                 {
                     RelativeSizeAxes = Axes.Both,
-                    Colour = Color4.RoyalBlue.Darken(0.75f),
+                    Colour = SRGBColour.RoyalBlue.Darken(0.75f),
                 },
                 selection = new Box
                 {
                     RelativeSizeAxes = Axes.Both,
-                    Colour = Color4.RoyalBlue,
+                    Colour = SRGBColour.RoyalBlue,
                 },
                 spriteText = new SpriteText
                 {
@@ -101,7 +100,7 @@ namespace osu.Framework.Testing.Drawables.Steps
             var flash = new Box
             {
                 RelativeSizeAxes = Axes.Both,
-                Colour = Color4.RoyalBlue,
+                Colour = SRGBColour.RoyalBlue,
                 Blending = BlendingParameters.Additive,
                 Alpha = 0.6f,
             };

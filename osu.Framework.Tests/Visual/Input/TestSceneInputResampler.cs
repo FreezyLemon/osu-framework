@@ -6,6 +6,7 @@
 using System;
 using osu.Framework.Allocation;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Lines;
 using osu.Framework.Graphics.Rendering;
 using osu.Framework.Graphics.Sprites;
@@ -14,7 +15,6 @@ using osu.Framework.Input;
 using osu.Framework.Input.Events;
 using osu.Framework.Testing;
 using osuTK;
-using osuTK.Graphics;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 
@@ -48,13 +48,13 @@ namespace osu.Framework.Tests.Visual.Input
             Cell(0, 0).AddRange(new Drawable[]
             {
                 text[0] = createLabel("Raw"),
-                new ArcPath(true, true, new InputResampler(), gradientTexture, Color4.Green, text[0]),
+                new ArcPath(true, true, new InputResampler(), gradientTexture, SRGBColour.Green, text[0]),
             });
 
             Cell(0, 1).AddRange(new Drawable[]
             {
                 text[1] = createLabel("Rounded (resembles mouse input)"),
-                new ArcPath(true, false, new InputResampler(), gradientTexture, Color4.Blue, text[1]),
+                new ArcPath(true, false, new InputResampler(), gradientTexture, SRGBColour.Blue, text[1]),
             });
 
             Cell(0, 2).AddRange(new Drawable[]
@@ -64,20 +64,20 @@ namespace osu.Framework.Tests.Visual.Input
                 {
                     DrawText = text[2],
                     Texture = gradientTexture,
-                    Colour = Color4.White,
+                    Colour = SRGBColour.White,
                 },
             });
 
             Cell(1, 0).AddRange(new Drawable[]
             {
                 text[3] = createLabel("Smoothed raw"),
-                new ArcPath(false, true, new InputResampler(), gradientTexture, Color4.Green, text[3]),
+                new ArcPath(false, true, new InputResampler(), gradientTexture, SRGBColour.Green, text[3]),
             });
 
             Cell(1, 1).AddRange(new Drawable[]
             {
                 text[4] = createLabel("Smoothed rounded"),
-                new ArcPath(false, false, new InputResampler(), gradientTexture, Color4.Blue, text[4]),
+                new ArcPath(false, false, new InputResampler(), gradientTexture, SRGBColour.Blue, text[4]),
             });
 
             Cell(1, 2).AddRange(new Drawable[]
@@ -87,7 +87,7 @@ namespace osu.Framework.Tests.Visual.Input
                 {
                     DrawText = text[5],
                     Texture = gradientTexture,
-                    Colour = Color4.White,
+                    Colour = SRGBColour.White,
                     InputResampler = new InputResampler(),
                 },
             });
@@ -95,13 +95,13 @@ namespace osu.Framework.Tests.Visual.Input
             Cell(2, 0).AddRange(new Drawable[]
             {
                 text[3] = createLabel("Force-smoothed raw"),
-                new ArcPath(false, true, new InputResampler { ResampleRawInput = true }, gradientTexture, Color4.Green, text[3]),
+                new ArcPath(false, true, new InputResampler { ResampleRawInput = true }, gradientTexture, SRGBColour.Green, text[3]),
             });
 
             Cell(2, 1).AddRange(new Drawable[]
             {
                 text[4] = createLabel("Force-smoothed rounded"),
-                new ArcPath(false, false, new InputResampler { ResampleRawInput = true }, gradientTexture, Color4.Blue, text[4]),
+                new ArcPath(false, false, new InputResampler { ResampleRawInput = true }, gradientTexture, SRGBColour.Blue, text[4]),
             });
 
             Cell(2, 2).AddRange(new Drawable[]
@@ -111,7 +111,7 @@ namespace osu.Framework.Tests.Visual.Input
                 {
                     DrawText = text[5],
                     Texture = gradientTexture,
-                    Colour = Color4.White,
+                    Colour = SRGBColour.White,
                     InputResampler = new InputResampler
                     {
                         ResampleRawInput = true
@@ -124,7 +124,7 @@ namespace osu.Framework.Tests.Visual.Input
         {
             Text = text,
             Font = new FontUsage(size: 14),
-            Colour = Color4.White,
+            Colour = SRGBColour.White,
         };
 
         private partial class SmoothedPath : TexturedPath
@@ -165,7 +165,7 @@ namespace osu.Framework.Tests.Visual.Input
 
         private partial class ArcPath : SmoothedPath
         {
-            public ArcPath(bool raw, bool keepFraction, InputResampler inputResampler, Texture texture, Color4 colour, SpriteText output)
+            public ArcPath(bool raw, bool keepFraction, InputResampler inputResampler, Texture texture, SRGBColour colour, SpriteText output)
             {
                 InputResampler = inputResampler;
 

@@ -9,6 +9,7 @@ using osu.Framework.Allocation;
 using osu.Framework.Bindables;
 using osu.Framework.Development;
 using osu.Framework.Extensions.IEnumerableExtensions;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shaders;
 using osu.Framework.Graphics.UserInterface;
@@ -18,7 +19,6 @@ using osu.Framework.Localisation;
 using osu.Framework.Utils;
 using osu.Framework.Text;
 using osuTK;
-using osuTK.Graphics;
 
 namespace osu.Framework.Graphics.Sprites
 {
@@ -185,12 +185,12 @@ namespace osu.Framework.Graphics.Sprites
             }
         }
 
-        private Color4 shadowColour = new Color4(0, 0, 0, 0.2f);
+        private SRGBColour shadowColour = SRGBColour.Black.Opacity(0.2f);
 
         /// <summary>
         /// The colour of the shadow displayed around the text. A shadow will only be displayed if the <see cref="Shadow"/> property is set to true.
         /// </summary>
-        public Color4 ShadowColour
+        public SRGBColour ShadowColour
         {
             get => shadowColour;
             set

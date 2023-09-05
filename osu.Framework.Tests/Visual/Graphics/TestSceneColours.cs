@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using osu.Framework.Allocation;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Cursor;
 using osu.Framework.Graphics.Shapes;
@@ -43,7 +44,7 @@ namespace osu.Framework.Tests.Visual.Graphics
         {
             public ColourBox(string name, Colour4 colour)
             {
-                Colour = colour;
+                Colour = new SRGBColour(colour);
                 Name = name;
                 Size = new Vector2(50);
             }

@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 using NUnit.Framework;
 using osu.Framework.Allocation;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 using osuTK;
-using osuTK.Graphics;
 
 namespace osu.Framework.Tests.Visual.Drawables
 {
@@ -72,7 +72,7 @@ namespace osu.Framework.Tests.Visual.Drawables
             public DelayedTestBox()
             {
                 Size = new Vector2(50);
-                Colour = Color4.Blue;
+                Colour = SRGBColour.Blue;
             }
 
             [BackgroundDependencyLoader]
@@ -87,7 +87,7 @@ namespace osu.Framework.Tests.Visual.Drawables
             public DelayedTestBoxAsync()
             {
                 Size = new Vector2(50);
-                Colour = Color4.Green;
+                Colour = SRGBColour.Green;
             }
 
             [BackgroundDependencyLoader]

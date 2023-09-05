@@ -6,6 +6,7 @@
 using System.Collections.Generic;
 using NUnit.Framework;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
@@ -13,7 +14,6 @@ using osu.Framework.Input.Bindings;
 using osu.Framework.Input.Events;
 using osu.Framework.Testing;
 using osuTK;
-using osuTK.Graphics;
 using osuTK.Input;
 
 namespace osu.Framework.Tests.Visual.Input
@@ -37,7 +37,7 @@ namespace osu.Framework.Tests.Visual.Input
                             Anchor = Anchor.Centre,
                             Origin = Anchor.Centre,
                             Size = new Vector2(100),
-                            Colour = Color4.LightPink
+                            Colour = SRGBColour.LightPink
                         },
                         hiddenReceptor = new TestInputReceptor("second")
                         {
@@ -45,7 +45,7 @@ namespace osu.Framework.Tests.Visual.Input
                             Origin = Anchor.Centre,
                             Size = new Vector2(100),
                             Alpha = 0,
-                            Colour = Color4.LightGreen
+                            Colour = SRGBColour.LightGreen
                         }
                     }
                 };
@@ -80,7 +80,7 @@ namespace osu.Framework.Tests.Visual.Input
                     {
                         Anchor = Anchor.Centre,
                         Origin = Anchor.Centre,
-                        Colour = Color4.Black,
+                        Colour = SRGBColour.Black,
                         Text = name
                     }
                 };

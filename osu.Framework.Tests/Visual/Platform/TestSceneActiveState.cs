@@ -6,11 +6,11 @@
 using osu.Framework.Allocation;
 using osu.Framework.Bindables;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
 using osu.Framework.Platform;
-using osuTK.Graphics;
 
 namespace osu.Framework.Tests.Visual.Platform
 {
@@ -49,8 +49,8 @@ namespace osu.Framework.Tests.Visual.Platform
                 },
             };
 
-            isActive.BindValueChanged(active => isActiveBox.Colour = active.NewValue ? Color4.Green : Color4.Red, true);
-            cursorInWindow?.BindValueChanged(active => cursorInWindowBox.Colour = active.NewValue ? Color4.Green : Color4.Red, true);
+            isActive.BindValueChanged(active => isActiveBox.Colour = active.NewValue ? SRGBColour.Green : SRGBColour.Red, true);
+            cursorInWindow?.BindValueChanged(active => cursorInWindowBox.Colour = active.NewValue ? SRGBColour.Green : SRGBColour.Red, true);
         }
 
         public partial class DisplayBox : CompositeDrawable
@@ -61,13 +61,13 @@ namespace osu.Framework.Tests.Visual.Platform
                 {
                     new Box
                     {
-                        Colour = Color4.White,
+                        Colour = SRGBColour.White,
                         RelativeSizeAxes = Axes.Both,
                     },
                     new SpriteText
                     {
                         Text = label,
-                        Colour = Color4.Black,
+                        Colour = SRGBColour.Black,
                         Anchor = Anchor.Centre,
                         Origin = Anchor.Centre,
                     }

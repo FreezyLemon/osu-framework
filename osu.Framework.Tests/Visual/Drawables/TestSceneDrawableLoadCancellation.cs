@@ -11,12 +11,12 @@ using System.Threading.Tasks;
 using NUnit.Framework;
 using osu.Framework.Allocation;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
 using osu.Framework.Logging;
 using osuTK;
-using osuTK.Graphics;
 
 namespace osu.Framework.Tests.Visual.Drawables
 {
@@ -98,7 +98,7 @@ namespace osu.Framework.Tests.Visual.Drawables
                 {
                     new Box
                     {
-                        Colour = Color4.Navy,
+                        Colour = SRGBColour.Navy,
                         RelativeSizeAxes = Axes.Both,
                     },
                 };
@@ -134,13 +134,13 @@ namespace osu.Framework.Tests.Visual.Drawables
                 {
                     new Box
                     {
-                        Colour = Color4.NavajoWhite,
+                        Colour = SRGBColour.NavajoWhite,
                         RelativeSizeAxes = Axes.Both
                     },
                     new SpriteText
                     {
                         Text = id.ToString(),
-                        Colour = Color4.Black,
+                        Colour = SRGBColour.Black,
                         Font = new FontUsage(size: 50),
                         Anchor = Anchor.Centre,
                         Origin = Anchor.Centre

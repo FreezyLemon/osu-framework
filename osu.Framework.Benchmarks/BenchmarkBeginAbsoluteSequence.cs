@@ -4,10 +4,10 @@
 using BenchmarkDotNet.Attributes;
 using NUnit.Framework;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 using osuTK;
-using osuTK.Graphics;
 
 namespace osu.Framework.Benchmarks
 {
@@ -119,7 +119,7 @@ namespace osu.Framework.Benchmarks
                     var box = new Box
                     {
                         Size = new Vector2(100),
-                        Colour = Color4.Black
+                        Colour = SRGBColour.Black
                     };
 
                     Flat.Add(box);
@@ -132,12 +132,12 @@ namespace osu.Framework.Benchmarks
                     SlightlyNested.Add(new Container
                     {
                         Size = new Vector2(100),
-                        Colour = Color4.Black,
+                        Colour = SRGBColour.Black,
                         Children = new Drawable[]
                         {
                             new Box
                             {
-                                Colour = Color4.Black,
+                                Colour = SRGBColour.Black,
                                 RelativeSizeAxes = Axes.Both,
                             },
                         }
@@ -150,7 +150,7 @@ namespace osu.Framework.Benchmarks
 
                 for (int i = 0; i < 1000; i++)
                 {
-                    var container = new Container { Size = new Vector2(100), Colour = Color4.Black };
+                    var container = new Container { Size = new Vector2(100), Colour = SRGBColour.Black };
 
                     target.Add(container);
 

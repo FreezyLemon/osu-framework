@@ -8,7 +8,6 @@ using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Utils;
 using osuTK;
-using osuTK.Graphics;
 
 namespace osu.Framework.Tests.Visual.Performance
 {
@@ -85,16 +84,16 @@ namespace osu.Framework.Tests.Visual.Performance
             {
                 drawable.Colour = new ColourInfo
                 {
-                    TopLeft = RandomiseColour.Value ? getRandomColour() : Color4.Red,
-                    TopRight = RandomiseColour.Value ? getRandomColour() : Color4.Blue,
-                    BottomLeft = RandomiseColour.Value ? getRandomColour() : Color4.Green,
-                    BottomRight = RandomiseColour.Value ? getRandomColour() : Color4.Yellow
+                    TopLeft = RandomiseColour.Value ? getRandomColour() : SRGBColour.Red,
+                    TopRight = RandomiseColour.Value ? getRandomColour() : SRGBColour.Blue,
+                    BottomLeft = RandomiseColour.Value ? getRandomColour() : SRGBColour.Green,
+                    BottomRight = RandomiseColour.Value ? getRandomColour() : SRGBColour.Yellow
                 };
             }
             else
-                drawable.Colour = RandomiseColour.Value ? getRandomColour() : Color4.White;
+                drawable.Colour = RandomiseColour.Value ? getRandomColour() : SRGBColour.White;
         }
 
-        private Colour4 getRandomColour() => new Colour4(RNG.NextSingle(), RNG.NextSingle(), RNG.NextSingle(), 1f);
+        private SRGBColour getRandomColour() => new SRGBColour(new Colour4(RNG.NextSingle(), RNG.NextSingle(), RNG.NextSingle(), 1f));
     }
 }

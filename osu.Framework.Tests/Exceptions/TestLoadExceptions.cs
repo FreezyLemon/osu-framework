@@ -12,13 +12,13 @@ using osu.Framework.Allocation;
 using osu.Framework.Extensions;
 using osu.Framework.Extensions.ExceptionExtensions;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Logging;
 using osu.Framework.Platform;
 using osu.Framework.Testing;
 using osuTK;
-using osuTK.Graphics;
 
 namespace osu.Framework.Tests.Exceptions
 {
@@ -301,7 +301,7 @@ namespace osu.Framework.Tests.Exceptions
             {
                 this.throws = throws;
                 Size = new Vector2(50);
-                Colour = Color4.Green;
+                Colour = SRGBColour.Green;
             }
 
             [BackgroundDependencyLoader]

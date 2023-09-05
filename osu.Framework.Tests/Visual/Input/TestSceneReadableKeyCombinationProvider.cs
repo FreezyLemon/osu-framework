@@ -3,6 +3,7 @@
 
 using osu.Framework.Allocation;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
@@ -11,7 +12,6 @@ using osu.Framework.Input.Bindings;
 using osu.Framework.Input.Events;
 using osu.Framework.Input.States;
 using osuTK;
-using osuTK.Graphics;
 
 namespace osu.Framework.Tests.Visual.Input
 {
@@ -118,7 +118,7 @@ namespace osu.Framework.Tests.Visual.Input
                     box = new Box
                     {
                         RelativeSizeAxes = Axes.Both,
-                        Colour = Color4.DarkGray,
+                        Colour = SRGBColour.DarkGray,
                         Alpha = 0.6f,
                     },
                     text = new SpriteText
@@ -140,7 +140,7 @@ namespace osu.Framework.Tests.Visual.Input
             protected override bool OnKeyDown(KeyDownEvent e)
             {
                 if (keyCombination.IsPressed(new KeyCombination(KeyCombination.FromKey(e.Key)), KeyCombinationMatchingMode.Any))
-                    box.Colour = Color4.Navy;
+                    box.Colour = SRGBColour.Navy;
 
                 return base.OnKeyDown(e);
             }
@@ -148,7 +148,7 @@ namespace osu.Framework.Tests.Visual.Input
             protected override void OnKeyUp(KeyUpEvent e)
             {
                 if (keyCombination.IsPressed(new KeyCombination(KeyCombination.FromKey(e.Key)), KeyCombinationMatchingMode.Any))
-                    box.Colour = Color4.DarkGray;
+                    box.Colour = SRGBColour.DarkGray;
 
                 base.OnKeyUp(e);
             }
@@ -159,7 +159,7 @@ namespace osu.Framework.Tests.Visual.Input
 
                 if (text.Text != newText)
                 {
-                    Schedule(() => box.FlashColour(Color4.LightBlue, 500));
+                    Schedule(() => box.FlashColour(SRGBColour.LightBlue, 500));
                     text.Text = newText;
                 }
             }

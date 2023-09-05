@@ -3,8 +3,8 @@
 
 #nullable disable
 
+using osu.Framework.Graphics.Colour;
 using osuTK;
-using osuTK.Graphics;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Primitives;
 
@@ -50,12 +50,12 @@ namespace osu.Framework.Graphics.Visualisation
             {
                 layout = new FlashyBox(d => d.ToScreenSpace(d.LayoutRectangle))
                 {
-                    Colour = Color4.Green,
+                    Colour = SRGBColour.Green,
                     Alpha = 0.5f,
                 },
                 shape = new FlashyBox(d => d.ScreenSpaceDrawQuad)
                 {
-                    Colour = Color4.Blue,
+                    Colour = SRGBColour.Blue,
                     Alpha = 0.5f,
                 },
                 childShape = new FlashyBox(delegate(Drawable d)
@@ -67,20 +67,20 @@ namespace osu.Framework.Graphics.Visualisation
                     return d.ToScreenSpace(rect);
                 })
                 {
-                    Colour = Color4.Red,
+                    Colour = SRGBColour.Red,
                     Alpha = 0.5f,
                 },
                 // We're adding this guy twice to get a border in a somewhat hacky way.
-                new FlashyBox(d => quadAroundPosition(d.ToScreenSpace(d.OriginPosition), 5)) { Colour = Color4.Blue, },
-                new FlashyBox(d => quadAroundPosition(d.ToScreenSpace(d.OriginPosition), 3)) { Colour = Color4.Yellow, },
+                new FlashyBox(d => quadAroundPosition(d.ToScreenSpace(d.OriginPosition), 5)) { Colour = SRGBColour.Blue, },
+                new FlashyBox(d => quadAroundPosition(d.ToScreenSpace(d.OriginPosition), 3)) { Colour = SRGBColour.Yellow, },
             };
         }
 
         public void Pulse()
         {
-            layout.FlashColour(Color4.White, 250);
-            shape.FlashColour(Color4.White, 250);
-            childShape.FlashColour(Color4.White, 250);
+            layout.FlashColour(SRGBColour.White, 250);
+            shape.FlashColour(SRGBColour.White, 250);
+            childShape.FlashColour(SRGBColour.White, 250);
         }
 
         protected override void Update()

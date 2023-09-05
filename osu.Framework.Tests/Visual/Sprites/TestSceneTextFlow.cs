@@ -3,13 +3,13 @@
 
 using System.Linq;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Effects;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
 using osu.Framework.Testing;
 using osuTK;
-using osuTK.Graphics;
 
 namespace osu.Framework.Tests.Visual.Sprites
 {
@@ -58,21 +58,21 @@ namespace osu.Framework.Tests.Visual.Sprites
                 }
             });
 
-            textFlowContainer.AddText("the considerably swift vermilion reynard bounds above the slothful mahogany hound.", t => t.Colour = Color4.Yellow);
-            textFlowContainer.AddText("\nTHE ", t => t.Colour = Color4.Red);
-            textFlowContainer.AddText("CONSIDERABLY", t => t.Colour = Color4.Pink);
-            textFlowContainer.AddText(" SWIFT VERMILION REYNARD BOUNDS ABOVE THE SLOTHFUL MAHOGANY HOUND!!", t => t.Colour = Color4.Red);
-            textFlowContainer.AddText("\n\n0123456789!@#$%^&*()_-+-[]{}.,<>;'\\\\", t => t.Colour = Color4.Blue);
+            textFlowContainer.AddText("the considerably swift vermilion reynard bounds above the slothful mahogany hound.", t => t.Colour = SRGBColour.Yellow);
+            textFlowContainer.AddText("\nTHE ", t => t.Colour = SRGBColour.Red);
+            textFlowContainer.AddText("CONSIDERABLY", t => t.Colour = SRGBColour.Pink);
+            textFlowContainer.AddText(" SWIFT VERMILION REYNARD BOUNDS ABOVE THE SLOTHFUL MAHOGANY HOUND!!", t => t.Colour = SRGBColour.Red);
+            textFlowContainer.AddText("\n\n0123456789!@#$%^&*()_-+-[]{}.,<>;'\\\\", t => t.Colour = SRGBColour.Blue);
             float textSize = 48f;
             textFlowContainer.AddParagraph("Multiple Text Sizes", t =>
             {
                 t.Font = t.Font.With(size: textSize);
                 textSize -= 12f;
             });
-            textFlowContainer.AddText("\nI'm a paragraph\nnewlines are cool", t => t.Colour = Color4.Beige);
-            textFlowContainer.AddText(" (and so are inline styles!)", t => t.Colour = Color4.Yellow);
-            textFlowContainer.AddParagraph("There's 2 line breaks\n\ninside this paragraph!", t => t.Colour = Color4.GreenYellow);
-            textFlowContainer.AddParagraph("Make\nTextFlowContainer\ngreat\nagain!", t => t.Colour = Color4.Red);
+            textFlowContainer.AddText("\nI'm a paragraph\nnewlines are cool", t => t.Colour = SRGBColour.Beige);
+            textFlowContainer.AddText(" (and so are inline styles!)", t => t.Colour = SRGBColour.Yellow);
+            textFlowContainer.AddParagraph("There's 2 line breaks\n\ninside this paragraph!", t => t.Colour = SRGBColour.GreenYellow);
+            textFlowContainer.AddParagraph("Make\nTextFlowContainer\ngreat\nagain!", t => t.Colour = SRGBColour.Red);
 
             paragraphContainer.Add(new TextFlowContainer
             {
@@ -92,7 +92,7 @@ osu! is written in C# on the .NET Framework. On August 28, 2016, osu!'s source c
                 {
                     new LineBaseBox
                     {
-                        Colour = Color4.Purple,
+                        Colour = SRGBColour.Purple,
                         LineBaseHeight = 25f,
                         Size = new Vector2(25, 25)
                     }.WithEffect(new OutlineEffect
@@ -100,7 +100,7 @@ osu! is written in C# on the .NET Framework. On August 28, 2016, osu!'s source c
                         Strength = 20f,
                         PadExtent = true,
                         BlurSigma = new Vector2(5f),
-                        Colour = Color4.White
+                        Colour = SRGBColour.White
                     })
                 },
                 Text = "Test icons [RedBox] interleaved\n[GreenBox] with other [0] text, also [[0]] escaping stuff is possible."
@@ -199,14 +199,14 @@ osu! is written in C# on the .NET Framework. On August 28, 2016, osu!'s source c
 
             private Drawable makeGreenBox() => new LineBaseBox
             {
-                Colour = Color4.Green,
+                Colour = SRGBColour.Green,
                 LineBaseHeight = 25f,
                 Size = new Vector2(25, 20)
             };
 
             private Drawable makeRedBox() => new LineBaseBox
             {
-                Colour = Color4.Red,
+                Colour = SRGBColour.Red,
                 LineBaseHeight = 10f,
                 Size = new Vector2(25, 25)
             };

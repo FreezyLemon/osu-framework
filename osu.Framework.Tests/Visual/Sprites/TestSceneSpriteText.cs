@@ -2,10 +2,10 @@
 // See the LICENCE file in the repository root for full licence text.
 
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
-using osuTK.Graphics;
 
 namespace osu.Framework.Tests.Visual.Sprites
 {
@@ -60,7 +60,7 @@ namespace osu.Framework.Tests.Visual.Sprites
                     {
                         Anchor = Anchor.Centre,
                         Origin = Anchor.Centre,
-                        Colour = Color4.Black,
+                        Colour = SRGBColour.Black,
                         UseFullGlyphHeight = true,
                         Text = "UseFullGlyphHeight = true",
                     },
@@ -81,7 +81,7 @@ namespace osu.Framework.Tests.Visual.Sprites
                     {
                         Anchor = Anchor.Centre,
                         Origin = Anchor.Centre,
-                        Colour = Color4.Black,
+                        Colour = SRGBColour.Black,
                         UseFullGlyphHeight = false,
                         Text = "UseFullGlyphHeight = false",
                     },

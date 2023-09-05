@@ -18,7 +18,6 @@ using osu.Framework.Graphics.UserInterface;
 using osu.Framework.Localisation;
 using osu.Framework.Utils;
 using osuTK;
-using osuTK.Graphics;
 
 namespace osu.Framework.Graphics.Visualisation
 {
@@ -252,8 +251,8 @@ namespace osu.Framework.Graphics.Visualisation
                     drawColour = DrawColourInfo.Colour;
                     drawColour.ApplyChild(
                         Precision.AlmostBigger(Source.AverageUsagesPerFrame, 1)
-                            ? Interpolation.ValueAt(Source.AverageUsagesPerFrame, Color4.DarkGray, Color4.Red, 0, 200)
-                            : Color4.Transparent);
+                            ? Interpolation.ValueAt(Source.AverageUsagesPerFrame, SRGBColour.DarkGray, SRGBColour.Red, 0, 200)
+                            : SRGBColour.Transparent);
 
                     base.Draw(renderer);
 
@@ -274,7 +273,7 @@ namespace osu.Framework.Graphics.Visualisation
                     var shrunkenQuad = ScreenSpaceDrawQuad.AABBFloat.Shrink(border_width);
 
                     // background
-                    renderer.DrawQuad(Texture, shrunkenQuad, Color4.Black);
+                    renderer.DrawQuad(Texture, shrunkenQuad, SRGBColour.Black);
 
                     float aspect = (float)texture.Width / texture.Height;
 
@@ -301,7 +300,7 @@ namespace osu.Framework.Graphics.Visualisation
                     if (visualisedMipLevel != -1)
                         texture.MipLevel = visualisedMipLevel;
 
-                    renderer.DrawQuad(texture, shrunkenQuad, Color4.White);
+                    renderer.DrawQuad(texture, shrunkenQuad, SRGBColour.White);
 
                     if (visualisedMipLevel != -1)
                     {

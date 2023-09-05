@@ -5,9 +5,9 @@ using NUnit.Framework;
 using osu.Framework.Allocation;
 using osu.Framework.Bindables;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Platform;
-using osuTK.Graphics;
 
 namespace osu.Framework.Tests.Visual.Platform
 {
@@ -40,7 +40,7 @@ namespace osu.Framework.Tests.Visual.Platform
             private void load(GameHost host)
             {
                 allowSuspension.BindTo(host.AllowScreenSuspension.Result);
-                allowSuspension.BindValueChanged(v => Colour = v.NewValue ? Color4.Green : Color4.Red, true);
+                allowSuspension.BindValueChanged(v => Colour = v.NewValue ? SRGBColour.Green : SRGBColour.Red, true);
             }
         }
     }

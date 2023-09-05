@@ -9,13 +9,13 @@ using osu.Framework.Bindables;
 using osu.Framework.Configuration;
 using osu.Framework.Extensions.ObjectExtensions;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Primitives;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
 using osu.Framework.Platform;
 using osuTK;
-using osuTK.Graphics;
 
 namespace osu.Framework.Tests.Visual.Platform
 {
@@ -29,12 +29,12 @@ namespace osu.Framework.Tests.Visual.Platform
         private readonly Container windowContainer;
         private Vector2 screenContainerOffset;
 
-        private static readonly Color4 active_fill = new Color4(255, 138, 104, 255);
-        private static readonly Color4 active_stroke = new Color4(244, 74, 25, 255);
-        private static readonly Color4 screen_fill = new Color4(255, 181, 104, 255);
-        private static readonly Color4 screen_stroke = new Color4(244, 137, 25, 255);
-        private static readonly Color4 window_fill = new Color4(95, 113, 197, 255);
-        private static readonly Color4 window_stroke = new Color4(36, 59, 166, 255);
+        private static readonly SRGBColour active_fill = new SRGBColour(255, 138, 104, 255);
+        private static readonly SRGBColour active_stroke = new SRGBColour(244, 74, 25, 255);
+        private static readonly SRGBColour screen_fill = new SRGBColour(255, 181, 104, 255);
+        private static readonly SRGBColour screen_stroke = new SRGBColour(244, 137, 25, 255);
+        private static readonly SRGBColour window_fill = new SRGBColour(95, 113, 197, 255);
+        private static readonly SRGBColour window_stroke = new SRGBColour(36, 59, 166, 255);
 
         private SDL2Window? window;
         private readonly Bindable<WindowMode> windowMode = new Bindable<WindowMode>();
@@ -70,7 +70,7 @@ namespace osu.Framework.Tests.Visual.Platform
                                 windowCaption = new TextFlowContainer(sprite =>
                                 {
                                     sprite.Font = sprite.Font.With(size: FONT_SIZE);
-                                    sprite.Colour = Color4.White;
+                                    sprite.Colour = SRGBColour.White;
                                 })
                                 {
                                     Anchor = Anchor.BottomLeft,
@@ -78,7 +78,7 @@ namespace osu.Framework.Tests.Visual.Platform
                                     RelativeSizeAxes = Axes.X,
                                     AutoSizeAxes = Axes.Y,
                                     Padding = new MarginPadding(50),
-                                    Colour = Color4.White
+                                    Colour = SRGBColour.White
                                 }
                             }
                         }
@@ -155,7 +155,7 @@ namespace osu.Framework.Tests.Visual.Platform
                     new TextFlowContainer(sprite =>
                     {
                         sprite.Font = new FontUsage(size: FONT_SIZE);
-                        sprite.Colour = Color4.Black;
+                        sprite.Colour = SRGBColour.Black;
                     })
                     {
                         RelativeSizeAxes = Axes.Both,

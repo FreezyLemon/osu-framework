@@ -7,6 +7,7 @@ using System.Linq;
 using osu.Framework.Allocation;
 using osu.Framework.Configuration;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Primitives;
 using osu.Framework.Graphics.Shapes;
@@ -16,7 +17,6 @@ using osu.Framework.Input.Events;
 using osu.Framework.Platform;
 using osu.Framework.Input.Handlers.Mouse;
 using osuTK;
-using osuTK.Graphics;
 
 namespace osu.Framework.Tests.Visual.Input
 {
@@ -88,7 +88,7 @@ namespace osu.Framework.Tests.Visual.Input
                     new Box
                     {
                         RelativeSizeAxes = Axes.Both,
-                        Colour = new Color4(1, 1, 1, 0.2f),
+                        Colour = SRGBColour.White.Opacity(0.2f),
                     },
                     new FillFlowContainer
                     {

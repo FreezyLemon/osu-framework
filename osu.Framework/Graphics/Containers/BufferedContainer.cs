@@ -4,7 +4,6 @@
 #nullable disable
 
 using osuTK;
-using osuTK.Graphics;
 using osu.Framework.Allocation;
 using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Primitives;
@@ -102,10 +101,10 @@ namespace osu.Framework.Graphics.Containers
             }
         }
 
-        private ColourInfo effectColour = Color4.White;
+        private ColourInfo effectColour = SRGBColour.White;
 
         /// <summary>
-        /// The multiplicative colour of drawn buffered object after applying all effects (e.g. blur). Default is <see cref="Color4.White"/>.
+        /// The multiplicative colour of drawn buffered object after applying all effects (e.g. blur). Default is <see cref="SRGBColour.White"/>.
         /// Does not affect the original which is drawn when <see cref="DrawOriginal"/> is true.
         /// </summary>
         public ColourInfo EffectColour
@@ -160,12 +159,12 @@ namespace osu.Framework.Graphics.Containers
             }
         }
 
-        private Color4 backgroundColour = new Color4(0, 0, 0, 0);
+        private SRGBColour backgroundColour = new SRGBColour(0, 0, 0, 0);
 
         /// <summary>
         /// The background colour of the framebuffer. Transparent black by default.
         /// </summary>
-        public Color4 BackgroundColour
+        public SRGBColour BackgroundColour
         {
             get => backgroundColour;
             set
@@ -363,7 +362,7 @@ namespace osu.Framework.Graphics.Containers
                 var blending = Blending;
                 blending.ApplyDefaultToInherited();
 
-                return new DrawColourInfo(Color4.White, blending);
+                return new DrawColourInfo(SRGBColour.White, blending);
             }
         }
 

@@ -21,6 +21,7 @@ using osu.Framework.Extensions.IEnumerableExtensions;
 using osu.Framework.Extensions.ObjectExtensions;
 using osu.Framework.Extensions.TypeExtensions;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
@@ -33,7 +34,6 @@ using osu.Framework.Testing.Drawables;
 using osu.Framework.Testing.Drawables.Steps;
 using osu.Framework.Timing;
 using osuTK;
-using osuTK.Graphics;
 using Logger = osu.Framework.Logging.Logger;
 
 namespace osu.Framework.Testing
@@ -128,13 +128,13 @@ namespace osu.Framework.Testing
                                     Depth = float.MinValue,
                                     CornerRadius = 5,
                                     AutoSizeAxes = Axes.Both,
-                                    Colour = Color4.YellowGreen,
+                                    Colour = SRGBColour.YellowGreen,
                                     Children = new Drawable[]
                                     {
                                         new Box
                                         {
                                             RelativeSizeAxes = Axes.Both,
-                                            Colour = Color4.Black,
+                                            Colour = SRGBColour.Black,
                                         },
                                         new SpriteText
                                         {
@@ -258,7 +258,7 @@ namespace osu.Framework.Testing
                 hotReloadNotice
                     .FadeIn(100).Then()
                     .FadeOutFromOne(500, Easing.InQuint);
-                hotReloadNotice.FadeColour(Color4.YellowGreen, 100);
+                hotReloadNotice.FadeColour(SRGBColour.YellowGreen, 100);
             }
             catch (Exception e)
             {
@@ -273,7 +273,7 @@ namespace osu.Framework.Testing
             hotReloadNotice
                 .FadeIn(100).Then()
                 .FadeOutFromOne(500, Easing.InQuint);
-            hotReloadNotice.FadeColour(Color4.Red, 100);
+            hotReloadNotice.FadeColour(SRGBColour.Red, 100);
         });
 
         protected override void LoadComplete()
@@ -519,7 +519,7 @@ namespace osu.Framework.Testing
                     CurrentTest.AddStep(new SingleStepButton(true)
                     {
                         Text = "[SetUp]",
-                        LightColour = Color4.Teal,
+                        LightColour = SRGBColour.Teal,
                         Action = () => setUpMethods.ForEach(s => s.Invoke(CurrentTest, null))
                     });
                 }

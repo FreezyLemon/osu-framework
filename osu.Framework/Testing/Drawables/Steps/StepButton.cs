@@ -5,12 +5,12 @@
 
 using System;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
 using osu.Framework.Input.Events;
 using osu.Framework.Localisation;
-using osuTK.Graphics;
 
 namespace osu.Framework.Testing.Drawables.Steps
 {
@@ -30,9 +30,9 @@ namespace osu.Framework.Testing.Drawables.Steps
             set => SpriteText.Text = value;
         }
 
-        private Color4 lightColour = Color4.BlueViolet;
+        private SRGBColour lightColour = SRGBColour.BlueViolet;
 
-        public Color4 LightColour
+        public SRGBColour LightColour
         {
             get => lightColour;
             set
@@ -44,9 +44,9 @@ namespace osu.Framework.Testing.Drawables.Steps
 
         public readonly bool IsSetupStep;
 
-        protected virtual Color4 IdleColour => new Color4(0.15f, 0.15f, 0.15f, 1);
+        protected virtual SRGBColour IdleColour => new SRGBColour(38, 38, 38, 255);
 
-        protected virtual Color4 RunningColour => new Color4(0.5f, 0.5f, 0.5f, 1);
+        protected virtual SRGBColour RunningColour => SRGBColour.Gray;
 
         protected StepButton(bool isSetupStep = false)
         {
@@ -80,7 +80,7 @@ namespace osu.Framework.Testing.Drawables.Steps
             RelativeSizeAxes = Axes.X;
 
             BorderThickness = 1.5f;
-            BorderColour = new Color4(0.15f, 0.15f, 0.15f, 1);
+            BorderColour = new SRGBColour(38, 38, 38, 255);
 
             Masking = true;
         }
@@ -132,8 +132,8 @@ namespace osu.Framework.Testing.Drawables.Steps
 
         protected virtual void Failure()
         {
-            Background.DelayUntilTransformsFinished().FadeColour(new Color4(0.3f, 0.15f, 0.15f, 1), 1000, Easing.OutQuint);
-            Light.FadeColour(Color4.Red);
+            Background.DelayUntilTransformsFinished().FadeColour(new SRGBColour(76, 38, 38, 255), 1000, Easing.OutQuint);
+            Light.FadeColour(SRGBColour.Red);
         }
 
         protected virtual void Success()
@@ -141,7 +141,7 @@ namespace osu.Framework.Testing.Drawables.Steps
             Background.FinishTransforms();
             Background.FadeColour(IdleColour, 1000, Easing.OutQuint);
 
-            Light.FadeColour(Color4.YellowGreen);
+            Light.FadeColour(SRGBColour.YellowGreen);
         }
 
         public override string ToString() => $@"""{Text}"" " + base.ToString();

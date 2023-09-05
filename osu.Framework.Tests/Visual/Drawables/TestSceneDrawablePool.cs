@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Pooling;
 using osu.Framework.Graphics.Shapes;
@@ -16,7 +17,6 @@ using osu.Framework.Testing;
 using osu.Framework.Timing;
 using osu.Framework.Utils;
 using osuTK;
-using osuTK.Graphics;
 
 namespace osu.Framework.Tests.Visual.Drawables
 {
@@ -397,7 +397,7 @@ namespace osu.Framework.Tests.Visual.Drawables
                 {
                     new Box
                     {
-                        Colour = Color4.Green,
+                        Colour = SRGBColour.Green,
                         RelativeSizeAxes = Axes.Both,
                     },
                     text = new SpriteText

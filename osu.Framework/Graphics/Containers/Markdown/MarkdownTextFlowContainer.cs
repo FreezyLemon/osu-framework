@@ -11,9 +11,9 @@ using Markdig.Extensions.Footnotes;
 using Markdig.Syntax.Inlines;
 using osu.Framework.Allocation;
 using osu.Framework.Extensions.IEnumerableExtensions;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers.Markdown.Footnotes;
 using osu.Framework.Graphics.Sprites;
-using osuTK.Graphics;
 
 namespace osu.Framework.Graphics.Containers.Markdown
 {
@@ -136,10 +136,10 @@ namespace osu.Framework.Graphics.Containers.Markdown
         }
 
         protected virtual void AddHtmlInLineText(string text, LiteralInline literalInline)
-            => AddText(text, t => t.Colour = Color4.MediumPurple);
+            => AddText(text, t => t.Colour = SRGBColour.MediumPurple);
 
         protected virtual void AddHtmlEntityInlineText(string text, HtmlEntityInline entityInLine)
-            => AddText(text, t => t.Colour = Color4.GreenYellow);
+            => AddText(text, t => t.Colour = SRGBColour.GreenYellow);
 
         protected virtual void AddLinkText(string text, LinkInline linkInline)
             => AddDrawable(new MarkdownLinkText(text, linkInline));
@@ -148,7 +148,7 @@ namespace osu.Framework.Graphics.Containers.Markdown
             => AddDrawable(new MarkdownLinkText(autolinkInline));
 
         protected virtual void AddCodeInLine(CodeInline codeInline)
-            => AddText(codeInline.Content, t => { t.Colour = Color4.Orange; });
+            => AddText(codeInline.Content, t => { t.Colour = SRGBColour.Orange; });
 
         protected virtual void AddImage(LinkInline linkInline)
             => AddDrawable(new MarkdownImage(linkInline.Url));
@@ -163,7 +163,7 @@ namespace osu.Framework.Graphics.Containers.Markdown
             => AddNotImplementedInlineText(customContainerInline);
 
         protected virtual void AddNotImplementedInlineText(Inline inline)
-            => AddText(inline.GetType() + " not implemented.", t => t.Colour = Color4.Red);
+            => AddText(inline.GetType() + " not implemented.", t => t.Colour = SRGBColour.Red);
 
         private void addEmphasis(string text, List<string> emphases)
         {

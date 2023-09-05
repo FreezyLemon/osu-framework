@@ -2,11 +2,11 @@
 // See the LICENCE file in the repository root for full licence text.
 
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Input.Events;
 using osuTK;
-using osuTK.Graphics;
 
 namespace osu.Framework.Tests.Visual.Input
 {
@@ -15,7 +15,7 @@ namespace osu.Framework.Tests.Visual.Input
         public TestSceneNestedHover()
         {
             HoverBox box1;
-            Add(box1 = new HoverBox(Color4.Gray, Color4.White)
+            Add(box1 = new HoverBox(SRGBColour.Gray, SRGBColour.White)
             {
                 Anchor = Anchor.Centre,
                 Origin = Anchor.Centre,
@@ -26,7 +26,7 @@ namespace osu.Framework.Tests.Visual.Input
             });
 
             HoverBox box2;
-            box1.Add(box2 = new HoverBox(Color4.Pink, Color4.Red)
+            box1.Add(box2 = new HoverBox(SRGBColour.Pink, SRGBColour.Red)
             {
                 RelativePositionAxes = Axes.Both,
                 RelativeSizeAxes = Axes.Both,
@@ -34,7 +34,7 @@ namespace osu.Framework.Tests.Visual.Input
                 Size = new Vector2(0.6f, 0.6f)
             });
 
-            box2.Add(new HoverBox(Color4.LightBlue, Color4.Blue, false)
+            box2.Add(new HoverBox(SRGBColour.LightBlue, SRGBColour.Blue, false)
             {
                 RelativePositionAxes = Axes.Both,
                 RelativeSizeAxes = Axes.Both,
@@ -45,13 +45,13 @@ namespace osu.Framework.Tests.Visual.Input
 
         private partial class HoverBox : Container
         {
-            private readonly Color4 normalColour;
-            private readonly Color4 hoveredColour;
+            private readonly SRGBColour normalColour;
+            private readonly SRGBColour hoveredColour;
 
             private readonly Box box;
             private readonly bool propagateHover;
 
-            public HoverBox(Color4 normalColour, Color4 hoveredColour, bool propagateHover = true)
+            public HoverBox(SRGBColour normalColour, SRGBColour hoveredColour, bool propagateHover = true)
             {
                 this.normalColour = normalColour;
                 this.hoveredColour = hoveredColour;

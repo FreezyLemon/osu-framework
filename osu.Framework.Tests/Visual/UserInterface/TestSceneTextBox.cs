@@ -7,6 +7,7 @@ using System.Linq;
 using NUnit.Framework;
 using osu.Framework.Extensions;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Primitives;
 using osu.Framework.Graphics.Shapes;
@@ -16,7 +17,6 @@ using osu.Framework.Input;
 using osu.Framework.Testing;
 using osu.Framework.Utils;
 using osuTK;
-using osuTK.Graphics;
 using osuTK.Input;
 
 namespace osu.Framework.Tests.Visual.UserInterface
@@ -899,13 +899,13 @@ namespace osu.Framework.Tests.Visual.UserInterface
                     RelativeSizeAxes = Axes.Y;
 
                     Masking = true;
-                    BorderColour = Color4.White;
+                    BorderColour = SRGBColour.White;
                     BorderThickness = 3;
 
                     InternalChild = new Box
                     {
                         RelativeSizeAxes = Axes.Both,
-                        Colour = Color4.Transparent
+                        Colour = SRGBColour.Transparent
                     };
                 }
 

@@ -71,7 +71,7 @@ namespace osu.Framework.Tests.Visual.Localisation
                     new Box
                     {
                         RelativeSizeAxes = Axes.Both,
-                        Colour = Colour4.FromHex("#333")
+                        Colour = new SRGBColour(51, 51, 51, 255),
                     },
                     textFlowContainer = new TextFlowContainer(text => text.Font = FrameworkFont.Condensed)
                     {

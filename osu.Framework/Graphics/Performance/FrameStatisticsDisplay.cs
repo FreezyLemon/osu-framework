@@ -3,7 +3,6 @@
 
 #nullable disable
 
-using osuTK.Graphics;
 using osu.Framework.Allocation;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Primitives;
@@ -18,6 +17,7 @@ using System.Buffers;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Pooling;
 using osu.Framework.Graphics.Rendering;
 using osuTK;
@@ -42,7 +42,7 @@ namespace osu.Framework.Graphics.Performance
 
         private readonly TimeBar[] timeBars;
 
-        private static readonly Color4[] garbage_collect_colors = { Color4.Green, Color4.Yellow, Color4.Red };
+        private static readonly SRGBColour[] garbage_collect_colors = { SRGBColour.Green, SRGBColour.Yellow, SRGBColour.Red };
         private readonly PerformanceMonitor monitor;
 
         private int currentX;
@@ -407,59 +407,59 @@ namespace osu.Framework.Graphics.Performance
                 counterBars[pair.Key].Value = pair.Value;
         }
 
-        private Color4 getColour(PerformanceCollectionType type)
+        private SRGBColour getColour(PerformanceCollectionType type)
         {
             switch (type)
             {
                 default:
-                    return Color4.YellowGreen;
+                    return SRGBColour.YellowGreen;
 
                 case PerformanceCollectionType.SwapBuffer:
-                    return Color4.Red;
+                    return SRGBColour.Red;
 #if DEBUG
                 case PerformanceCollectionType.Debug:
-                    return Color4.Yellow;
+                    return SRGBColour.Yellow;
 #endif
                 case PerformanceCollectionType.Sleep:
-                    return Color4.DarkBlue;
+                    return SRGBColour.DarkBlue;
 
                 case PerformanceCollectionType.Scheduler:
-                    return Color4.HotPink;
+                    return SRGBColour.HotPink;
 
                 case PerformanceCollectionType.WndProc:
-                    return Color4.GhostWhite;
+                    return SRGBColour.GhostWhite;
 
                 case PerformanceCollectionType.DrawReset:
-                    return Color4.Cyan;
+                    return SRGBColour.Cyan;
             }
         }
 
-        private Color4 getColour(int index)
+        private SRGBColour getColour(int index)
         {
             const int colour_count = 7;
 
             switch (index % colour_count)
             {
                 default:
-                    return Color4.BlueViolet;
+                    return SRGBColour.BlueViolet;
 
                 case 1:
-                    return Color4.YellowGreen;
+                    return SRGBColour.YellowGreen;
 
                 case 2:
-                    return Color4.HotPink;
+                    return SRGBColour.HotPink;
 
                 case 3:
-                    return Color4.Red;
+                    return SRGBColour.Red;
 
                 case 4:
-                    return Color4.Cyan;
+                    return SRGBColour.Cyan;
 
                 case 5:
-                    return Color4.Yellow;
+                    return SRGBColour.Yellow;
 
                 case 6:
-                    return Color4.SkyBlue;
+                    return SRGBColour.SkyBlue;
             }
         }
 
@@ -477,7 +477,7 @@ namespace osu.Framework.Graphics.Performance
             else
                 return currentHeight;
 
-            Color4 col = frameTimeType.HasValue ? getColour(frameTimeType.Value) : new Color4(0.1f, 0.1f, 0.1f, 1);
+            SRGBColour col = frameTimeType.HasValue ? getColour(frameTimeType.Value) : new SRGBColour(25, 25, 25, 255);
 
             for (int i = currentHeight - 1; i >= 0; --i)
             {
@@ -495,7 +495,7 @@ namespace osu.Framework.Graphics.Performance
                 else if (acceptableRange)
                     brightnessAdjust *= 0.8f;
 
-                columnUpload.RawData[i] = new Rgba32(col.R * brightnessAdjust, col.G * brightnessAdjust, col.B * brightnessAdjust, col.A);
+                columnUpload.RawData[i] = new Rgba32(col.Raw.Lighten(brightnessAdjust).Vector);
 
                 currentHeight--;
             }
@@ -629,7 +629,7 @@ namespace osu.Framework.Graphics.Performance
                 {
                     new Box
                     {
-                        Colour = Color4.White,
+                        Colour = SRGBColour.White,
                         RelativeSizeAxes = Axes.Both,
                     },
                 };

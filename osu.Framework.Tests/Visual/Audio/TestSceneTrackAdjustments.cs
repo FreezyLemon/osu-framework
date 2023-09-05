@@ -6,12 +6,12 @@ using osu.Framework.Audio.Track;
 using osu.Framework.Bindables;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Audio;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
 using osu.Framework.Input.Events;
 using osuTK;
-using osuTK.Graphics;
 
 namespace osu.Framework.Tests.Visual.Audio
 {
@@ -51,7 +51,7 @@ namespace osu.Framework.Tests.Visual.Audio
                 {
                     new Box
                     {
-                        Colour = Color4.Yellow,
+                        Colour = SRGBColour.Yellow,
                         RelativeSizeAxes = Axes.Both,
                     },
                     new SpriteIcon
@@ -59,7 +59,7 @@ namespace osu.Framework.Tests.Visual.Audio
                         Anchor = Anchor.Centre,
                         Origin = Anchor.Centre,
                         Icon = FontAwesome.Solid.VolumeUp,
-                        Colour = Color4.Black,
+                        Colour = SRGBColour.Black,
                         Size = new Vector2(40)
                     },
                     drawableTrack = new DrawableTrack(track)
@@ -102,7 +102,7 @@ namespace osu.Framework.Tests.Visual.Audio
                         {
                             new Box
                             {
-                                Colour = Color4.DarkGray,
+                                Colour = SRGBColour.DarkGray,
                                 Alpha = 0.5f,
                                 RelativeSizeAxes = Axes.Both,
                             },
@@ -110,7 +110,7 @@ namespace osu.Framework.Tests.Visual.Audio
                             {
                                 Anchor = Anchor.BottomLeft,
                                 Origin = Anchor.BottomLeft,
-                                Colour = Color4.DarkViolet,
+                                Colour = SRGBColour.DarkViolet,
                                 Alpha = 0.2f,
                                 RelativeSizeAxes = Axes.Both,
                             },
@@ -138,7 +138,7 @@ namespace osu.Framework.Tests.Visual.Audio
                                 Origin = Anchor.Centre,
                                 Icon = FontAwesome.Solid.CircleNotch,
                                 Blending = BlendingParameters.Additive,
-                                Colour = Color4.White,
+                                Colour = SRGBColour.White,
                                 Alpha = 0.2f,
                                 Scale = new Vector2(20),
                                 Position = new Vector2(20, -20)

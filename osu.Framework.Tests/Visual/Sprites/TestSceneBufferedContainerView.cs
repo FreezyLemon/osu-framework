@@ -3,13 +3,13 @@
 
 using NUnit.Framework;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
 using osu.Framework.Input.Events;
 using osu.Framework.Tests.Visual.Containers;
 using osuTK;
-using osuTK.Graphics;
 
 namespace osu.Framework.Tests.Visual.Sprites
 {
@@ -68,7 +68,7 @@ namespace osu.Framework.Tests.Visual.Sprites
                 Size = new Vector2(200);
                 Masking = true;
                 CornerRadius = 20;
-                BorderColour = Color4.Magenta;
+                BorderColour = SRGBColour.Magenta;
                 BorderThickness = 2;
 
                 InternalChildren = new Drawable[]
@@ -88,7 +88,7 @@ namespace osu.Framework.Tests.Visual.Sprites
                                         new Box
                                         {
                                             RelativeSizeAxes = Axes.Both,
-                                            Colour = Color4.Magenta
+                                            Colour = SRGBColour.Magenta
                                         },
                                         new SpriteText
                                         {
@@ -105,7 +105,7 @@ namespace osu.Framework.Tests.Visual.Sprites
                                 new BufferedContainer
                                 {
                                     RelativeSizeAxes = Axes.Both,
-                                    BackgroundColour = Color4.Black,
+                                    BackgroundColour = SRGBColour.Black,
                                     BlurSigma = new Vector2(blur),
                                     Child = buffer.CreateView().With(d =>
                                     {

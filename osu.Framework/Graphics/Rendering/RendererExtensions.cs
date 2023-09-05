@@ -62,8 +62,8 @@ namespace osu.Framework.Graphics.Rendering
             // texture coordinate trick. We might want to revert this to drawing a single
             // triangle in case we ever need proper texturing, or if the additional vertices
             // end up becoming an overhead (unlikely).
-            SRGBColour topColour = (drawColour.TopLeft + drawColour.TopRight) / 2;
-            SRGBColour bottomColour = (drawColour.BottomLeft + drawColour.BottomRight) / 2;
+            SRGBColour topColour = ((drawColour.TopLeft.ToLinear() + drawColour.TopRight.ToLinear()) / 2).ToSRGB();
+            SRGBColour bottomColour = ((drawColour.BottomLeft.ToLinear() + drawColour.BottomRight.ToLinear()) / 2).ToSRGB();
 
             vertexAction(new TexturedVertex2D(renderer)
             {

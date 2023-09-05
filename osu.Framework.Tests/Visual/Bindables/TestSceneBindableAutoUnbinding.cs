@@ -7,11 +7,11 @@ using NUnit.Framework;
 using osu.Framework.Allocation;
 using osu.Framework.Bindables;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
 using osuTK;
-using osuTK.Graphics;
 
 namespace osu.Framework.Tests.Visual.Bindables
 {
@@ -149,7 +149,7 @@ namespace osu.Framework.Tests.Visual.Bindables
                 {
                     new Box
                     {
-                        Colour = badActor ? Color4.Red : Color4.Green,
+                        Colour = badActor ? SRGBColour.Red : SRGBColour.Green,
                         RelativeSizeAxes = Axes.Both,
                     },
                     spriteText = new SpriteText

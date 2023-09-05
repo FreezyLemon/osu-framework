@@ -1,14 +1,13 @@
 ﻿// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the MIT Licence.
 // See the LICENCE file in the repository root for full licence text.
 
-using osu.Framework.Extensions.Color4Extensions;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
 using osu.Framework.Testing;
 using osuTK;
-using osuTK.Graphics;
 
 namespace osu.Framework.Tests.Visual.Input
 {
@@ -18,9 +17,9 @@ namespace osu.Framework.Tests.Visual.Input
         {
             TestContainerNoHandling notHandleInput;
             TestContainer handlePositionalInput, handleNonPositionalInput;
-            Add(notHandleInput = new TestContainerNoHandling { Colour = Color4.Red });
-            Add(handlePositionalInput = new TestContainerHandlePositionalInput { X = 300, Colour = Color4.Blue });
-            Add(handleNonPositionalInput = new TestContainerHandleNonPositionalInput { X = 600, Colour = Color4.Green });
+            Add(notHandleInput = new TestContainerNoHandling { Colour = SRGBColour.Red });
+            Add(handlePositionalInput = new TestContainerHandlePositionalInput { X = 300, Colour = SRGBColour.Blue });
+            Add(handleNonPositionalInput = new TestContainerHandleNonPositionalInput { X = 600, Colour = SRGBColour.Green });
             Add(new TestSceneMouseStates.StateTracker.BoundedCursorContainer(0));
 
             AddStep($"enable {notHandleInput}", () => { InputManager.MoveMouseTo(notHandleInput); });
@@ -58,7 +57,7 @@ namespace osu.Framework.Tests.Visual.Input
             protected readonly Box DisabledOverlay;
             private readonly SpriteText text1, text2;
 
-            public new Color4 Colour
+            public new SRGBColour Colour
             {
                 get => Box.Colour;
                 set => Box.Colour = value;
@@ -71,7 +70,7 @@ namespace osu.Framework.Tests.Visual.Input
                 Add(new SpriteText { Text = GetType().Name });
                 Add(text1 = new SpriteText { Y = 20 });
                 Add(text2 = new SpriteText { Y = 40 });
-                Add(DisabledOverlay = new Box { RelativeSizeAxes = Axes.Both, Colour = Color4.Gray.Opacity(.5f) });
+                Add(DisabledOverlay = new Box { RelativeSizeAxes = Axes.Both, Colour = SRGBColour.Gray.Opacity(.5f) });
             }
 
             protected override void Update()

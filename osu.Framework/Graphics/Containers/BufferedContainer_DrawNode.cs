@@ -5,7 +5,6 @@
 
 using System.Collections.Generic;
 using osuTK;
-using osuTK.Graphics;
 using osu.Framework.Graphics.Primitives;
 using osu.Framework.Graphics.Shaders;
 using System;
@@ -119,7 +118,7 @@ namespace osu.Framework.Graphics.Containers
 
                     blurShader.BindUniformBlock("m_BlurParameters", blurParametersBuffer);
                     blurShader.Bind();
-                    renderer.DrawFrameBuffer(current, new RectangleF(0, 0, current.Texture.Width, current.Texture.Height), ColourInfo.SingleColour(Color4.White));
+                    renderer.DrawFrameBuffer(current, new RectangleF(0, 0, current.Texture.Width, current.Texture.Height), SRGBColour.White);
                     blurShader.Unbind();
                 }
             }

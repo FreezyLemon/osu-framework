@@ -8,13 +8,13 @@ using System.IO;
 using NUnit.Framework;
 using osu.Framework.Allocation;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Primitives;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
 using osu.Framework.Graphics.Textures;
 using osuTK;
-using osuTK.Graphics;
 
 namespace osu.Framework.Tests.Visual.Sprites
 {
@@ -95,12 +95,12 @@ namespace osu.Framework.Tests.Visual.Sprites
                                     Anchor = Anchor.Centre,
                                     Origin = Anchor.Centre,
                                     Masking = true,
-                                    BorderColour = Color4.Red,
+                                    BorderColour = SRGBColour.Red,
                                     BorderThickness = 2,
                                     Child = new Box
                                     {
                                         RelativeSizeAxes = Axes.Both,
-                                        Colour = new Color4(0, 0, 0, 0),
+                                        Colour = new SRGBColour(0, 0, 0, 0)
                                     }
                                 }
                             }

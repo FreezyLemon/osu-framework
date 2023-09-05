@@ -2,9 +2,8 @@
 // See the LICENCE file in the repository root for full licence text.
 
 using osu.Framework.Bindables;
-using osu.Framework.Extensions.Color4Extensions;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Sprites;
-using osuTK.Graphics;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Input.Events;
 using osu.Framework.Localisation;
@@ -19,18 +18,18 @@ namespace osu.Framework.Graphics.UserInterface
             set => SpriteText.Text = value;
         }
 
-        public Color4 BackgroundColour
+        public SRGBColour BackgroundColour
         {
             get => Background.Colour;
             set => Background.FadeColour(value);
         }
 
-        private Color4? flashColour;
+        private SRGBColour? flashColour;
 
         /// <summary>
         /// The colour the background will flash with when this button is clicked.
         /// </summary>
-        public Color4 FlashColour
+        public SRGBColour FlashColour
         {
             get => flashColour ?? BackgroundColour;
             set => flashColour = value;
@@ -39,18 +38,18 @@ namespace osu.Framework.Graphics.UserInterface
         /// <summary>
         /// The additive colour that is applied to the background when hovered.
         /// </summary>
-        public Color4 HoverColour
+        public SRGBColour HoverColour
         {
             get => Hover.Colour;
             set => Hover.FadeColour(value);
         }
 
-        private Color4 disabledColour = Color4.Gray;
+        private SRGBColour disabledColour = SRGBColour.Gray;
 
         /// <summary>
         /// The additive colour that is applied to this button when disabled.
         /// </summary>
-        public Color4 DisabledColour
+        public SRGBColour DisabledColour
         {
             get => disabledColour;
             set
@@ -99,7 +98,7 @@ namespace osu.Framework.Graphics.UserInterface
                     Anchor = Anchor.Centre,
                     Origin = Anchor.Centre,
                     RelativeSizeAxes = Axes.Both,
-                    Colour = Color4.White.Opacity(.1f),
+                    Colour = SRGBColour.White.Opacity(.1f),
                     Blending = BlendingParameters.Additive
                 },
                 SpriteText = CreateText()
@@ -142,7 +141,7 @@ namespace osu.Framework.Graphics.UserInterface
 
         private void enabledChanged(ValueChangedEvent<bool> e)
         {
-            this.FadeColour(e.NewValue ? Color4.White : DisabledColour, DisabledFadeDuration, Easing.OutQuint);
+            this.FadeColour(e.NewValue ? SRGBColour.White : DisabledColour, DisabledFadeDuration, Easing.OutQuint);
         }
     }
 }

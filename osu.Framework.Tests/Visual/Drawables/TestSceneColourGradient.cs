@@ -1,14 +1,12 @@
 ﻿// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the MIT Licence.
 // See the LICENCE file in the repository root for full licence text.
 
-using osu.Framework.Extensions.Color4Extensions;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
 using osu.Framework.Testing;
 using osuTK;
-using osuTK.Graphics;
 
 namespace osu.Framework.Tests.Visual.Drawables
 {
@@ -17,66 +15,18 @@ namespace osu.Framework.Tests.Visual.Drawables
         public TestSceneColourGradient()
             : base(4, 2)
         {
-            Color4 transparentBlack = new Color4(0, 0, 0, 0);
+            SRGBColour transparentBlack = new SRGBColour(0, 0, 0, 0);
 
             ColourInfo[] colours =
             {
-                new ColourInfo
-                {
-                    TopLeft = Color4.Pink.ToLinear(),
-                    BottomLeft = Color4.Pink.ToLinear(),
-                    TopRight = Color4.SkyBlue.ToLinear(),
-                    BottomRight = Color4.SkyBlue.ToLinear(),
-                },
-                new ColourInfo
-                {
-                    TopLeft = Color4.Pink,
-                    BottomLeft = Color4.Pink,
-                    TopRight = Color4.SkyBlue,
-                    BottomRight = Color4.SkyBlue,
-                },
-                new ColourInfo
-                {
-                    TopLeft = Color4.White.ToLinear(),
-                    BottomLeft = Color4.White.ToLinear(),
-                    TopRight = Color4.Black.ToLinear(),
-                    BottomRight = Color4.Black.ToLinear(),
-                },
-                new ColourInfo
-                {
-                    TopLeft = Color4.White,
-                    BottomLeft = Color4.White,
-                    TopRight = Color4.Black,
-                    BottomRight = Color4.Black,
-                },
-                new ColourInfo
-                {
-                    TopLeft = Color4.White.ToLinear(),
-                    BottomLeft = Color4.White.ToLinear(),
-                    TopRight = Color4.Transparent.ToLinear(),
-                    BottomRight = Color4.Transparent.ToLinear(),
-                },
-                new ColourInfo
-                {
-                    TopLeft = Color4.White,
-                    BottomLeft = Color4.White,
-                    TopRight = Color4.Transparent,
-                    BottomRight = Color4.Transparent,
-                },
-                new ColourInfo
-                {
-                    TopLeft = Color4.White.ToLinear(),
-                    BottomLeft = Color4.White.ToLinear(),
-                    TopRight = transparentBlack.ToLinear(),
-                    BottomRight = transparentBlack.ToLinear(),
-                },
-                new ColourInfo
-                {
-                    TopLeft = Color4.White,
-                    BottomLeft = Color4.White,
-                    TopRight = transparentBlack,
-                    BottomRight = transparentBlack,
-                },
+                ColourInfo.GradientHorizontal(forceLinear(SRGBColour.Pink), forceLinear(SRGBColour.SkyBlue)),
+                ColourInfo.GradientHorizontal(SRGBColour.Pink, SRGBColour.SkyBlue),
+                ColourInfo.GradientHorizontal(forceLinear(SRGBColour.White), forceLinear(SRGBColour.Black)),
+                ColourInfo.GradientHorizontal(SRGBColour.White, SRGBColour.Black),
+                ColourInfo.GradientHorizontal(forceLinear(SRGBColour.White), forceLinear(SRGBColour.Transparent)),
+                ColourInfo.GradientHorizontal(SRGBColour.White, SRGBColour.Transparent),
+                ColourInfo.GradientHorizontal(forceLinear(SRGBColour.White), forceLinear(transparentBlack)),
+                ColourInfo.GradientHorizontal(SRGBColour.White, transparentBlack),
             };
 
             string[] labels =
@@ -111,5 +61,7 @@ namespace osu.Framework.Tests.Visual.Drawables
                 });
             }
         }
+
+        private SRGBColour forceLinear(SRGBColour srgb) => new SRGBColour(srgb.Raw.ToLinear());
     }
 }

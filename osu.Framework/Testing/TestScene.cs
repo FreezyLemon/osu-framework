@@ -17,6 +17,7 @@ using osu.Framework.Development;
 using osu.Framework.Extensions;
 using osu.Framework.Extensions.TypeExtensions;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
@@ -25,7 +26,6 @@ using osu.Framework.Platform;
 using osu.Framework.Testing.Drawables.Steps;
 using osu.Framework.Threading;
 using osuTK;
-using osuTK.Graphics;
 using Logger = osu.Framework.Logging.Logger;
 
 namespace osu.Framework.Testing
@@ -131,7 +131,7 @@ namespace osu.Framework.Testing
                 {
                     new Box
                     {
-                        Colour = new Color4(25, 25, 25, 255),
+                        Colour = new SRGBColour(25, 25, 25, 255),
                         RelativeSizeAxes = Axes.Y,
                         Width = steps_width,
                     },

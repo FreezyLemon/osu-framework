@@ -5,10 +5,10 @@
 
 using NUnit.Framework;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 using osuTK;
-using osuTK.Graphics;
 
 namespace osu.Framework.Tests.Visual.Drawables
 {
@@ -29,7 +29,7 @@ namespace osu.Framework.Tests.Visual.Drawables
                         new Box
                         {
                             RelativeSizeAxes = Axes.Both,
-                            Colour = Color4.Orange
+                            Colour = SRGBColour.Orange
                         },
                         blended = new Box
                         {
@@ -61,7 +61,7 @@ namespace osu.Framework.Tests.Visual.Drawables
                         new Box
                         {
                             RelativeSizeAxes = Axes.Both,
-                            Colour = Color4.Orange
+                            Colour = SRGBColour.Orange
                         },
                         new Container
                         {

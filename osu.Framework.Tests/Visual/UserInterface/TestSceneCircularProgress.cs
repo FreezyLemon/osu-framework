@@ -12,7 +12,6 @@ using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Textures;
 using osu.Framework.Graphics.UserInterface;
 using osuTK;
-using osuTK.Graphics;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 
@@ -199,40 +198,40 @@ namespace osu.Framework.Tests.Visual.UserInterface
             switch (colourMode)
             {
                 case 0:
-                    clock.Colour = new Color4(255, 255, 255, 255);
+                    clock.Colour = new SRGBColour(255, 255, 255, 255);
                     break;
 
                 case 1:
-                    clock.Colour = new Color4(255, 88, 88, 255);
+                    clock.Colour = new SRGBColour(255, 88, 88, 255);
                     break;
 
                 case 2:
                     clock.Colour = new ColourInfo
                     {
-                        TopLeft = new Color4(255, 128, 128, 255),
-                        TopRight = new Color4(128, 255, 128, 255),
-                        BottomLeft = new Color4(255, 128, 128, 255),
-                        BottomRight = new Color4(128, 255, 128, 255),
+                        TopLeft = new SRGBColour(255, 128, 128, 255),
+                        TopRight = new SRGBColour(128, 255, 128, 255),
+                        BottomLeft = new SRGBColour(255, 128, 128, 255),
+                        BottomRight = new SRGBColour(128, 255, 128, 255),
                     };
                     break;
 
                 case 3:
                     clock.Colour = new ColourInfo
                     {
-                        TopLeft = new Color4(255, 128, 128, 255),
-                        TopRight = new Color4(255, 128, 128, 255),
-                        BottomLeft = new Color4(128, 255, 128, 255),
-                        BottomRight = new Color4(128, 255, 128, 255),
+                        TopLeft = new SRGBColour(255, 128, 128, 255),
+                        TopRight = new SRGBColour(255, 128, 128, 255),
+                        BottomLeft = new SRGBColour(128, 255, 128, 255),
+                        BottomRight = new SRGBColour(128, 255, 128, 255),
                     };
                     break;
 
                 case 4:
                     clock.Colour = new ColourInfo
                     {
-                        TopLeft = new Color4(255, 128, 128, 255),
-                        TopRight = new Color4(128, 255, 128, 255),
-                        BottomLeft = new Color4(128, 128, 255, 255),
-                        BottomRight = new Color4(255, 255, 255, 255),
+                        TopLeft = new SRGBColour(255, 128, 128, 255),
+                        TopRight = new SRGBColour(128, 255, 128, 255),
+                        BottomLeft = new SRGBColour(128, 128, 255, 255),
+                        BottomRight = new SRGBColour(255, 255, 255, 255),
                     };
                     break;
             }

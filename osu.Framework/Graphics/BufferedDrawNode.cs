@@ -5,11 +5,11 @@
 
 using System;
 using osu.Framework.Allocation;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Primitives;
 using osu.Framework.Graphics.Rendering;
 using osu.Framework.Statistics;
 using osuTK;
-using osuTK.Graphics;
 
 namespace osu.Framework.Graphics
 {
@@ -34,7 +34,7 @@ namespace osu.Framework.Graphics
 
         protected RectangleF DrawRectangle { get; private set; }
 
-        private Color4 backgroundColour;
+        private SRGBColour backgroundColour;
         private RectangleF localDrawRectangle;
         private RectangleF screenSpaceDrawRectangle;
         private Vector2 frameBufferScale;
@@ -55,7 +55,7 @@ namespace osu.Framework.Graphics
             backgroundColour = Source.BackgroundColour;
             localDrawRectangle = Source.DrawRectangle;
             screenSpaceDrawRectangle = Source.ScreenSpaceDrawQuad.AABBFloat;
-            DrawColourInfo = Source.FrameBufferDrawColour ?? new DrawColourInfo(Color4.White, base.DrawColourInfo.Blending);
+            DrawColourInfo = Source.FrameBufferDrawColour ?? new DrawColourInfo(SRGBColour.White, base.DrawColourInfo.Blending);
             frameBufferScale = Source.FrameBufferScale;
 
             clipDrawRectangle();

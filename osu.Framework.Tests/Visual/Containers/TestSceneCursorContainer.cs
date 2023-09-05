@@ -5,6 +5,7 @@
 
 using NUnit.Framework;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Cursor;
 using osu.Framework.Graphics.Shapes;
@@ -12,7 +13,6 @@ using osu.Framework.Input;
 using osu.Framework.Utils;
 using osu.Framework.Testing;
 using osuTK;
-using osuTK.Graphics;
 
 namespace osu.Framework.Tests.Visual.Containers
 {
@@ -90,7 +90,7 @@ namespace osu.Framework.Tests.Visual.Containers
                 {
                     new Box
                     {
-                        Colour = Color4.Yellow,
+                        Colour = SRGBColour.Yellow,
                         RelativeSizeAxes = Axes.Both,
                     },
                     cursorContainer = new TestCursorContainer
@@ -107,7 +107,7 @@ namespace osu.Framework.Tests.Visual.Containers
             protected override Drawable CreateCursor() => new Circle
             {
                 Size = new Vector2(50),
-                Colour = Color4.Red,
+                Colour = SRGBColour.Red,
                 Origin = Anchor.Centre,
             };
         }

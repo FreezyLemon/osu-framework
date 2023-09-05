@@ -18,7 +18,6 @@ using osu.Framework.Layout;
 using osu.Framework.Logging;
 using osu.Framework.Utils;
 using osuTK;
-using osuTK.Graphics;
 
 namespace osu.Framework.Graphics.Audio
 {
@@ -78,13 +77,13 @@ namespace osu.Framework.Graphics.Audio
             }
         }
 
-        private Color4 baseColour = Color4.White;
+        private SRGBColour baseColour = SRGBColour.White;
 
         /// <summary>
         /// The base colour of the graph for frequencies that don't fall into the predefined low/mid/high buckets.
         /// Also serves as the default value of <see cref="LowColour"/>, <see cref="MidColour"/>, and <see cref="HighColour"/>.
         /// </summary>
-        public Color4 BaseColour
+        public SRGBColour BaseColour
         {
             get => baseColour;
             set
@@ -98,13 +97,13 @@ namespace osu.Framework.Graphics.Audio
             }
         }
 
-        private Color4? lowColour;
+        private SRGBColour? lowColour;
 
         /// <summary>
         /// The colour which low-range frequencies should be colourised with.
         /// May be null for this frequency range to not be colourised.
         /// </summary>
-        public Color4? LowColour
+        public SRGBColour? LowColour
         {
             get => lowColour;
             set
@@ -118,13 +117,13 @@ namespace osu.Framework.Graphics.Audio
             }
         }
 
-        private Color4? midColour;
+        private SRGBColour? midColour;
 
         /// <summary>
         /// The colour which mid-range frequencies should be colourised with.
         /// May be null for this frequency range to not be colourised.
         /// </summary>
-        public Color4? MidColour
+        public SRGBColour? MidColour
         {
             get => midColour;
             set
@@ -138,13 +137,13 @@ namespace osu.Framework.Graphics.Audio
             }
         }
 
-        private Color4? highColour;
+        private SRGBColour? highColour;
 
         /// <summary>
         /// The colour which high-range frequencies should be colourised with.
         /// May be null for this frequency range to not be colourised.
         /// </summary>
-        public Color4? HighColour
+        public SRGBColour? HighColour
         {
             get => highColour;
             set
@@ -266,10 +265,10 @@ namespace osu.Framework.Graphics.Audio
 
             private long version;
 
-            private Color4 baseColour;
-            private Color4 lowColour;
-            private Color4 midColour;
-            private Color4 highColour;
+            private SRGBColour baseColour;
+            private SRGBColour lowColour;
+            private SRGBColour midColour;
+            private SRGBColour highColour;
 
             private double highMax;
             private double midMax;
@@ -350,7 +349,7 @@ namespace osu.Framework.Graphics.Audio
                     float leftX = i * separation;
                     float rightX = (i + 1) * separation;
 
-                    Color4 frequencyColour = baseColour;
+                    SRGBColour frequencyColour = baseColour;
 
                     // colouring is applied in the order of interest to a viewer.
                     frequencyColour = Interpolation.ValueAt(points[i].MidIntensity / midMax, frequencyColour, midColour, 0, 1);

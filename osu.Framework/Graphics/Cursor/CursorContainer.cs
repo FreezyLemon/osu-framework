@@ -3,6 +3,7 @@
 
 using osu.Framework.Allocation;
 using osu.Framework.Extensions.ObjectExtensions;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Effects;
 using osu.Framework.Graphics.Shapes;
@@ -10,7 +11,6 @@ using osu.Framework.Graphics.UserInterface;
 using osu.Framework.Input;
 using osu.Framework.Input.Events;
 using osuTK;
-using osuTK.Graphics;
 
 namespace osu.Framework.Graphics.Cursor
 {
@@ -103,13 +103,13 @@ namespace osu.Framework.Graphics.Cursor
                 Origin = Anchor.Centre;
 
                 BorderThickness = 2;
-                BorderColour = new Color4(247, 99, 164, 255);
+                BorderColour = new SRGBColour(247, 99, 164, 255);
 
                 Masking = true;
                 EdgeEffect = new EdgeEffectParameters
                 {
                     Type = EdgeEffectType.Glow,
-                    Colour = new Color4(247, 99, 164, 6),
+                    Colour = new SRGBColour(247, 99, 164, 6),
                     Radius = 50
                 };
 
@@ -145,7 +145,7 @@ namespace osu.Framework.Graphics.Cursor
                 {
                     this.FadeInFromZero();
 
-                    progress.FadeColour(Color4.SkyBlue)
+                    progress.FadeColour(SRGBColour.SkyBlue)
                             .TransformTo(nameof(progress.InnerRadius), 0.2f)
                             .TransformTo(nameof(progress.InnerRadius), 0.3f, 150, Easing.OutQuint)
                             .TransformBindableTo(progress.Current, 0)
@@ -155,7 +155,7 @@ namespace osu.Framework.Graphics.Cursor
                     {
                         this.FadeOut(500, Easing.OutQuint);
 
-                        progress.FadeColour(Color4.White, 800, Easing.OutQuint)
+                        progress.FadeColour(SRGBColour.White, 800, Easing.OutQuint)
                                 .TransformTo(nameof(progress.InnerRadius), 0.6f, 500, Easing.OutQuint);
                     }
                 }

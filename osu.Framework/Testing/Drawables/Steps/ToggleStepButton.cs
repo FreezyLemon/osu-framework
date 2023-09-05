@@ -3,15 +3,15 @@
 
 using System;
 using osu.Framework.Graphics;
-using osuTK.Graphics;
+using osu.Framework.Graphics.Colour;
 
 namespace osu.Framework.Testing.Drawables.Steps
 {
     public partial class ToggleStepButton : StepButton
     {
         private readonly Action<bool>? reloadCallback;
-        private static readonly Color4 off_colour = Color4.Red;
-        private static readonly Color4 on_colour = Color4.YellowGreen;
+        private static readonly SRGBColour off_colour = SRGBColour.Red;
+        private static readonly SRGBColour on_colour = SRGBColour.YellowGreen;
 
         public bool State;
 

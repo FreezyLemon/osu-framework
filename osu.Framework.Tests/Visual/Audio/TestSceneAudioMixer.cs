@@ -10,12 +10,12 @@ using osu.Framework.Audio.Sample;
 using osu.Framework.Bindables;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Audio;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
 using osu.Framework.Input.Events;
 using osuTK;
-using osuTK.Graphics;
 
 namespace osu.Framework.Tests.Visual.Audio
 {
@@ -27,7 +27,7 @@ namespace osu.Framework.Tests.Visual.Audio
             ContainerWithEffect noEffectContainer;
             FillFlowContainer<ContainerWithEffect> effectContainers;
 
-            Child = noEffectContainer = new ContainerWithEffect("no effect", Color4.Black)
+            Child = noEffectContainer = new ContainerWithEffect("no effect", SRGBColour.Black)
             {
                 RelativeSizeAxes = Axes.Both,
                 Size = new Vector2(1),
@@ -46,7 +46,7 @@ namespace osu.Framework.Tests.Visual.Audio
             {
                 float centre = 150 + 50 * i;
 
-                effectContainers.Add(new ContainerWithEffect($"<{centre}Hz", Color4.Blue)
+                effectContainers.Add(new ContainerWithEffect($"<{centre}Hz", SRGBColour.Blue)
                 {
                     Size = new Vector2(100),
                     Effects =
@@ -90,7 +90,7 @@ namespace osu.Framework.Tests.Visual.Audio
                         new Box
                         {
                             RelativeSizeAxes = Axes.Both,
-                            Colour = Color4.HotPink,
+                            Colour = SRGBColour.HotPink,
                         },
                         new SpriteIcon
                         {
@@ -157,7 +157,7 @@ namespace osu.Framework.Tests.Visual.Audio
 
             private readonly Drawable background;
 
-            public ContainerWithEffect(string name, Color4 colour)
+            public ContainerWithEffect(string name, SRGBColour colour)
             {
                 Anchor = Anchor.Centre;
                 Origin = Anchor.Centre;

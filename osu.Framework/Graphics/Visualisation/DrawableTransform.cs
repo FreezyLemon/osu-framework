@@ -3,12 +3,12 @@
 
 #nullable disable
 
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
 using osu.Framework.Graphics.Transforms;
 using osuTK;
-using osuTK.Graphics;
 
 namespace osu.Framework.Graphics.Visualisation
 {
@@ -35,8 +35,8 @@ namespace osu.Framework.Graphics.Visualisation
         protected override void Update()
         {
             base.Update();
-            applied.Colour = transform.Applied ? Color4.Green : Color4.Red;
-            appliedToEnd.Colour = transform.AppliedToEnd ? Color4.Green : Color4.Red;
+            applied.Colour = transform.Applied ? SRGBColour.Green : SRGBColour.Red;
+            appliedToEnd.Colour = transform.AppliedToEnd ? SRGBColour.Green : SRGBColour.Red;
             text.Text = transform.ToString();
         }
     }

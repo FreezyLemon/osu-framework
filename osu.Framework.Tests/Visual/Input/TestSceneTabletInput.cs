@@ -6,6 +6,7 @@ using osu.Framework.Allocation;
 using osu.Framework.Bindables;
 using osu.Framework.Configuration;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
@@ -14,7 +15,6 @@ using osu.Framework.Input.Events;
 using osu.Framework.Input.Handlers.Tablet;
 using osu.Framework.Platform;
 using osuTK;
-using osuTK.Graphics;
 
 namespace osu.Framework.Tests.Visual.Input
 {
@@ -175,7 +175,7 @@ namespace osu.Framework.Tests.Visual.Input
                     background = new Container
                     {
                         RelativeSizeAxes = Axes.Both,
-                        Colour = Color4.DarkGreen,
+                        Colour = SRGBColour.DarkGreen,
                         Alpha = 0,
                         Child = new Box { RelativeSizeAxes = Axes.Both }
                     },
@@ -225,7 +225,7 @@ namespace osu.Framework.Tests.Visual.Input
                     background = new Container
                     {
                         RelativeSizeAxes = Axes.Both,
-                        Colour = Color4.DarkGreen,
+                        Colour = SRGBColour.DarkGreen,
                         Alpha = 0,
                         Child = new Box { RelativeSizeAxes = Axes.Both }
                     },

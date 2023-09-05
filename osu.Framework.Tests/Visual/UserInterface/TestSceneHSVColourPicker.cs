@@ -11,7 +11,6 @@ using osu.Framework.Graphics.UserInterface;
 using osu.Framework.Testing;
 using osu.Framework.Utils;
 using osuTK;
-using osuTK.Graphics;
 using osuTK.Input;
 
 namespace osu.Framework.Tests.Visual.UserInterface
@@ -57,7 +56,7 @@ namespace osu.Framework.Tests.Visual.UserInterface
         [Test]
         public void SaturationValueSelectorInput()
         {
-            AddStep("set initial colour", () => colourPicker.Current.Value = Color4.Red);
+            AddStep("set initial colour", () => colourPicker.Current.Value = SRGBColour.Red.Raw);
             assertSaturationAndValue(1, 1, 0);
 
             AddStep("click top left corner", () =>
@@ -151,7 +150,7 @@ namespace osu.Framework.Tests.Visual.UserInterface
             assertHue(1, 0);
 
             AddStep("set hue to 1", () => colourPicker.HueControl.Hue.Value = 1);
-            AddStep("set colour externally", () => colourPicker.Current.Value = SRGBColour.Red);
+            AddStep("set colour externally", () => colourPicker.Current.Value = SRGBColour.Red.Raw);
             assertHue(1, 0);
         }
 

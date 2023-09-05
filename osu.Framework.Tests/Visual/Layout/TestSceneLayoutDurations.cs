@@ -5,13 +5,13 @@
 
 using NUnit.Framework;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Input.Events;
 using osu.Framework.Utils;
 using osu.Framework.Timing;
 using osuTK;
-using osuTK.Graphics;
 
 namespace osu.Framework.Tests.Visual.Layout
 {
@@ -42,12 +42,12 @@ namespace osu.Framework.Tests.Visual.Layout
                     {
                         new Box
                         {
-                            Colour = Color4.Red,
+                            Colour = SRGBColour.Red,
                             RelativeSizeAxes = Axes.Both
                         },
                         box1 = new Box
                         {
-                            Colour = Color4.Transparent,
+                            Colour = SRGBColour.Transparent,
                             Size = Vector2.Zero,
                         },
                     }
@@ -59,8 +59,8 @@ namespace osu.Framework.Tests.Visual.Layout
                     LayoutEasing = Easing.None,
                     Children = new Drawable[]
                     {
-                        new Box { Colour = Color4.Red, Size = new Vector2(100) },
-                        box2 = new Box { Colour = Color4.Blue, Size = new Vector2(100) },
+                        new Box { Colour = SRGBColour.Red, Size = new Vector2(100) },
+                        box2 = new Box { Colour = SRGBColour.Blue, Size = new Vector2(100) },
                     }
                 }
             };

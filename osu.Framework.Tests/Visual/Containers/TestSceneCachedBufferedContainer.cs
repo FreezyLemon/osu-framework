@@ -3,12 +3,12 @@
 
 using System.Collections.Generic;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
 using osu.Framework.Testing;
 using osuTK;
-using osuTK.Graphics;
 
 namespace osu.Framework.Tests.Visual.Containers
 {
@@ -137,11 +137,11 @@ namespace osu.Framework.Tests.Visual.Containers
                         RelativeSizeAxes = Axes.Both,
                         Origin = Anchor.Centre,
                         Anchor = Anchor.Centre,
-                        Colour = Color4.NavajoWhite,
+                        Colour = SRGBColour.NavajoWhite,
                     },
                     count = new SpriteText
                     {
-                        Colour = Color4.Black,
+                        Colour = SRGBColour.Black,
                         Origin = Anchor.Centre,
                         Anchor = Anchor.Centre,
                         Font = new FontUsage(size: 80),

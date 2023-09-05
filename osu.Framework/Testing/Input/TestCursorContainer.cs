@@ -3,12 +3,12 @@
 
 using System.Linq;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Cursor;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Input.Events;
 using osuTK;
-using osuTK.Graphics;
 using osuTK.Input;
 
 namespace osu.Framework.Testing.Input
@@ -48,10 +48,10 @@ namespace osu.Framework.Testing.Input
                         Size = new Vector2(30),
                         Masking = true,
                         BorderThickness = 5,
-                        BorderColour = Color4.Cyan,
+                        BorderColour = SRGBColour.Cyan,
                         Child = new Box
                         {
-                            Colour = Color4.Black,
+                            Colour = SRGBColour.Black,
                             Alpha = 0.1f,
                             RelativeSizeAxes = Axes.Both,
                         },
@@ -71,10 +71,10 @@ namespace osu.Framework.Testing.Input
                         X = -15,
                         Masking = true,
                         BorderThickness = 5,
-                        BorderColour = Color4.Cyan,
+                        BorderColour = SRGBColour.Cyan,
                         Child = new Box
                         {
-                            Colour = Color4.Black,
+                            Colour = SRGBColour.Black,
                             Alpha = 0.1f,
                             RelativeSizeAxes = Axes.Both,
                         },
@@ -85,10 +85,10 @@ namespace osu.Framework.Testing.Input
                     RelativeSizeAxes = Axes.Both,
                     Masking = true,
                     BorderThickness = 2,
-                    BorderColour = Color4.Cyan,
+                    BorderColour = SRGBColour.Cyan,
                     Child = new Box
                     {
-                        Colour = Color4.Black,
+                        Colour = SRGBColour.Black,
                         Alpha = 0.1f,
                         RelativeSizeAxes = Axes.Both,
                     },
@@ -100,10 +100,10 @@ namespace osu.Framework.Testing.Input
                     Origin = Anchor.Centre,
                     Masking = true,
                     BorderThickness = 2,
-                    BorderColour = Color4.White,
+                    BorderColour = SRGBColour.White,
                     Child = new Box
                     {
-                        Colour = Color4.Red,
+                        Colour = SRGBColour.Red,
                         RelativeSizeAxes = Axes.Both,
                     },
                 },
@@ -152,7 +152,7 @@ namespace osu.Framework.Testing.Input
 
         private void updateBorder(MouseButtonEvent e)
         {
-            border.BorderColour = e.CurrentState.Mouse.Buttons.Any() ? Color4.Red : Color4.Cyan;
+            border.BorderColour = e.CurrentState.Mouse.Buttons.Any() ? SRGBColour.Red : SRGBColour.Cyan;
         }
     }
 }

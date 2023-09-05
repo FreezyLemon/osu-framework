@@ -7,8 +7,8 @@ using System.Linq;
 using NUnit.Framework;
 using osu.Framework.Allocation;
 using osu.Framework.Configuration;
-using osu.Framework.Extensions.Color4Extensions;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Video;
 using osu.Framework.IO.Stores;
@@ -235,7 +235,7 @@ namespace osu.Framework.Tests.Visual.Sprites
         {
             loadNewVideo();
 
-            AddStep("Set colour", () => video.Colour = Color4Extensions.FromHex("#ea7948").Opacity(0.75f));
+            AddStep("Set colour", () => video.Colour = new SRGBColour(234, 121, 72, 191));
             AddToggleStep("Toggle rounding", v => video.Rounded = v);
         }
 

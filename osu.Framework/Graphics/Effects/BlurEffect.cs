@@ -2,7 +2,6 @@
 // See the LICENCE file in the repository root for full licence text.
 
 using osuTK;
-using osuTK.Graphics;
 using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Utils;
@@ -30,9 +29,9 @@ namespace osu.Framework.Graphics.Effects
         public float Rotation;
 
         /// <summary>
-        /// The colour of the blur. Default is <see cref="Color4.White"/>.
+        /// The colour of the blur. Default is <see cref="SRGBColour.White"/>.
         /// </summary>
-        public ColourInfo Colour = Color4.White;
+        public ColourInfo Colour = SRGBColour.White;
 
         /// <summary>
         /// The blending mode of the blur. Default is inheriting from the target drawable.

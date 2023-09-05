@@ -6,11 +6,11 @@ using System.Threading;
 using NUnit.Framework;
 using osu.Framework.Allocation;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
 using osuTK;
-using osuTK.Graphics;
 
 namespace osu.Framework.Tests.Visual.Drawables
 {
@@ -197,26 +197,26 @@ namespace osu.Framework.Tests.Visual.Drawables
 
             public readonly ManualResetEventSlim AllowLoad = new ManualResetEventSlim(false);
 
-            protected virtual Color4 BackgroundColour
+            protected virtual SRGBColour BackgroundColour
             {
                 get
                 {
                     switch (id % 5)
                     {
                         default:
-                            return Color4.SkyBlue;
+                            return SRGBColour.SkyBlue;
 
                         case 1:
-                            return Color4.Tomato;
+                            return SRGBColour.Tomato;
 
                         case 2:
-                            return Color4.DarkGreen;
+                            return SRGBColour.DarkGreen;
 
                         case 3:
-                            return Color4.MediumPurple;
+                            return SRGBColour.MediumPurple;
 
                         case 4:
-                            return Color4.DarkOrchid;
+                            return SRGBColour.DarkOrchid;
                     }
                 }
             }
@@ -254,7 +254,7 @@ namespace osu.Framework.Tests.Visual.Drawables
 
         private partial class TestNullDrawableModel : TestDrawableModel
         {
-            protected override Color4 BackgroundColour => Color4.SlateGray;
+            protected override SRGBColour BackgroundColour => SRGBColour.SlateGray;
 
             public TestNullDrawableModel()
                 : base(0)

@@ -15,9 +15,9 @@ using osu.Framework.Extensions.IEnumerableExtensions;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Sprites;
 using osuTK;
-using osuTK.Graphics;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Extensions.TypeExtensions;
+using osu.Framework.Graphics.Colour;
 
 namespace osu.Framework.Graphics.Visualisation
 {
@@ -152,7 +152,7 @@ namespace osu.Framework.Graphics.Visualisation
                                 },
                                 valueText = new SpriteText
                                 {
-                                    Colour = Color4.White,
+                                    Colour = SRGBColour.White,
                                     Font = FrameworkFont.Regular
                                 },
                             }
@@ -163,7 +163,7 @@ namespace osu.Framework.Graphics.Visualisation
                         Size = new Vector2(4, 18),
                         Anchor = Anchor.CentreRight,
                         Origin = Anchor.CentreRight,
-                        Colour = Color4.Red
+                        Colour = SRGBColour.Red
                     }
                 });
 

@@ -3,8 +3,8 @@
 
 using osu.Framework.Graphics.Sprites;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Testing;
-using osuTK.Graphics;
 using osu.Framework.Graphics.Lines;
 using osuTK;
 
@@ -77,7 +77,7 @@ namespace osu.Framework.Tests.Visual.Drawables
         {
             Text = text,
             Font = new FontUsage(size: 20),
-            Colour = Color4.White,
+            Colour = SRGBColour.White,
         };
 
         private static Path createPath(Vector2[] points) => new Path

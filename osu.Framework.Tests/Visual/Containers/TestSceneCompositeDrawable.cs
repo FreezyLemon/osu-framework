@@ -6,10 +6,10 @@
 using System;
 using NUnit.Framework;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 using osuTK;
-using osuTK.Graphics;
 
 namespace osu.Framework.Tests.Visual.Containers
 {
@@ -97,12 +97,12 @@ namespace osu.Framework.Tests.Visual.Containers
                 Origin = Anchor.Centre;
                 AutoSizeAxes = Axes.Both;
 
-                for (int i = 0; i < 128; i++)
+                for (byte i = 0; i < 128; i++)
                 {
                     AddInternal(new SortableBox
                     {
                         Id = i,
-                        Colour = new Color4(i / 255f, i / 255f, i / 255f, 1.0f),
+                        Colour = new SRGBColour(i, i, i, 255),
                         Position = new Vector2(3 * i),
                         Size = new Vector2(50)
                     });

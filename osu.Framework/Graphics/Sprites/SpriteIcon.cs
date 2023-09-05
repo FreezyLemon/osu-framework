@@ -5,11 +5,11 @@
 
 using System;
 using osu.Framework.Allocation;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.IO.Stores;
 using osu.Framework.Layout;
 using osuTK;
-using osuTK.Graphics;
 
 namespace osu.Framework.Graphics.Sprites
 {
@@ -102,7 +102,7 @@ namespace osu.Framework.Graphics.Sprites
             {
                 //adjust shadow alpha based on highest component intensity to avoid muddy display of darker text.
                 //squared result for quadratic fall-off seems to give the best result.
-                var avgColour = (Color4)DrawColourInfo.Colour.AverageColour;
+                var avgColour = DrawColourInfo.Colour.AverageColour.Raw;
 
                 spriteShadow.Alpha = MathF.Pow(Math.Max(Math.Max(avgColour.R, avgColour.G), avgColour.B), 2);
 
@@ -124,12 +124,12 @@ namespace osu.Framework.Graphics.Sprites
             }
         }
 
-        private Color4 shadowColour = new Color4(0f, 0f, 0f, 0.2f);
+        private SRGBColour shadowColour = SRGBColour.Black.Opacity(0.2f);
 
         /// <summary>
         /// The colour of the shadow displayed around the icon. A shadow will only be displayed if the <see cref="Shadow"/> property is set to true.
         /// </summary>
-        public Color4 ShadowColour
+        public SRGBColour ShadowColour
         {
             get => shadowColour;
             set

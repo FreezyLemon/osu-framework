@@ -2,13 +2,12 @@
 // See the LICENCE file in the repository root for full licence text.
 
 using osu.Framework.Allocation;
-using osu.Framework.Extensions.Color4Extensions;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.UserInterface;
 using osuTK;
-using osuTK.Graphics;
 
 namespace osu.Framework.Tests.Visual.Drawables
 {
@@ -33,43 +32,43 @@ namespace osu.Framework.Tests.Visual.Drawables
                         },
                         new IssueButton
                         {
-                            OverlayColour = Color4.White.Opacity(0.0001f),
+                            OverlayColour = SRGBColour.White.Opacity(0.0001f),
                             Text = "very transparent fill"
                         },
                         new IssueButton
                         {
-                            OverlayColour = Color4.Gray,
+                            OverlayColour = SRGBColour.Gray,
                             Text = "gray bg"
                         },
                         new IssueButton
                         {
-                            OverlayColour = Color4.White.Opacity(0.5f),
+                            OverlayColour = SRGBColour.White.Opacity(0.5f),
                             Text = "0.5 white bg"
                         },
                         new IssueButton
                         {
-                            OverlayColour = Color4.White,
+                            OverlayColour = SRGBColour.White,
                             Text = "white bg"
                         },
                         new IssueButton(false)
                         {
-                            BackgroundColour = Color4.Gray,
+                            BackgroundColour = SRGBColour.Gray,
                             Text = "gray should match 1",
                         },
                         new IssueButton(false)
                         {
-                            BackgroundColour = Color4.White,
+                            BackgroundColour = SRGBColour.White,
                             Text = "gray should match 2",
                             Alpha = 0.5f,
                         },
-                        new IssueButton(borderColour: Color4.Gray)
+                        new IssueButton(borderColour: SRGBColour.Gray)
                         {
-                            OverlayColour = Color4.Gray,
+                            OverlayColour = SRGBColour.Gray,
                             Text = "gray to gray bg"
                         },
-                        new IssueButton(borderColour: Color4.Gray)
+                        new IssueButton(borderColour: SRGBColour.Gray)
                         {
-                            OverlayColour = Color4.White.Opacity(0.5f),
+                            OverlayColour = SRGBColour.White.Opacity(0.5f),
                             Text = "gray to transparent white bg"
                         },
                     }
@@ -81,14 +80,14 @@ namespace osu.Framework.Tests.Visual.Drawables
 
         private partial class IssueButton : BasicButton
         {
-            public Color4? OverlayColour;
+            public SRGBColour? OverlayColour;
 
-            public IssueButton(bool drawBorder = true, Color4? borderColour = null)
+            public IssueButton(bool drawBorder = true, SRGBColour? borderColour = null)
             {
                 AutoSizeAxes = Axes.None;
                 Size = new Vector2(200);
 
-                BackgroundColour = Color4.Black;
+                BackgroundColour = SRGBColour.Black;
 
                 if (drawBorder)
                 {
@@ -96,7 +95,7 @@ namespace osu.Framework.Tests.Visual.Drawables
                     Content.MaskingSmoothness = 20;
                     Content.BorderThickness = 40;
 
-                    Content.BorderColour = borderColour ?? Color4.Red;
+                    Content.BorderColour = borderColour ?? SRGBColour.Red;
                 }
             }
 
@@ -110,7 +109,7 @@ namespace osu.Framework.Tests.Visual.Drawables
                     {
                         Alpha = OverlayColour.HasValue ? 1 : 0,
                         RelativeSizeAxes = Axes.Both,
-                        Colour = OverlayColour ?? Color4.Transparent,
+                        Colour = OverlayColour ?? SRGBColour.Transparent,
                     }
                 });
             }

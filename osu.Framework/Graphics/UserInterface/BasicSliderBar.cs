@@ -2,8 +2,8 @@
 // See the LICENCE file in the repository root for full licence text.
 
 using System;
+using osu.Framework.Graphics.Colour;
 using osuTK;
-using osuTK.Graphics;
 using osu.Framework.Graphics.Shapes;
 
 namespace osu.Framework.Graphics.UserInterface
@@ -11,13 +11,13 @@ namespace osu.Framework.Graphics.UserInterface
     public partial class BasicSliderBar<T> : SliderBar<T>
         where T : struct, IComparable<T>, IConvertible, IEquatable<T>
     {
-        public Color4 BackgroundColour
+        public SRGBColour BackgroundColour
         {
             get => Box.Colour;
             set => Box.Colour = value;
         }
 
-        public Color4 SelectionColour
+        public SRGBColour SelectionColour
         {
             get => SelectionBox.Colour;
             set => SelectionBox.Colour = value;

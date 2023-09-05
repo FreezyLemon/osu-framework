@@ -4,10 +4,10 @@
 using osu.Framework.Graphics.Sprites;
 using osu.Framework.Graphics;
 using osu.Framework.Testing;
-using osuTK.Graphics;
 using osu.Framework.Graphics.Lines;
 using osuTK;
 using System;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 
 namespace osu.Framework.Tests.Visual.Drawables
@@ -66,7 +66,7 @@ namespace osu.Framework.Tests.Visual.Drawables
         private static SpriteText createLabel() => new SpriteText
         {
             Font = new FontUsage(size: 20),
-            Colour = Color4.White,
+            Colour = SRGBColour.White,
         };
     }
 }

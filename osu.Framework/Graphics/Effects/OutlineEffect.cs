@@ -2,7 +2,6 @@
 // See the LICENCE file in the repository root for full licence text.
 
 using osuTK;
-using osuTK.Graphics;
 using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 
@@ -26,9 +25,9 @@ namespace osu.Framework.Graphics.Effects
         public Vector2 BlurSigma = Vector2.One;
 
         /// <summary>
-        /// The color of the outline. Default is <see cref="Color4.Black"/>.
+        /// The color of the outline. Default is <see cref="SRGBColour.Black"/>.
         /// </summary>
-        public ColourInfo Colour = Color4.Black;
+        public ColourInfo Colour = SRGBColour.Black;
 
         /// <summary>
         /// Whether to automatically pad by the blur extent such that no clipping occurs at the sides of the effect. Default is false.

@@ -10,13 +10,13 @@ using System.Linq;
 using osu.Framework.Bindables;
 using osu.Framework.Extensions;
 using osu.Framework.Extensions.IEnumerableExtensions;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Sprites;
 using osu.Framework.Input;
 using osu.Framework.Input.Bindings;
 using osu.Framework.Input.Events;
 using osu.Framework.Localisation;
-using osuTK.Graphics;
 using osuTK.Input;
 
 namespace osu.Framework.Graphics.UserInterface
@@ -494,9 +494,9 @@ namespace osu.Framework.Graphics.UserInterface
                     }
                 }
 
-                private Color4 backgroundColourSelected = Color4.SlateGray;
+                private SRGBColour backgroundColourSelected = SRGBColour.SlateGray;
 
-                public Color4 BackgroundColourSelected
+                public SRGBColour BackgroundColourSelected
                 {
                     get => backgroundColourSelected;
                     set
@@ -506,9 +506,9 @@ namespace osu.Framework.Graphics.UserInterface
                     }
                 }
 
-                private Color4 foregroundColourSelected = Color4.White;
+                private SRGBColour foregroundColourSelected = SRGBColour.White;
 
-                public Color4 ForegroundColourSelected
+                public SRGBColour ForegroundColourSelected
                 {
                     get => foregroundColourSelected;
                     set

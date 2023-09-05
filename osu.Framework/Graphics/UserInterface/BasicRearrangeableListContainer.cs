@@ -5,12 +5,12 @@
 
 using System;
 using osu.Framework.Allocation;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
 using osu.Framework.Input.Events;
 using osuTK;
-using osuTK.Graphics;
 
 namespace osu.Framework.Graphics.UserInterface
 {
@@ -79,7 +79,7 @@ namespace osu.Framework.Graphics.UserInterface
                                 new Box
                                 {
                                     RelativeSizeAxes = Axes.Both,
-                                    Colour = Color4.DarkSlateGray,
+                                    Colour = SRGBColour.DarkSlateGray,
                                 },
                                 new SpriteText
                                 {
@@ -95,7 +95,7 @@ namespace osu.Framework.Graphics.UserInterface
                         {
                             RelativeSizeAxes = Axes.Y,
                             Width = removable ? 25 : 0, // https://github.com/ppy/osu-framework/issues/3214
-                            Colour = Color4.DarkRed,
+                            Colour = SRGBColour.DarkRed,
                             Alpha = removable ? 1 : 0,
                             Action = () => RequestRemoval?.Invoke(this),
                         },

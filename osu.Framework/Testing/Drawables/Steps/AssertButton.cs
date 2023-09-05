@@ -6,7 +6,7 @@
 using System;
 using System.Diagnostics;
 using System.Text;
-using osuTK.Graphics;
+using osu.Framework.Graphics.Colour;
 
 namespace osu.Framework.Testing.Drawables.Steps
 {
@@ -22,7 +22,7 @@ namespace osu.Framework.Testing.Drawables.Steps
         {
             this.getFailureMessage = getFailureMessage;
             Action += checkAssert;
-            LightColour = Color4.OrangeRed;
+            LightColour = SRGBColour.OrangeRed;
         }
 
         private void checkAssert()

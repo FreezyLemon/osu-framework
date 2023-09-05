@@ -4,12 +4,12 @@
 using System;
 using System.Collections.Generic;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Lines;
 using osu.Framework.Graphics.Sprites;
 using osu.Framework.Utils;
 using osu.Framework.Testing;
 using osuTK;
-using osuTK.Graphics;
 
 namespace osu.Framework.Tests.Visual.Drawables
 {
@@ -47,7 +47,7 @@ namespace osu.Framework.Tests.Visual.Drawables
         {
             Text = text,
             Font = new FontUsage(size: 20),
-            Colour = Color4.White,
+            Colour = SRGBColour.White,
         };
 
         private partial class ApproximatedPathTest : SmoothPath
@@ -67,7 +67,7 @@ namespace osu.Framework.Tests.Visual.Drawables
                 RelativeSizeAxes = Axes.Both;
                 PathRadius = 2;
                 Vertices = approximator(points);
-                Colour = Color4.White;
+                Colour = SRGBColour.White;
             }
         }
     }

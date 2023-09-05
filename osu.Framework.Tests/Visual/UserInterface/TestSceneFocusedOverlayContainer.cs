@@ -5,12 +5,12 @@
 
 using NUnit.Framework;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Input.Events;
 using osu.Framework.Testing;
 using osuTK;
-using osuTK.Graphics;
 using osuTK.Input;
 
 namespace osu.Framework.Tests.Visual.UserInterface
@@ -176,7 +176,7 @@ namespace osu.Framework.Tests.Visual.UserInterface
                 {
                     new Box
                     {
-                        Colour = Color4.Cyan,
+                        Colour = SRGBColour.Cyan,
                         RelativeSizeAxes = Axes.Both,
                     },
                 };

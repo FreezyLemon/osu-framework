@@ -38,7 +38,7 @@ namespace osu.Framework.Graphics.UserInterface
         {
             Width = 300;
             AutoSizeAxes = Axes.Y;
-            Current.Value = SRGBColour.White;
+            Current.Value = SRGBColour.White.Raw;
 
             InternalChildren = new Drawable[]
             {

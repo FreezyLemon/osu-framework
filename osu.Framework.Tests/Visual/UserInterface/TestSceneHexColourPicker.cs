@@ -62,7 +62,7 @@ namespace osu.Framework.Tests.Visual.UserInterface
                 hexColourPicker.Current.BindValueChanged(colour =>
                 {
                     currentText.Text = $"Current.Value = {colour.NewValue.ToHex()}";
-                    currentPreview.Colour = colour.NewValue;
+                    currentPreview.Colour = new SRGBColour(colour.NewValue);
                 }, true);
             });
         }
@@ -70,7 +70,7 @@ namespace osu.Framework.Tests.Visual.UserInterface
         [Test]
         public void TestExternalChange()
         {
-            Colour4 colour = SRGBColour.Yellow;
+            Colour4 colour = SRGBColour.Yellow.Raw;
 
             AddStep("set current colour", () => hexColourPicker.Current.Value = colour);
 
@@ -83,16 +83,16 @@ namespace osu.Framework.Tests.Visual.UserInterface
         {
             clickTextBox();
             AddStep("insert valid colour", () => hexColourPicker.HexCodeTextBox.Text = "#ff00ff");
-            assertPreviewUpdated(SRGBColour.Magenta);
-            AddAssert("current not changed yet", () => hexColourPicker.Current.Value == SRGBColour.White);
+            assertPreviewUpdated(SRGBColour.Magenta.Raw);
+            AddAssert("current not changed yet", () => hexColourPicker.Current.Value == SRGBColour.White.Raw);
 
             AddStep("commit text", () => InputManager.Key(Key.Enter));
-            AddAssert("current updated", () => hexColourPicker.Current.Value == SRGBColour.Magenta);
+            AddAssert("current updated", () => hexColourPicker.Current.Value == SRGBColour.Magenta.Raw);
 
             clickTextBox();
             AddStep("insert invalid colour", () => hexColourPicker.HexCodeTextBox.Text = "c0d0");
             AddStep("commit text", () => InputManager.Key(Key.Enter));
-            AddAssert("current not changed", () => hexColourPicker.Current.Value == SRGBColour.Magenta);
+            AddAssert("current not changed", () => hexColourPicker.Current.Value == SRGBColour.Magenta.Raw);
             AddAssert("old hex code restored", () => hexColourPicker.HexCodeTextBox.Text == "#FF00FF");
         }
 

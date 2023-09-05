@@ -5,12 +5,11 @@ using System.Linq;
 using ManagedBass.Mix;
 using osu.Framework.Audio.Mixing;
 using osu.Framework.Audio.Mixing.Bass;
-using osu.Framework.Extensions.Color4Extensions;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
 using osuTK;
-using osuTK.Graphics;
 
 namespace osu.Framework.Graphics.Visualisation.Audio
 {
@@ -38,7 +37,7 @@ namespace osu.Framework.Graphics.Visualisation.Audio
                     new Box
                     {
                         RelativeSizeAxes = Axes.Both,
-                        Colour = Color4.Black.Opacity(0.2f)
+                        Colour = SRGBColour.Black.Opacity(0.2f)
                     },
                     new SpriteText
                     {

@@ -2,11 +2,11 @@
 // See the LICENCE file in the repository root for full licence text.
 
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
 using osuTK;
-using osuTK.Graphics;
 
 namespace osu.Framework.Tests.Visual.Containers
 {
@@ -33,10 +33,10 @@ namespace osu.Framework.Tests.Visual.Containers
                     Size = new Vector2(340),
                     Children = new[]
                     {
-                        red = new DepthBox(Color4.Red, Anchor.TopLeft) { Name = "red" },
-                        blue = new DepthBox(Color4.Blue, Anchor.TopRight) { Name = "blue" },
-                        green = new DepthBox(Color4.Green, Anchor.BottomRight) { Name = "green" },
-                        purple = new DepthBox(Color4.Purple, Anchor.BottomLeft) { Name = "purple" },
+                        red = new DepthBox(SRGBColour.Red, Anchor.TopLeft) { Name = "red" },
+                        blue = new DepthBox(SRGBColour.Blue, Anchor.TopRight) { Name = "blue" },
+                        green = new DepthBox(SRGBColour.Green, Anchor.BottomRight) { Name = "green" },
+                        purple = new DepthBox(SRGBColour.Purple, Anchor.BottomLeft) { Name = "purple" },
                     }
                 }
             });
@@ -51,7 +51,7 @@ namespace osu.Framework.Tests.Visual.Containers
         {
             private readonly SpriteText depthText;
 
-            public DepthBox(Color4 colour, Anchor anchor)
+            public DepthBox(SRGBColour colour, Anchor anchor)
             {
                 Size = new Vector2(240);
                 Anchor = Origin = anchor;

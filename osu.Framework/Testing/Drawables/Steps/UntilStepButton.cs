@@ -7,7 +7,7 @@ using System;
 using System.Diagnostics;
 using System.Text;
 using osu.Framework.Graphics;
-using osuTK.Graphics;
+using osu.Framework.Graphics.Colour;
 
 namespace osu.Framework.Testing.Drawables.Steps
 {
@@ -37,7 +37,7 @@ namespace osu.Framework.Testing.Drawables.Steps
             : base(isSetupStep)
         {
             updateText();
-            LightColour = Color4.Sienna;
+            LightColour = SRGBColour.Sienna;
 
             base.Action = () =>
             {
@@ -81,13 +81,13 @@ namespace osu.Framework.Testing.Drawables.Steps
         protected override void Success()
         {
             base.Success();
-            Light.FadeColour(Color4.YellowGreen);
+            Light.FadeColour(SRGBColour.YellowGreen);
         }
 
         protected override void Failure()
         {
             base.Failure();
-            Light.FadeColour(Color4.Red);
+            Light.FadeColour(SRGBColour.Red);
         }
 
         private void updateText() => base.Text = $@"{Text} ({invocations} tries)";

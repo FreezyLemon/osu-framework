@@ -26,7 +26,7 @@ namespace osu.Framework.Graphics.UserInterface
 
         protected ColourPicker()
         {
-            Current.Value = SRGBColour.White;
+            Current.Value = SRGBColour.White.Raw;
             AutoSizeAxes = Axes.Y;
             Width = 300;
 

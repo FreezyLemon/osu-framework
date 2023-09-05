@@ -7,13 +7,13 @@ using System.Linq;
 using osu.Framework.Allocation;
 using osu.Framework.Bindables;
 using osu.Framework.Configuration;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Input;
 using osu.Framework.Input.Events;
 using osu.Framework.Platform;
 using osu.Framework.Threading;
 using osuTK;
-using osuTK.Graphics;
 using osuTK.Input;
 using SixLabors.ImageSharp.PixelFormats;
 
@@ -229,7 +229,7 @@ namespace osu.Framework.Graphics.Performance
             void addHeader(string text) => infoText.AddText($"{text} ", cp =>
             {
                 cp.Padding = new MarginPadding { Left = 5 };
-                cp.Colour = Color4.Gray;
+                cp.Colour = SRGBColour.Gray;
             });
 
             void addValue(string text) => infoText.AddText(text, cp =>

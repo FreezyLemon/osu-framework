@@ -9,7 +9,6 @@ using osu.Framework.Graphics.Primitives;
 using osu.Framework.Graphics.Rendering;
 using osu.Framework.Graphics.Textures;
 using osuTK;
-using osuTK.Graphics;
 
 namespace osu.Framework.Graphics.Sprites
 {
@@ -52,7 +51,7 @@ namespace osu.Framework.Graphics.Sprites
 
                 BindTextureShader(renderer);
 
-                var avgColour = (Color4)DrawColourInfo.Colour.AverageColour;
+                var avgColour = DrawColourInfo.Colour.AverageColour.Raw;
                 float shadowAlpha = MathF.Pow(Math.Max(Math.Max(avgColour.R, avgColour.G), avgColour.B), 2);
 
                 //adjust shadow alpha based on highest component intensity to avoid muddy display of darker text.

@@ -6,7 +6,7 @@ using osuTK;
 using osu.Framework.Graphics.Primitives;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
-using osuTK.Graphics;
+using System.Diagnostics.Contracts;
 
 namespace osu.Framework.Graphics.Colour
 {
@@ -91,9 +91,14 @@ namespace osu.Framework.Graphics.Colour
             return HasSingleColour;
         }
 
-        public readonly SRGBColour Interpolate(Vector2 interp) => SRGBColour.FromVector(
-            (1 - interp.Y) * ((1 - interp.X) * TopLeft.ToVector() + interp.X * TopRight.ToVector()) +
-            interp.Y * ((1 - interp.X) * BottomLeft.ToVector() + interp.X * BottomRight.ToVector()));
+        /// <summary>
+        /// Interpolate the colours inside this <see cref="ColourInfo"/> struct into one <see cref="SRGBColour"/> based on the given Vector.
+        /// </summary>
+        /// <param name="interp">A <see cref="Vector2"/> with its X field deciding the left-right balance (0 = left, 1 = right) and the Y field deciding the top-down balance (0 = top, 1 = bottom).</param>
+        [Pure]
+        public readonly LinearColour Interpolate(Vector2 interp) =>
+            (1 - interp.Y) * ((1 - interp.X) * TopLeft.ToLinear() + interp.X * TopRight.ToLinear()) +
+            interp.Y * ((1 - interp.X) * BottomLeft.ToLinear() + interp.X * BottomRight.ToLinear());
 
         /// <summary>
         /// Interpolates this <see cref="ColourInfo"/> across a quad.
@@ -110,10 +115,10 @@ namespace osu.Framework.Graphics.Colour
 
             return new ColourInfo
             {
-                TopLeft = Interpolate(quad.TopLeft),
-                TopRight = Interpolate(quad.TopRight),
-                BottomLeft = Interpolate(quad.BottomLeft),
-                BottomRight = Interpolate(quad.BottomRight),
+                TopLeft = Interpolate(quad.TopLeft).ToSRGB(),
+                TopRight = Interpolate(quad.TopRight).ToSRGB(),
+                BottomLeft = Interpolate(quad.BottomLeft).ToSRGB(),
+                BottomRight = Interpolate(quad.BottomRight).ToSRGB(),
                 HasSingleColour = false
             };
         }
@@ -127,16 +132,17 @@ namespace osu.Framework.Graphics.Colour
             }
 
             if (childColour.HasSingleColour)
-                singleColour *= childColour.singleColour;
+                singleColour = (singleColour.ToLinear() * childColour.singleColour.ToLinear()).ToSRGB();
             else
             {
                 HasSingleColour = false;
-                BottomLeft = childColour.BottomLeft * TopLeft;
-                TopRight = childColour.TopRight * TopLeft;
-                BottomRight = childColour.BottomRight * TopLeft;
+                var topLeftLinear = TopLeft.ToLinear();
+                BottomLeft = (childColour.BottomLeft.ToLinear() * topLeftLinear).ToSRGB();
+                TopRight = (childColour.TopRight.ToLinear() * topLeftLinear).ToSRGB();
+                BottomRight = (childColour.BottomRight.ToLinear() * topLeftLinear).ToSRGB();
 
                 // Need to assign TopLeft last to keep correctness.
-                TopLeft = childColour.TopLeft * TopLeft;
+                TopLeft = (childColour.TopLeft.ToLinear() * topLeftLinear).ToSRGB();
             }
         }
 
@@ -144,10 +150,10 @@ namespace osu.Framework.Graphics.Colour
         {
             Trace.Assert(!HasSingleColour);
 
-            SRGBColour newTopLeft = Interpolate(interp.TopLeft) * childColour.TopLeft;
-            SRGBColour newTopRight = Interpolate(interp.TopRight) * childColour.TopRight;
-            SRGBColour newBottomLeft = Interpolate(interp.BottomLeft) * childColour.BottomLeft;
-            SRGBColour newBottomRight = Interpolate(interp.BottomRight) * childColour.BottomRight;
+            SRGBColour newTopLeft = (Interpolate(interp.TopLeft) * childColour.TopLeft.ToLinear()).ToSRGB();
+            SRGBColour newTopRight = (Interpolate(interp.TopRight) * childColour.TopRight.ToLinear()).ToSRGB();
+            SRGBColour newBottomLeft = (Interpolate(interp.BottomLeft) * childColour.BottomLeft.ToLinear()).ToSRGB();
+            SRGBColour newBottomRight = (Interpolate(interp.BottomRight) * childColour.BottomRight.ToLinear()).ToSRGB();
 
             TopLeft = newTopLeft;
             TopRight = newTopRight;
@@ -157,10 +163,10 @@ namespace osu.Framework.Graphics.Colour
 
         internal static ColourInfo Multiply(ColourInfo first, ColourInfo second) => new ColourInfo
         {
-            TopLeft = first.TopLeft * second.TopLeft,
-            BottomLeft = first.BottomLeft * second.BottomLeft,
-            TopRight = first.TopRight * second.TopRight,
-            BottomRight = first.BottomRight * second.BottomRight
+            TopLeft = (first.TopLeft.ToLinear() * second.TopLeft.ToLinear()).ToSRGB(),
+            BottomLeft = (first.BottomLeft.ToLinear() * second.BottomLeft.ToLinear()).ToSRGB(),
+            TopRight = (first.TopRight.ToLinear() * second.TopRight.ToLinear()).ToSRGB(),
+            BottomRight = (first.BottomRight.ToLinear() * second.BottomRight.ToLinear()).ToSRGB(),
         };
 
         /// <summary>
@@ -176,17 +182,16 @@ namespace osu.Framework.Graphics.Colour
 
             if (TryExtractSingleColour(out SRGBColour single))
             {
-                single.MultiplyAlpha(alpha);
-                return single;
+                return single.MultiplyAlpha(alpha);
             }
 
-            ColourInfo result = this;
-            result.TopLeft.MultiplyAlpha(alpha);
-            result.BottomLeft.MultiplyAlpha(alpha);
-            result.TopRight.MultiplyAlpha(alpha);
-            result.BottomRight.MultiplyAlpha(alpha);
-
-            return result;
+            return new ColourInfo
+            {
+                TopLeft = TopLeft.MultiplyAlpha(alpha),
+                BottomLeft = BottomLeft.MultiplyAlpha(alpha),
+                TopRight = TopRight.MultiplyAlpha(alpha),
+                BottomRight = BottomRight.MultiplyAlpha(alpha),
+            };
         }
 
         public readonly bool Equals(ColourInfo other)
@@ -218,8 +223,7 @@ namespace osu.Framework.Graphics.Colour
                 if (HasSingleColour)
                     return singleColour;
 
-                return SRGBColour.FromVector(
-                    (TopLeft.ToVector() + TopRight.ToVector() + BottomLeft.ToVector() + BottomRight.ToVector()) / 4);
+                return new SRGBColour(new Colour4((TopLeft.Raw.Vector + TopRight.Raw.Vector + BottomLeft.Raw.Vector + BottomRight.Raw.Vector) / 4));
             }
         }
 
@@ -269,11 +273,5 @@ namespace osu.Framework.Graphics.Colour
             [DoesNotReturn]
             static void throwConversionFromMultiColourToSingleColourException() => throw new InvalidOperationException("Attempted to read single colour from multi-colour ColourInfo.");
         }
-
-        public static implicit operator ColourInfo(Color4 colour) => (SRGBColour)colour;
-        public static implicit operator Color4(ColourInfo colour) => (SRGBColour)colour;
-
-        public static implicit operator ColourInfo(Colour4 colour) => (SRGBColour)colour;
-        public static implicit operator Colour4(ColourInfo colour) => (SRGBColour)colour;
     }
 }

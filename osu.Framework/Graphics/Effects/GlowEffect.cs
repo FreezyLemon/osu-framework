@@ -2,7 +2,6 @@
 // See the LICENCE file in the repository root for full licence text.
 
 using osuTK;
-using osuTK.Graphics;
 using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 
@@ -24,9 +23,9 @@ namespace osu.Framework.Graphics.Effects
         public Vector2 BlurSigma = new Vector2(5);
 
         /// <summary>
-        /// The color of the outline. Default is <see cref="Color4.White"/>.
+        /// The color of the outline. Default is <see cref="SRGBColour.White"/>.
         /// </summary>
-        public ColourInfo Colour = Color4.White;
+        public ColourInfo Colour = SRGBColour.White;
 
         /// <summary>
         /// The blending mode of the glow. Default is additive.

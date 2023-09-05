@@ -9,11 +9,11 @@ using System.Linq;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Sprites;
 using osuTK;
-using osuTK.Graphics;
 using osuTK.Input;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Allocation;
 using osu.Framework.Extensions.IEnumerableExtensions;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Textures;
 using osu.Framework.Input.Events;
 using osu.Framework.Localisation;
@@ -121,11 +121,11 @@ namespace osu.Framework.Graphics.Visualisation
                             Size = new Vector2(100, 1), // a bit of a hack, but works well enough.
                             Anchor = Anchor.Centre,
                             Origin = Anchor.Centre,
-                            Colour = Color4.Transparent,
+                            Colour = SRGBColour.Transparent,
                         },
                         activityInvalidate = new Box
                         {
-                            Colour = Color4.Yellow,
+                            Colour = SRGBColour.Yellow,
                             Size = new Vector2(2, line_height),
                             Anchor = Anchor.CentreLeft,
                             Origin = Anchor.CentreLeft,
@@ -134,7 +134,7 @@ namespace osu.Framework.Graphics.Visualisation
                         },
                         activityLayout = new Box
                         {
-                            Colour = Color4.Orange,
+                            Colour = SRGBColour.Orange,
                             Size = new Vector2(2, line_height),
                             Anchor = Anchor.CentreLeft,
                             Origin = Anchor.CentreLeft,
@@ -143,7 +143,7 @@ namespace osu.Framework.Graphics.Visualisation
                         },
                         activityAutosize = new Box
                         {
-                            Colour = Color4.Red,
+                            Colour = SRGBColour.Red,
                             Size = new Vector2(2, line_height),
                             Anchor = Anchor.CentreLeft,
                             Origin = Anchor.CentreLeft,
@@ -153,7 +153,7 @@ namespace osu.Framework.Graphics.Visualisation
                         previewBox = spriteTarget?.Texture == null
                             ? previewBox = new Box
                             {
-                                Colour = Color4.White,
+                                Colour = SRGBColour.White,
                                 Anchor = Anchor.CentreLeft,
                                 Origin = Anchor.CentreLeft,
                             }
@@ -342,13 +342,13 @@ namespace osu.Framework.Graphics.Visualisation
             else if (IsHovered)
             {
                 background.Colour = FrameworkColour.BlueGreen;
-                text.Colour = Color4.White;
+                text.Colour = SRGBColour.White;
                 text2.Colour = FrameworkColour.YellowGreen;
             }
             else
             {
-                background.Colour = Color4.Transparent;
-                text.Colour = Color4.White;
+                background.Colour = SRGBColour.Transparent;
+                text.Colour = SRGBColour.White;
                 text2.Colour = FrameworkColour.YellowGreen;
             }
         }

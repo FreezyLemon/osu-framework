@@ -4,10 +4,9 @@
 using System;
 using osu.Framework.Allocation;
 using osu.Framework.Caching;
-using osu.Framework.Extensions.Color4Extensions;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Rendering;
 using osu.Framework.Graphics.Textures;
-using osuTK.Graphics;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 
@@ -38,13 +37,13 @@ namespace osu.Framework.Graphics.Lines
             }
         }
 
-        private Color4? customBackgroundColour;
+        private SRGBColour? customBackgroundColour;
 
         /// <summary>
         /// The background colour to be used for the frame buffer this path is rendered to.
         /// For <see cref="SmoothPath"/>, this automatically defaults to the colour at 0 (the outermost colour of the path) to avoid aliasing issues.
         /// </summary>
-        public override Color4 BackgroundColour
+        public override SRGBColour BackgroundColour
         {
             get => customBackgroundColour ?? base.BackgroundColour;
             set => customBackgroundColour = base.BackgroundColour = value;
@@ -74,8 +73,8 @@ namespace osu.Framework.Graphics.Lines
             {
                 float progress = (float)i / (textureWidth - 1);
 
-                var colour = ColourAt(progress);
-                raw[i, 0] = new Rgba32(colour.R, colour.G, colour.B, colour.A * Math.Min(progress / aa_portion, 1));
+                var colour = ColourAt(progress).MultiplyAlpha(Math.Min(progress / aa_portion, 1));
+                raw[i, 0] = new Rgba32(colour.Raw.Vector);
             }
 
             var texture = new DisposableTexture(renderer.CreateTexture(textureWidth, 1, true));
@@ -98,6 +97,6 @@ namespace osu.Framework.Graphics.Lines
         /// Retrieves the colour from a position in the texture of the <see cref="Path"/>.
         /// </summary>
         /// <param name="position">The position within the texture. 0 indicates the outermost-point of the path, 1 indicates the centre of the path.</param>
-        protected virtual Color4 ColourAt(float position) => Color4.White;
+        protected virtual SRGBColour ColourAt(float position) => SRGBColour.White;
     }
 }

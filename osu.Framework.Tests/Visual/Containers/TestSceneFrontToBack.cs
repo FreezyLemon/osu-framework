@@ -6,13 +6,13 @@
 using osu.Framework.Allocation;
 using osu.Framework.Configuration;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
 using osu.Framework.Utils;
 using osu.Framework.Testing;
 using osuTK;
-using osuTK.Graphics;
 using osuTK.Graphics.ES30;
 using osu.Framework.Graphics.Textures;
 using osu.Framework.Graphics.Primitives;
@@ -59,7 +59,7 @@ namespace osu.Framework.Tests.Visual.Containers
                 {
                     new Box
                     {
-                        Colour = Color4.Black,
+                        Colour = SRGBColour.Black,
                         RelativeSizeAxes = Axes.Both,
                         Alpha = 0.8f,
                     },
@@ -126,7 +126,7 @@ namespace osu.Framework.Tests.Visual.Containers
                 {
                     Anchor = Anchor.Centre,
                     Origin = Anchor.Centre,
-                    Colour = new Color4(RNG.NextSingle(1), RNG.NextSingle(1), RNG.NextSingle(1), 1),
+                    Colour = new SRGBColour(new Colour4(RNG.NextSingle(), RNG.NextSingle(), RNG.NextSingle(), 1)),
                     RelativeSizeAxes = Axes.Both,
                     Scale = new Vector2(currentScale),
                     Texture = texture,

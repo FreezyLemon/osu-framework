@@ -2,13 +2,15 @@
 // See the LICENCE file in the repository root for full licence text.
 
 using System;
+using System.Diagnostics.Contracts;
 using System.Numerics;
+using Veldrid;
 
 namespace osu.Framework.Graphics.Colour
 {
     /// <summary>
     /// A colour in gamma-corrected sRGB space. The colour values can be accessed by using the <see cref="Raw"/> member.
-    /// To convert the colour into linearized sRGB space, use the <see cref="Linear"/> member.
+    /// To convert the colour into linearized sRGB space, use the <see cref="ToLinear"/> method.
     /// </summary>
     public struct SRGBColour : IEquatable<SRGBColour>
     {
@@ -17,11 +19,7 @@ namespace osu.Framework.Graphics.Colour
         /// </summary>
         public Colour4 Raw;
 
-        /// <summary>
-        /// A <see cref="Colour4"/> representation of this colour in linearized sRGB space.
-        /// </summary>
-        public Colour4 Linear => Raw.ToLinear();
-
+        [Pure]
         public LinearColour ToLinear() => new LinearColour(Raw.ToLinear());
 
         /// <summary>
@@ -48,16 +46,59 @@ namespace osu.Framework.Graphics.Colour
         public SRGBColour(Colour4 colour) => Raw = colour;
 
         /// <summary>
-        /// Multiplies the alpha value of this colour by the given alpha factor.
+        /// Returns a new <see cref="SRGBColour"/> with the same RGB components, but multiplying the current alpha component by a scalar value.
+        /// The final alpha is clamped to the 0-1 range.
         /// </summary>
-        /// <param name="alpha">The alpha factor to multiply with.</param>
-        public void MultiplyAlpha(float alpha)
-        {
-            Raw = Raw.MultiplyAlpha(alpha);
-        }
+        /// <param name="scalar">The value that the existing alpha will be multiplied by.</param>
+        [Pure]
+        public SRGBColour MultiplyAlpha(float scalar) => new SRGBColour(Raw.MultiplyAlpha(scalar));
+
+        /// <summary>
+        /// Returns a new <see cref="SRGBColour"/> with the same RGB components and a specified alpha value.
+        /// </summary>
+        /// <param name="alpha">The new alpha value for the returned colour, in the 0-1 range.</param>
+        [Pure]
+        public SRGBColour Opacity(float alpha) => new SRGBColour(Raw.Opacity(alpha));
+
+        /// <summary>
+        /// Returns a lightened version of the colour.
+        /// </summary>
+        /// <param name="amount">Light addition in percent</param>
+        [Pure]
+        public SRGBColour Lighten(float amount) => new SRGBColour(Raw.Lighten(amount));
+
+        /// <summary>
+        /// Returns a darkened version of the colour.
+        /// </summary>
+        /// <param name="amount">Light reduction in percent</param>
+        [Pure]
+        public SRGBColour Darken(float amount) => new SRGBColour(Raw.Darken(amount));
+
+        /// <summary>
+        /// Returns a <see cref="RgbaFloat"/> struct from the raw values inside this <see cref="SRGBColour"/>.
+        /// </summary>
+        [Pure]
+        public RgbaFloat ToRgbaFloat() => new RgbaFloat(Raw.Vector);
+
+        /// <summary>
+        /// Returns a <see cref="osuTK.Graphics.Color4"/> struct from the raw values inside this <see cref="SRGBColour"/>.
+        /// </summary>
+        [Pure]
+        public osuTK.Graphics.Color4 ToColor4() => new osuTK.Graphics.Color4(Raw.R, Raw.G, Raw.B, Raw.A);
+
+        public override string ToString() => $"srgb: {Raw}, linear: {ToLinear()}";
+
+        #region Equality
+
+        public static bool operator ==(SRGBColour first, SRGBColour second) => first.Equals(second);
+
+        public static bool operator !=(SRGBColour first, SRGBColour second) => !(first == second);
 
         public readonly bool Equals(SRGBColour other) => Raw.Equals(other.Raw);
-        public override string ToString() => $"srgb: {Raw}, linear: {Linear}";
+        public override bool Equals(object? obj) => obj is SRGBColour other && Equals(other);
+        public override int GetHashCode() => Raw.GetHashCode();
+
+        #endregion
 
         #region Constants
 

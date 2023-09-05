@@ -27,6 +27,7 @@ namespace osu.Framework.Graphics.Colour
 
         public static LinearColour operator *(LinearColour first, LinearColour second) => new LinearColour(first.Raw * second.Raw);
         public static LinearColour operator *(LinearColour first, float scalar) => new LinearColour(first.Raw * scalar);
+        public static LinearColour operator *(float scalar, LinearColour first) => new LinearColour(first.Raw * scalar);
 
         public static LinearColour operator /(LinearColour first, float scalar) => new LinearColour(first.Raw / scalar);
 

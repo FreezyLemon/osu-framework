@@ -4,6 +4,7 @@
 using NUnit.Framework;
 using osu.Framework.Extensions.IEnumerableExtensions;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
@@ -11,7 +12,6 @@ using osu.Framework.Graphics.UserInterface;
 using osu.Framework.Input;
 using osu.Framework.Testing.Input;
 using osuTK;
-using osuTK.Graphics;
 
 namespace osu.Framework.Testing
 {
@@ -60,7 +60,7 @@ namespace osu.Framework.Testing
                     {
                         new Box
                         {
-                            Colour = Color4.Black,
+                            Colour = SRGBColour.Black,
                             RelativeSizeAxes = Axes.Both,
                             Alpha = 0.5f,
                         },

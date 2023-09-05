@@ -9,12 +9,12 @@ using NUnit.Framework;
 using osu.Framework.Extensions;
 using osu.Framework.Extensions.IEnumerableExtensions;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
 using osu.Framework.Utils;
 using osuTK;
-using osuTK.Graphics;
 
 namespace osu.Framework.Tests.Visual.Layout
 {
@@ -39,7 +39,7 @@ namespace osu.Framework.Tests.Visual.Layout
                     {
                         RelativeSizeAxes = Axes.Both,
                         Masking = true,
-                        BorderColour = Color4.White,
+                        BorderColour = SRGBColour.White,
                         BorderThickness = 2,
                         Child = new Box
                         {
@@ -893,7 +893,7 @@ namespace osu.Framework.Tests.Visual.Layout
             public FillBox()
             {
                 RelativeSizeAxes = Axes.Both;
-                Colour = new Color4(RNG.NextSingle(1), RNG.NextSingle(1), RNG.NextSingle(1), 1);
+                Colour = new SRGBColour(new Colour4(RNG.NextSingle(), RNG.NextSingle(), RNG.NextSingle(), 1));
             }
         }
     }

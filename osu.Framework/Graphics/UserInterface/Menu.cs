@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using osu.Framework.Extensions.EnumExtensions;
 using osu.Framework.Extensions.IEnumerableExtensions;
-using osuTK.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
@@ -95,7 +95,7 @@ namespace osu.Framework.Graphics.UserInterface
                         background = new Box
                         {
                             RelativeSizeAxes = Axes.Both,
-                            Colour = Color4.Black
+                            Colour = SRGBColour.Black
                         },
                         ContentContainer = CreateScrollContainer(direction).With(d =>
                         {
@@ -151,7 +151,7 @@ namespace osu.Framework.Graphics.UserInterface
         /// <summary>
         /// Gets or sets the background colour of this <see cref="Menu"/>.
         /// </summary>
-        public Color4 BackgroundColour
+        public SRGBColour BackgroundColour
         {
             get => background.Colour;
             set => background.Colour = value;
@@ -743,12 +743,12 @@ namespace osu.Framework.Graphics.UserInterface
                 AutoSizeAxes = direction == Direction.Horizontal ? Axes.X : Axes.Y;
             }
 
-            private Color4 backgroundColour = Color4.DarkSlateGray;
+            private SRGBColour backgroundColour = SRGBColour.DarkSlateGray;
 
             /// <summary>
             /// Gets or sets the default background colour.
             /// </summary>
-            public Color4 BackgroundColour
+            public SRGBColour BackgroundColour
             {
                 get => backgroundColour;
                 set
@@ -758,12 +758,12 @@ namespace osu.Framework.Graphics.UserInterface
                 }
             }
 
-            private Color4 foregroundColour = Color4.White;
+            private SRGBColour foregroundColour = SRGBColour.White;
 
             /// <summary>
             /// Gets or sets the default foreground colour.
             /// </summary>
-            public Color4 ForegroundColour
+            public SRGBColour ForegroundColour
             {
                 get => foregroundColour;
                 set
@@ -773,12 +773,12 @@ namespace osu.Framework.Graphics.UserInterface
                 }
             }
 
-            private Color4 backgroundColourHover = Color4.DarkGray;
+            private SRGBColour backgroundColourHover = SRGBColour.DarkGray;
 
             /// <summary>
             /// Gets or sets the background colour when this <see cref="DrawableMenuItem"/> is hovered.
             /// </summary>
-            public Color4 BackgroundColourHover
+            public SRGBColour BackgroundColourHover
             {
                 get => backgroundColourHover;
                 set
@@ -788,12 +788,12 @@ namespace osu.Framework.Graphics.UserInterface
                 }
             }
 
-            private Color4 foregroundColourHover = Color4.White;
+            private SRGBColour foregroundColourHover = SRGBColour.White;
 
             /// <summary>
             /// Gets or sets the foreground colour when this <see cref="DrawableMenuItem"/> is hovered.
             /// </summary>
-            public Color4 ForegroundColourHover
+            public SRGBColour ForegroundColourHover
             {
                 get => foregroundColourHover;
                 set

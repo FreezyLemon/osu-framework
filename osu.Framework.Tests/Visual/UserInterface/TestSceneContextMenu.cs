@@ -8,6 +8,7 @@ using System.Linq;
 using NUnit.Framework;
 using osu.Framework.Extensions.EnumExtensions;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Cursor;
 using osu.Framework.Graphics.Shapes;
@@ -15,7 +16,6 @@ using osu.Framework.Graphics.UserInterface;
 using osu.Framework.Utils;
 using osu.Framework.Testing;
 using osuTK;
-using osuTK.Graphics;
 using osuTK.Input;
 
 namespace osu.Framework.Tests.Visual.UserInterface
@@ -113,7 +113,7 @@ namespace osu.Framework.Tests.Visual.UserInterface
                 box1 = b.With(d =>
                 {
                     d.X = -100;
-                    d.Colour = Color4.Green;
+                    d.Colour = SRGBColour.Green;
                 });
             }, 1);
             addBoxStep(b =>
@@ -121,7 +121,7 @@ namespace osu.Framework.Tests.Visual.UserInterface
                 box2 = b.With(d =>
                 {
                     d.X = 100;
-                    d.Colour = Color4.Red;
+                    d.Colour = SRGBColour.Red;
                 });
             }, 1);
 

@@ -2,7 +2,6 @@
 // See the LICENCE file in the repository root for full licence text.
 
 using osuTK;
-using osuTK.Graphics;
 using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Transforms;
@@ -208,7 +207,7 @@ namespace osu.Framework.Graphics
         /// Smoothly adjusts the colour of <see cref="IContainer.EdgeEffect"/> over time.
         /// </summary>
         /// <returns>A <see cref="TransformSequence{T}"/> to which further transforms can be added.</returns>
-        public static TransformSequence<T> FadeEdgeEffectTo<T>(this TransformSequence<T> t, Color4 newColour, double duration = 0, Easing easing = Easing.None)
+        public static TransformSequence<T> FadeEdgeEffectTo<T>(this TransformSequence<T> t, SRGBColour newColour, double duration = 0, Easing easing = Easing.None)
             where T : class, IContainer
             => t.FadeEdgeEffectTo(newColour, duration, new DefaultEasingFunction(easing));
 
@@ -441,7 +440,7 @@ namespace osu.Framework.Graphics
         /// Smoothly adjusts the colour of <see cref="IContainer.EdgeEffect"/> over time.
         /// </summary>
         /// <returns>A <see cref="TransformSequence{T}"/> to which further transforms can be added.</returns>
-        public static TransformSequence<T> FadeEdgeEffectTo<T, TEasing>(this TransformSequence<T> t, Color4 newColour, double duration, TEasing easing)
+        public static TransformSequence<T> FadeEdgeEffectTo<T, TEasing>(this TransformSequence<T> t, SRGBColour newColour, double duration, TEasing easing)
             where T : class, IContainer
             where TEasing : IEasingFunction
             => t.Append(o => o.FadeEdgeEffectTo(newColour, duration, easing));

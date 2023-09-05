@@ -5,6 +5,7 @@ using System.Linq;
 using NUnit.Framework;
 using osu.Framework.Allocation;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Rendering;
 using osu.Framework.Graphics.Shapes;
@@ -12,7 +13,6 @@ using osu.Framework.Graphics.Sprites;
 using osu.Framework.Platform;
 using osu.Framework.Utils;
 using osuTK;
-using osuTK.Graphics;
 
 namespace osu.Framework.Tests.Visual.Graphics
 {
@@ -41,7 +41,7 @@ namespace osu.Framework.Tests.Visual.Graphics
                     {
                         Anchor = Anchor.Centre,
                         Origin = Anchor.Centre,
-                        Colour = new Color4(RNG.NextSingle(1), RNG.NextSingle(1), RNG.NextSingle(1), 1),
+                        Colour = new SRGBColour(new Colour4(RNG.NextSingle(), RNG.NextSingle(), RNG.NextSingle(), 1)),
                         Size = new Vector2(50f),
                     })
                 });
@@ -68,7 +68,7 @@ namespace osu.Framework.Tests.Visual.Graphics
                     {
                         Anchor = Anchor.Centre,
                         Origin = Anchor.Centre,
-                        Colour = new Color4(RNG.NextSingle(1), RNG.NextSingle(1), RNG.NextSingle(1), 1),
+                        Colour = new SRGBColour(new Colour4(RNG.NextSingle(), RNG.NextSingle(), RNG.NextSingle(), 1)),
                         Size = new Vector2(50f),
                     })
                 });

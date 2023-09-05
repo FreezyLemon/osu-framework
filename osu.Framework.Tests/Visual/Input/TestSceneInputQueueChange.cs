@@ -4,13 +4,13 @@
 using System.Linq;
 using NUnit.Framework;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
 using osu.Framework.Input.Events;
 using osu.Framework.Testing;
 using osuTK;
-using osuTK.Graphics;
 using osuTK.Input;
 
 namespace osu.Framework.Tests.Visual.Input
@@ -89,7 +89,7 @@ namespace osu.Framework.Tests.Visual.Input
                 Anchor = Anchor.Centre;
                 Origin = Anchor.Centre;
 
-                BorderColour = Color4.BlueViolet;
+                BorderColour = SRGBColour.BlueViolet;
                 BorderThickness = 3;
                 Masking = true;
 
@@ -98,7 +98,7 @@ namespace osu.Framework.Tests.Visual.Input
                     new Box { RelativeSizeAxes = Axes.Both },
                     new SpriteText
                     {
-                        Colour = Color4.Black,
+                        Colour = SRGBColour.Black,
                         Text = index.ToString(),
                         Anchor = Anchor.Centre,
                         Origin = Anchor.Centre,

@@ -1265,7 +1265,7 @@ namespace osu.Framework.Graphics
 
         #region Colour / Alpha / Blending
 
-        private ColourInfo colour = Color4.White;
+        private ColourInfo colour = SRGBColour.White;
 
         /// <summary>
         /// Colour of this <see cref="Drawable"/> in sRGB space. Can contain individual colours for all four

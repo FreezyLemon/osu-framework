@@ -3,8 +3,8 @@
 
 using Markdig.Syntax;
 using osu.Framework.Allocation;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Shapes;
-using osuTK.Graphics;
 
 namespace osu.Framework.Graphics.Containers.Markdown
 {
@@ -49,7 +49,7 @@ namespace osu.Framework.Graphics.Containers.Markdown
         protected virtual Drawable CreateBackground() => new Box
         {
             RelativeSizeAxes = Axes.Both,
-            Colour = Color4.Gray,
+            Colour = SRGBColour.Gray,
             Alpha = 0.5f
         };
 

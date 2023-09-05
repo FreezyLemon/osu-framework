@@ -4,9 +4,9 @@
 using osu.Framework;
 using osu.Framework.Graphics;
 using osuTK;
-using osuTK.Graphics;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Allocation;
+using osu.Framework.Graphics.Colour;
 
 namespace SampleGame
 {
@@ -22,7 +22,7 @@ namespace SampleGame
                 Anchor = Anchor.Centre,
                 Origin = Anchor.Centre,
                 Size = new Vector2(150, 150),
-                Colour = Color4.Tomato
+                Colour = SRGBColour.Tomato
             });
         }
 

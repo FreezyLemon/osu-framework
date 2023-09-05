@@ -8,11 +8,11 @@ using System.Threading;
 using NUnit.Framework;
 using osu.Framework.Allocation;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
 using osuTK;
-using osuTK.Graphics;
 
 namespace osu.Framework.Tests.Visual.Drawables
 {
@@ -76,7 +76,7 @@ namespace osu.Framework.Tests.Visual.Drawables
                 {
                     new Box
                     {
-                        Colour = new Color4(0.1f, 0.1f, 0.1f, 1),
+                        Colour = new SRGBColour(25, 25, 25, 255),
                         RelativeSizeAxes = Axes.Both,
                         Depth = float.MaxValue
                     },
@@ -131,26 +131,26 @@ namespace osu.Framework.Tests.Visual.Drawables
 
             public readonly ManualResetEventSlim AllowLoad = new ManualResetEventSlim();
 
-            protected Color4 BackgroundColour
+            protected SRGBColour BackgroundColour
             {
                 get
                 {
                     switch (id % 5)
                     {
                         default:
-                            return Color4.SkyBlue;
+                            return SRGBColour.SkyBlue;
 
                         case 1:
-                            return Color4.Tomato;
+                            return SRGBColour.Tomato;
 
                         case 2:
-                            return Color4.DarkGreen;
+                            return SRGBColour.DarkGreen;
 
                         case 3:
-                            return Color4.MediumPurple;
+                            return SRGBColour.MediumPurple;
 
                         case 4:
-                            return Color4.DarkOrchid;
+                            return SRGBColour.DarkOrchid;
                     }
                 }
             }

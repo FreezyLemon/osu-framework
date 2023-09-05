@@ -12,8 +12,8 @@ using osu.Framework.Allocation;
 using System.Collections.Generic;
 using osu.Framework.Caching;
 using osu.Framework.Extensions.EnumExtensions;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Rendering;
-using osuTK.Graphics;
 
 namespace osu.Framework.Graphics.Lines
 {
@@ -278,14 +278,14 @@ namespace osu.Framework.Graphics.Lines
         public Vector2 FrameBufferScale { get; } = Vector2.One;
 
         // The path should not receive the true colour to avoid colour doubling when the frame-buffer is rendered to the back-buffer.
-        public override DrawColourInfo DrawColourInfo => new DrawColourInfo(Color4.White, base.DrawColourInfo.Blending);
+        public override DrawColourInfo DrawColourInfo => new DrawColourInfo(SRGBColour.White, base.DrawColourInfo.Blending);
 
-        private Color4 backgroundColour = new Color4(0, 0, 0, 0);
+        private SRGBColour backgroundColour = new SRGBColour(0, 0, 0, 0);
 
         /// <summary>
         /// The background colour to be used for the frame buffer this path is rendered to.
         /// </summary>
-        public virtual Color4 BackgroundColour
+        public virtual SRGBColour BackgroundColour
         {
             get => backgroundColour;
             set

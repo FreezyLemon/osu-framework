@@ -15,7 +15,6 @@ using osu.Framework.Input.Events;
 using osu.Framework.Utils;
 using osu.Framework.Testing;
 using osuTK;
-using osuTK.Graphics;
 using osuTK.Input;
 
 namespace osu.Framework.Tests.Visual.Containers
@@ -88,7 +87,7 @@ namespace osu.Framework.Tests.Visual.Containers
                 {
                     fill.Add(new Box
                     {
-                        Colour = new Color4(RNG.NextSingle(1), RNG.NextSingle(1), RNG.NextSingle(1), 1),
+                        Colour = new SRGBColour(new Colour4(RNG.NextSingle(), RNG.NextSingle(), RNG.NextSingle(), 1)),
                         RelativeSizeAxes = Axes.X,
                         Height = item_height,
                     });

@@ -6,6 +6,7 @@ using osu.Framework.Allocation;
 using osu.Framework.Extensions.ObjectExtensions;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Animations;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
@@ -13,7 +14,6 @@ using osu.Framework.Graphics.Textures;
 using osu.Framework.IO.Stores;
 using osu.Framework.Testing;
 using osuTK;
-using osuTK.Graphics;
 
 namespace osu.Framework.Tests.Visual.Sprites
 {
@@ -63,7 +63,7 @@ namespace osu.Framework.Tests.Visual.Sprites
                         {
                             RelativeSizeAxes = Axes.Both,
                             Masking = true,
-                            BorderColour = Color4.OrangeRed,
+                            BorderColour = SRGBColour.OrangeRed,
                             BorderThickness = 2,
                             Children = new[]
                             {
@@ -99,7 +99,7 @@ namespace osu.Framework.Tests.Visual.Sprites
                             new Box
                             {
                                 RelativeSizeAxes = Axes.Both,
-                                Colour = Color4.SlateGray
+                                Colour = SRGBColour.SlateGray
                             },
                             new SpriteText
                             {

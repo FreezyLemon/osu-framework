@@ -46,7 +46,7 @@ namespace osu.Framework.Graphics.UserInterface
 
         protected HexColourPicker()
         {
-            Current.Value = SRGBColour.White;
+            Current.Value = SRGBColour.White.Raw;
 
             Width = 300;
             AutoSizeAxes = Axes.Y;

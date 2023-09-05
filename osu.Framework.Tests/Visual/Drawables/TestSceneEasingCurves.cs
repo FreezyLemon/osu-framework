@@ -8,12 +8,12 @@ using System.Linq;
 using NUnit.Framework;
 using osu.Framework.Extensions.IEnumerableExtensions;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
 using osu.Framework.Testing;
 using osuTK;
-using osuTK.Graphics;
 
 namespace osu.Framework.Tests.Visual.Drawables
 {
@@ -78,7 +78,7 @@ namespace osu.Framework.Tests.Visual.Drawables
                         {
                             new Box
                             {
-                                Colour = Color4.DimGray,
+                                Colour = SRGBColour.DimGray,
                                 RelativeSizeAxes = Axes.Both
                             },
                             dot = new CircularContainer
@@ -90,7 +90,7 @@ namespace osu.Framework.Tests.Visual.Drawables
                                 Child = new Box
                                 {
                                     RelativeSizeAxes = Axes.Both,
-                                    Colour = Color4.White
+                                    Colour = SRGBColour.White
                                 }
                             }
                         }

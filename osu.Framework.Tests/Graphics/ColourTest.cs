@@ -69,11 +69,11 @@ namespace osu.Framework.Tests.Graphics
             testConvertToHSL((34f / 360f, 0.437f, 0.686f, 0.5f), SRGBColour.Tan.Opacity(0.5f));
         }
 
-        private void testConvertFromHSL(Colour4 expected, (float, float, float, float) convert) =>
-            assertAlmostEqual(expected.Vector, Colour4.FromHSL(convert.Item1, convert.Item2, convert.Item3, convert.Item4).Vector);
+        private void testConvertFromHSL(SRGBColour expected, (float, float, float, float) convert) =>
+            assertAlmostEqual(expected.Raw.Vector, Colour4.FromHSL(convert.Item1, convert.Item2, convert.Item3, convert.Item4).Vector);
 
-        private void testConvertToHSL((float, float, float, float) expected, Colour4 convert) =>
-            assertAlmostEqual(new Vector4(expected.Item1, expected.Item2, expected.Item3, expected.Item4), convert.ToHSL(), "HSLA");
+        private void testConvertToHSL((float, float, float, float) expected, SRGBColour convert) =>
+            assertAlmostEqual(new Vector4(expected.Item1, expected.Item2, expected.Item3, expected.Item4), convert.Raw.ToHSL(), "HSLA");
 
         [Test]
         public void TestFromHSV()
@@ -132,18 +132,18 @@ namespace osu.Framework.Tests.Graphics
             testConvertToHSV((34f / 360f, 0.333f, 0.824f, 0.5f), SRGBColour.Tan.Opacity(0.5f));
         }
 
-        private void testConvertFromHSV(Colour4 expected, (float, float, float, float) convert) =>
-            assertAlmostEqual(expected.Vector, Colour4.FromHSV(convert.Item1, convert.Item2, convert.Item3, convert.Item4).Vector);
+        private void testConvertFromHSV(SRGBColour expected, (float, float, float, float) convert) =>
+            assertAlmostEqual(expected.Raw.Vector, Colour4.FromHSV(convert.Item1, convert.Item2, convert.Item3, convert.Item4).Vector);
 
-        private void testConvertToHSV((float, float, float, float) expected, Colour4 convert) =>
-            assertAlmostEqual(new Vector4(expected.Item1, expected.Item2, expected.Item3, expected.Item4), convert.ToHSV(), "HSVA");
+        private void testConvertToHSV((float, float, float, float) expected, SRGBColour convert) =>
+            assertAlmostEqual(new Vector4(expected.Item1, expected.Item2, expected.Item3, expected.Item4), convert.Raw.ToHSV(), "HSVA");
 
         [Test]
         public void TestToHex()
         {
-            Assert.AreEqual("#D2B48C", SRGBColour.Tan.ToHex());
-            Assert.AreEqual("#D2B48CFF", SRGBColour.Tan.ToHex(true));
-            Assert.AreEqual("#6495ED80", SRGBColour.CornflowerBlue.Opacity(half_alpha).ToHex());
+            Assert.AreEqual("#D2B48C", SRGBColour.Tan.Raw.ToHex());
+            Assert.AreEqual("#D2B48CFF", SRGBColour.Tan.Raw.ToHex(true));
+            Assert.AreEqual("#6495ED80", SRGBColour.CornflowerBlue.Opacity(half_alpha).Raw.ToHex());
         }
 
         private static readonly object[][] valid_hex_colours =
@@ -208,8 +208,8 @@ namespace osu.Framework.Tests.Graphics
             Assert.AreEqual(SRGBColour.Black.Opacity(0f), new Colour4(-1.1f, -1.1f, -1.1f, -1.1f).Clamped());
 
             // test lighten and darken
-            assertAlmostEqual(new Colour4(0.431f, 0.642f, 1f, 1f).Vector, SRGBColour.CornflowerBlue.Lighten(0.1f).Vector);
-            assertAlmostEqual(new Colour4(0.356f, 0.531f, 0.845f, 1f).Vector, SRGBColour.CornflowerBlue.Darken(0.1f).Vector);
+            assertAlmostEqual(new Colour4(0.431f, 0.642f, 1f, 1f).Vector, SRGBColour.CornflowerBlue.Lighten(0.1f).Raw.Vector);
+            assertAlmostEqual(new Colour4(0.356f, 0.531f, 0.845f, 1f).Vector, SRGBColour.CornflowerBlue.Darken(0.1f).Raw.Vector);
         }
 
         [Test]
@@ -220,7 +220,7 @@ namespace osu.Framework.Tests.Graphics
             assertAlmostEqual(new Vector4(0.4f, 0.3f, 0.2f, 0.1f), (colour - new Colour4(0.1f, 0.2f, 0.3f, 0.4f)).Vector);
             assertAlmostEqual(new Vector4(0.25f, 0.25f, 0.25f, 0.25f), (colour * colour).Vector);
             assertAlmostEqual(new Vector4(0.25f, 0.25f, 0.25f, 0.25f), (colour / 2f).Vector);
-            assertAlmostEqual(SRGBColour.White.Vector, (colour * 2f).Vector);
+            assertAlmostEqual(SRGBColour.White.Raw.Vector, (colour * 2f).Vector);
             Assert.Throws<ArgumentOutOfRangeException>(() => _ = colour * -1f);
             Assert.Throws<ArgumentOutOfRangeException>(() => _ = colour / -1f);
             Assert.Throws<ArgumentOutOfRangeException>(() => _ = colour / 0f);
@@ -230,15 +230,15 @@ namespace osu.Framework.Tests.Graphics
         public void TestOtherConversions()
         {
             // test uint conversions
-            Assert.AreEqual(0x6495ED80, SRGBColour.CornflowerBlue.Opacity(half_alpha).ToRGBA());
-            Assert.AreEqual(0x806495ED, SRGBColour.CornflowerBlue.Opacity(half_alpha).ToARGB());
+            Assert.AreEqual(0x6495ED80, SRGBColour.CornflowerBlue.Opacity(half_alpha).Raw.ToRGBA());
+            Assert.AreEqual(0x806495ED, SRGBColour.CornflowerBlue.Opacity(half_alpha).Raw.ToARGB());
             Assert.AreEqual(SRGBColour.CornflowerBlue.Opacity(half_alpha), Colour4.FromRGBA(0x6495ED80));
             Assert.AreEqual(SRGBColour.CornflowerBlue.Opacity(half_alpha), Colour4.FromARGB(0x806495ED));
 
             // test SRGB
-            var srgb = new Vector4(0.659f, 0.788f, 0.968f, 1f);
-            assertAlmostEqual(srgb, SRGBColour.CornflowerBlue.ToSRGB().Vector);
-            assertAlmostEqual(SRGBColour.CornflowerBlue.Vector, new Colour4(srgb).ToLinear().Vector);
+            var linearized = new Vector4(0.12744f, 0.30054f, 0.84687f, 1f);
+            assertAlmostEqual(linearized, SRGBColour.CornflowerBlue.ToLinear().Raw.Vector);
+            assertAlmostEqual(SRGBColour.CornflowerBlue.Raw.Vector, new Colour4(linearized).ToSRGB().Vector);
         }
 
         private void assertAlmostEqual(Vector4 expected, Vector4 actual, string type = "RGBA")

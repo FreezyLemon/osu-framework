@@ -6,8 +6,8 @@
 using Markdig.Extensions.Tables;
 using Markdig.Syntax;
 using osu.Framework.Allocation;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Shapes;
-using osuTK.Graphics;
 
 namespace osu.Framework.Graphics.Containers.Markdown
 {
@@ -38,7 +38,7 @@ namespace osu.Framework.Graphics.Containers.Markdown
             RelativeSizeAxes = Axes.Both;
 
             BorderThickness = 1.8f;
-            BorderColour = Color4.White;
+            BorderColour = SRGBColour.White;
             Masking = true;
         }
 

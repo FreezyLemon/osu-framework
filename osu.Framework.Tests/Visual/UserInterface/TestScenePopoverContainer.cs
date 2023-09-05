@@ -16,7 +16,6 @@ using osu.Framework.Graphics.UserInterface;
 using osu.Framework.Input.Events;
 using osu.Framework.Testing;
 using osuTK;
-using osuTK.Graphics;
 using osuTK.Input;
 
 namespace osu.Framework.Tests.Visual.UserInterface
@@ -63,7 +62,7 @@ namespace osu.Framework.Tests.Visual.UserInterface
                                     {
                                         new Box
                                         {
-                                            Colour = Color4.Blue,
+                                            Colour = SRGBColour.Blue,
                                             RelativeSizeAxes = Axes.Both,
                                         },
                                         new TextFlowContainer
@@ -685,7 +684,7 @@ namespace osu.Framework.Tests.Visual.UserInterface
                     {
                         colourBox = new Box
                         {
-                            Colour = Color4.Black,
+                            Colour = SRGBColour.Black,
                             RelativeSizeAxes = Axes.Both,
                         },
                         Content = new Container { RelativeSizeAxes = Axes.Both },
@@ -696,26 +695,26 @@ namespace osu.Framework.Tests.Visual.UserInterface
             public void Reset()
             {
                 ClickReceived = HoverReceived = false;
-                colourBox.FadeColour(Color4.Black);
+                colourBox.FadeColour(SRGBColour.Black);
             }
 
             protected override bool OnClick(ClickEvent e)
             {
                 ClickReceived = true;
-                colourBox.FlashColour(Color4.White, 200);
+                colourBox.FlashColour(SRGBColour.White, 200);
                 return true;
             }
 
             protected override bool OnHover(HoverEvent e)
             {
                 HoverReceived = true;
-                colourBox.FadeColour(Color4.DarkSlateBlue, 200);
+                colourBox.FadeColour(SRGBColour.DarkSlateBlue, 200);
                 return true;
             }
 
             protected override void OnHoverLost(HoverLostEvent e)
             {
-                colourBox.FadeColour(Color4.Black, 200);
+                colourBox.FadeColour(SRGBColour.Black, 200);
                 base.OnHoverLost(e);
             }
         }

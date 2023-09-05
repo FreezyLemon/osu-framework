@@ -2,13 +2,13 @@
 // See the LICENCE file in the repository root for full licence text.
 
 using System;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
 using osu.Framework.Statistics;
 using osu.Framework.Timing;
 using osu.Framework.Utils;
-using osuTK.Graphics;
 
 namespace osu.Framework.Graphics.Performance
 {
@@ -32,7 +32,7 @@ namespace osu.Framework.Graphics.Performance
                 new Box
                 {
                     RelativeSizeAxes = Axes.Both,
-                    Colour = Color4.Black,
+                    Colour = SRGBColour.Black,
                     Alpha = 0.75f
                 },
                 counter = new SpriteText

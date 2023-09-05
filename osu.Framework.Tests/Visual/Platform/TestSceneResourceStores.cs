@@ -11,6 +11,7 @@ using NUnit.Framework;
 using osu.Framework.Allocation;
 using osu.Framework.Audio;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
@@ -18,7 +19,6 @@ using osu.Framework.Graphics.Textures;
 using osu.Framework.IO.Stores;
 using osu.Framework.Platform;
 using osuTK;
-using osuTK.Graphics;
 
 namespace osu.Framework.Tests.Visual.Platform
 {
@@ -116,7 +116,7 @@ namespace osu.Framework.Tests.Visual.Platform
                             {
                                 new Box
                                 {
-                                    Colour = Color4.Navy,
+                                    Colour = SRGBColour.Navy,
                                     RelativeSizeAxes = Axes.Both,
                                 },
                                 createDisplay(resource),

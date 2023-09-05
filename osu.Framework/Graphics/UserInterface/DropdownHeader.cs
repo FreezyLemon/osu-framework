@@ -3,8 +3,8 @@
 
 #nullable disable
 
-using osuTK.Graphics;
 using System;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Input;
@@ -22,9 +22,9 @@ namespace osu.Framework.Graphics.UserInterface
         protected Container Background;
         protected Container Foreground;
 
-        private Color4 backgroundColour = Color4.DarkGray;
+        private SRGBColour backgroundColour = SRGBColour.DarkGray;
 
-        protected Color4 BackgroundColour
+        protected SRGBColour BackgroundColour
         {
             get => backgroundColour;
             set
@@ -34,9 +34,9 @@ namespace osu.Framework.Graphics.UserInterface
             }
         }
 
-        private Color4 disabledColour = Color4.Gray;
+        private SRGBColour disabledColour = SRGBColour.Gray;
 
-        protected Color4 DisabledColour
+        protected SRGBColour DisabledColour
         {
             get => disabledColour;
             set
@@ -46,7 +46,7 @@ namespace osu.Framework.Graphics.UserInterface
             }
         }
 
-        protected Color4 BackgroundColourHover { get; set; } = Color4.Gray;
+        protected SRGBColour BackgroundColourHover { get; set; } = SRGBColour.Gray;
 
         protected override Container<Drawable> Content => Foreground;
 
@@ -65,11 +65,11 @@ namespace osu.Framework.Graphics.UserInterface
                     Anchor = Anchor.CentreLeft,
                     Origin = Anchor.CentreLeft,
                     RelativeSizeAxes = Axes.Both,
-                    Colour = Color4.DarkGray,
+                    Colour = SRGBColour.DarkGray,
                     Child = new Box
                     {
                         RelativeSizeAxes = Axes.Both,
-                        Colour = Color4.White,
+                        Colour = SRGBColour.White,
                     },
                 },
                 Foreground = new Container
@@ -102,7 +102,7 @@ namespace osu.Framework.Graphics.UserInterface
 
         private void updateState()
         {
-            Colour = Enabled.Value ? Color4.White : DisabledColour;
+            Colour = Enabled.Value ? SRGBColour.White : DisabledColour;
             Background.Colour = IsHovered && Enabled.Value ? BackgroundColourHover : BackgroundColour;
         }
 

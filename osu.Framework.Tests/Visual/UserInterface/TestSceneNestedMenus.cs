@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.UserInterface;
 using osu.Framework.Testing;
 using osu.Framework.Utils;
@@ -62,8 +63,8 @@ namespace osu.Framework.Tests.Visual.UserInterface
                 base.CreateDrawableMenuItem(item).With(drawableItem =>
                 {
                     float hue = (float)depth / max_depth;
-                    drawableItem.BackgroundColour = Colour4.FromHSV(hue, 1, 0.3f);
-                    drawableItem.BackgroundColourHover = Colour4.FromHSV(hue, 0.6f, 0.5f);
+                    drawableItem.BackgroundColour = new SRGBColour(Colour4.FromHSV(hue, 1, 0.3f));
+                    drawableItem.BackgroundColourHover = new SRGBColour(Colour4.FromHSV(hue, 0.6f, 0.5f));
                 });
         }
 

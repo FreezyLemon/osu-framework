@@ -6,11 +6,11 @@
 using System;
 using NUnit.Framework;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
 using osuTK;
-using osuTK.Graphics;
 
 namespace osu.Framework.Tests.Visual.Drawables
 {
@@ -32,12 +32,12 @@ namespace osu.Framework.Tests.Visual.Drawables
                     Anchor = Anchor.Centre,
                     Origin = Anchor.Centre,
                     Size = new Vector2(50),
-                    Colour = Color4.Red
+                    Colour = SRGBColour.Red
                 }
             };
 
             var sender = new HookableContainer();
-            var greenBox = new TestBox { Colour = Color4.Green };
+            var greenBox = new TestBox { Colour = SRGBColour.Green };
 
             AddStep("add children", () =>
             {
