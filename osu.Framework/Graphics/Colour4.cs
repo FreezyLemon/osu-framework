@@ -4,6 +4,7 @@
 #nullable disable
 
 using System;
+using System.Diagnostics.Contracts;
 using System.Globalization;
 using System.Numerics;
 using osuTK.Graphics;
@@ -76,6 +77,7 @@ namespace osu.Framework.Graphics
         /// The final alpha is clamped to the 0-1 range.
         /// </summary>
         /// <param name="scalar">The value that the existing alpha will be multiplied by.</param>
+        [Pure]
         public Colour4 MultiplyAlpha(float scalar)
         {
             if (scalar < 0)
@@ -89,24 +91,20 @@ namespace osu.Framework.Graphics
         /// The final alpha is clamped to the 0-1 range.
         /// </summary>
         /// <param name="alpha">The new alpha value for the returned colour, in the 0-1 range.</param>
+        [Pure]
         public Colour4 Opacity(float alpha) => new Colour4(R, G, B, Math.Clamp(alpha, 0f, 1f));
-
-        /// <summary>
-        /// Returns a new <see cref="Colour4"/> with the same RGB components and a specified alpha value.
-        /// The final alpha is clamped to the 0-1 range.
-        /// </summary>
-        /// <param name="alpha">The new alpha value for the returned colour, in the 0-255 range.</param>
-        public Colour4 Opacity(byte alpha) => new Colour4(R, G, B, Math.Clamp(alpha / (float)byte.MaxValue, 0f, 1f));
 
         /// <summary>
         /// Returns a new <see cref="Colour4"/> with its individual components clamped to the 0-1 range.
         /// </summary>
+        [Pure]
         public Colour4 Clamped() => new Colour4(Vector4.Clamp(Vector, Vector4.Zero, Vector4.One));
 
         /// <summary>
         /// Returns a lightened version of the colour.
         /// </summary>
         /// <param name="amount">Percentage light addition</param>
+        [Pure]
         public Colour4 Lighten(float amount)
         {
             float scalar = Math.Max(1f, 1f + amount);
@@ -117,6 +115,7 @@ namespace osu.Framework.Graphics
         /// Returns a darkened version of the colour.
         /// </summary>
         /// <param name="amount">Percentage light reduction</param>
+        [Pure]
         public Colour4 Darken(float amount)
         {
             float scalar = Math.Max(1f, 1f + amount);
@@ -215,17 +214,20 @@ namespace osu.Framework.Graphics
         /// Returns a new <see cref="Colour4"/> with an SRGB->Linear conversion applied
         /// to each of its chromatic components. Alpha is unchanged.
         /// </summary>
+        [Pure]
         public Colour4 ToLinear() => new Colour4(toLinear(R), toLinear(G), toLinear(B), A);
 
         /// <summary>
         /// Returns a new <see cref="Colour4"/> with a Linear->SRGB conversion applied
         /// to each of its chromatic components. Alpha is unchanged.
         /// </summary>
+        [Pure]
         public Colour4 ToSRGB() => new Colour4(toSRGB(R), toSRGB(G), toSRGB(B), A);
 
         /// <summary>
         /// Returns the <see cref="Colour4"/> as a 32-bit unsigned integer in the format RGBA.
         /// </summary>
+        [Pure]
         public uint ToRGBA() => ((uint)(Math.Min(1f, R) * byte.MaxValue) << 24) |
                                 ((uint)(Math.Min(1f, G) * byte.MaxValue) << 16) |
                                 ((uint)(Math.Min(1f, B) * byte.MaxValue) << 8) |
@@ -240,6 +242,7 @@ namespace osu.Framework.Graphics
         /// <summary>
         /// Returns the <see cref="Colour4"/> as a 32-bit unsigned integer in the format ARGB.
         /// </summary>
+        [Pure]
         public uint ToARGB() => ((uint)(Math.Min(1f, A) * byte.MaxValue) << 24) |
                                 ((uint)(Math.Min(1f, R) * byte.MaxValue) << 16) |
                                 ((uint)(Math.Min(1f, G) * byte.MaxValue) << 8) |
@@ -351,6 +354,7 @@ namespace osu.Framework.Graphics
         /// </summary>
         /// <param name="alwaysOutputAlpha">Whether the alpha channel should always be output. If <c>false</c>, the alpha channel is only output if this colour is translucent.</param>
         /// <returns>The hex code representing the colour.</returns>
+        [Pure]
         public string ToHex(bool alwaysOutputAlpha = false)
         {
             uint argb = ToARGB();
@@ -409,6 +413,7 @@ namespace osu.Framework.Graphics
         /// The angular hue is compressed to the 0-1 range in line with the other components.
         /// </summary>
         /// <returns>A <see cref="Vector4"/> representing the colour, where all four components are in the 0-1 range.</returns>
+        [Pure]
         public Vector4 ToHSV()
         {
             float red = R;
@@ -499,6 +504,7 @@ namespace osu.Framework.Graphics
         /// The angular hue is compressed to the 0-1 range in line with the other components.
         /// </summary>
         /// <returns>A <see cref="Vector4"/> representing the colour, where all four components are in the 0-1 range.</returns>
+        [Pure]
         public Vector4 ToHSL()
         {
             float red = R;
