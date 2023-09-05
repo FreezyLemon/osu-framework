@@ -219,8 +219,8 @@ namespace osu.Framework.Utils
         {
             public static ColourInfo ValueAt(double time, ColourInfo startColour, ColourInfo endColour, double startTime, double endTime, in TEasing easing)
             {
-                if (startColour.HasSingleColour && endColour.HasSingleColour)
-                    return ValueAt(time, startColour, endColour, startTime, endTime, easing);
+                if (startColour.TryExtractSingleColour(out var start) && endColour.TryExtractSingleColour(out var end))
+                    return ValueAt(time, start, end, startTime, endTime, easing);
 
                 return new ColourInfo
                 {

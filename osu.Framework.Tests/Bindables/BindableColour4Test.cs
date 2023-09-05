@@ -24,18 +24,18 @@ namespace osu.Framework.Tests.Bindables
 
         private static readonly object[][] hex_parsed_colours =
         {
-            new object[] { "#fff", SRGBColour.White },
-            new object[] { "#ff0000", SRGBColour.Red },
-            new object[] { "ffff0080", SRGBColour.Yellow.Opacity(half_alpha) },
-            new object[] { "00ff0080", SRGBColour.Lime.Opacity(half_alpha) },
-            new object[] { "123", new Colour4(17, 34, 51, 255), },
-            new object[] { "#123", new Colour4(17, 34, 51, 255) },
-            new object[] { "1234", new Colour4(17, 34, 51, 68) },
-            new object[] { "#1234", new Colour4(17, 34, 51, 68) },
-            new object[] { "123456", new Colour4(18, 52, 86, 255) },
-            new object[] { "#123456", new Colour4(18, 52, 86, 255) },
-            new object[] { "12345678", new Colour4(18, 52, 86, 120) },
-            new object[] { "#12345678", new Colour4(18, 52, 86, 120) }
+            new object[] { "#fff", SRGBColour.White.Raw },
+            new object[] { "#ff0000", SRGBColour.Red.Raw },
+            new object[] { "ffff0080", SRGBColour.Yellow.Opacity(half_alpha).Raw },
+            new object[] { "00ff0080", SRGBColour.Lime.Opacity(half_alpha).Raw },
+            new object[] { "123", new SRGBColour(17, 34, 51, 255).Raw },
+            new object[] { "#123", new SRGBColour(17, 34, 51, 255).Raw },
+            new object[] { "1234", new SRGBColour(17, 34, 51, 68).Raw },
+            new object[] { "#1234", new SRGBColour(17, 34, 51, 68).Raw },
+            new object[] { "123456", new SRGBColour(18, 52, 86, 255).Raw },
+            new object[] { "#123456", new SRGBColour(18, 52, 86, 255).Raw },
+            new object[] { "12345678", new SRGBColour(18, 52, 86, 120).Raw },
+            new object[] { "#12345678", new SRGBColour(18, 52, 86, 120).Raw },
         };
 
         [TestCaseSource(nameof(hex_parsed_colours))]
@@ -49,10 +49,10 @@ namespace osu.Framework.Tests.Bindables
 
         private static readonly object[][] hex_serialized_colours =
         {
-            new object[] { SRGBColour.Black, "#000000" },
-            new object[] { SRGBColour.White, "#FFFFFF" },
-            new object[] { SRGBColour.Tan, "#D2B48C" },
-            new object[] { SRGBColour.CornflowerBlue.Opacity(half_alpha), "#6495ED80" }
+            new object[] { SRGBColour.Black.Raw, "#000000" },
+            new object[] { SRGBColour.White.Raw, "#FFFFFF" },
+            new object[] { SRGBColour.Tan.Raw, "#D2B48C" },
+            new object[] { SRGBColour.CornflowerBlue.Opacity(half_alpha).Raw, "#6495ED80" }
         };
 
         [TestCaseSource(nameof(hex_serialized_colours))]

@@ -148,18 +148,18 @@ namespace osu.Framework.Tests.Graphics
 
         private static readonly object[][] valid_hex_colours =
         {
-            new object[] { SRGBColour.White, "#fff" },
-            new object[] { SRGBColour.Red, "#ff0000" },
-            new object[] { SRGBColour.Yellow.Opacity(half_alpha), "ffff0080" },
-            new object[] { SRGBColour.Lime.Opacity(half_alpha), "00ff0080" },
-            new object[] { new Colour4(17, 34, 51, 255), "123" },
-            new object[] { new Colour4(17, 34, 51, 255), "#123" },
-            new object[] { new Colour4(17, 34, 51, 68), "1234" },
-            new object[] { new Colour4(17, 34, 51, 68), "#1234" },
-            new object[] { new Colour4(18, 52, 86, 255), "123456" },
-            new object[] { new Colour4(18, 52, 86, 255), "#123456" },
-            new object[] { new Colour4(18, 52, 86, 120), "12345678" },
-            new object[] { new Colour4(18, 52, 86, 120), "#12345678" }
+            new object[] { SRGBColour.White.Raw, "#fff" },
+            new object[] { SRGBColour.Red.Raw, "#ff0000" },
+            new object[] { SRGBColour.Yellow.Opacity(half_alpha).Raw, "ffff0080" },
+            new object[] { SRGBColour.Lime.Opacity(half_alpha).Raw, "00ff0080" },
+            new object[] { new SRGBColour(17, 34, 51, 255).Raw, "123" },
+            new object[] { new SRGBColour(17, 34, 51, 255).Raw, "#123" },
+            new object[] { new SRGBColour(17, 34, 51, 68).Raw, "1234" },
+            new object[] { new SRGBColour(17, 34, 51, 68).Raw, "#1234" },
+            new object[] { new SRGBColour(18, 52, 86, 255).Raw, "123456" },
+            new object[] { new SRGBColour(18, 52, 86, 255).Raw, "#123456" },
+            new object[] { new SRGBColour(18, 52, 86, 120).Raw, "12345678" },
+            new object[] { new SRGBColour(18, 52, 86, 120).Raw, "#12345678" }
         };
 
         [TestCaseSource(nameof(valid_hex_colours))]
@@ -195,17 +195,17 @@ namespace osu.Framework.Tests.Graphics
         {
             // test that Opacity replaces alpha channel rather than multiplying
             var expected1 = new Colour4(1f, 0f, 0f, 0.5f);
-            Assert.AreEqual(expected1, SRGBColour.Red.Opacity(0.5f));
+            Assert.AreEqual(expected1, SRGBColour.Red.Opacity(0.5f).Raw);
             Assert.AreEqual(expected1, expected1.Opacity(0.5f));
 
             // test that MultiplyAlpha multiplies existing alpha channel
             var expected2 = new Colour4(1f, 0f, 0f, 0.25f);
             Assert.AreEqual(expected2, expected1.MultiplyAlpha(0.5f));
-            Assert.Throws<ArgumentOutOfRangeException>(() => SRGBColour.White.MultiplyAlpha(-1f));
+            Assert.Throws<ArgumentOutOfRangeException>(() => _ = SRGBColour.White.MultiplyAlpha(-1f));
 
             // test clamping all channels in either direction
-            Assert.AreEqual(SRGBColour.White, new Colour4(1.1f, 1.1f, 1.1f, 1.1f).Clamped());
-            Assert.AreEqual(SRGBColour.Black.Opacity(0f), new Colour4(-1.1f, -1.1f, -1.1f, -1.1f).Clamped());
+            Assert.AreEqual(SRGBColour.White.Raw, new Colour4(1.1f, 1.1f, 1.1f, 1.1f).Clamped());
+            Assert.AreEqual(SRGBColour.Black.Opacity(0f).Raw, new Colour4(-1.1f, -1.1f, -1.1f, -1.1f).Clamped());
 
             // test lighten and darken
             assertAlmostEqual(new Colour4(0.431f, 0.642f, 1f, 1f).Vector, SRGBColour.CornflowerBlue.Lighten(0.1f).Raw.Vector);
@@ -232,8 +232,8 @@ namespace osu.Framework.Tests.Graphics
             // test uint conversions
             Assert.AreEqual(0x6495ED80, SRGBColour.CornflowerBlue.Opacity(half_alpha).Raw.ToRGBA());
             Assert.AreEqual(0x806495ED, SRGBColour.CornflowerBlue.Opacity(half_alpha).Raw.ToARGB());
-            Assert.AreEqual(SRGBColour.CornflowerBlue.Opacity(half_alpha), Colour4.FromRGBA(0x6495ED80));
-            Assert.AreEqual(SRGBColour.CornflowerBlue.Opacity(half_alpha), Colour4.FromARGB(0x806495ED));
+            Assert.AreEqual(SRGBColour.CornflowerBlue.Opacity(half_alpha).Raw, Colour4.FromRGBA(0x6495ED80));
+            Assert.AreEqual(SRGBColour.CornflowerBlue.Opacity(half_alpha).Raw, Colour4.FromARGB(0x806495ED));
 
             // test SRGB
             var linearized = new Vector4(0.12744f, 0.30054f, 0.84687f, 1f);

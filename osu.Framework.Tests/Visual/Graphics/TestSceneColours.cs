@@ -33,18 +33,18 @@ namespace osu.Framework.Tests.Visual.Graphics
                 }
             };
 
-            var colours = typeof(Colour4).GetProperties(BindingFlags.Public | BindingFlags.Static | BindingFlags.GetProperty)
-                                         .Where(property => property.PropertyType == typeof(Colour4))
-                                         .Select(property => (property.Name, (Colour4)property.GetMethod!.Invoke(null, null)!));
+            var colours = typeof(SRGBColour).GetProperties(BindingFlags.Public | BindingFlags.Static | BindingFlags.GetProperty)
+                                            .Where(property => property.PropertyType == typeof(SRGBColour))
+                                            .Select(property => (property.Name, (SRGBColour)property.GetMethod!.Invoke(null, null)!));
 
             flow.ChildrenEnumerable = colours.Select(colour => new ColourBox(colour.Name, colour.Item2));
         }
 
         private partial class ColourBox : Box, IHasTooltip
         {
-            public ColourBox(string name, Colour4 colour)
+            public ColourBox(string name, SRGBColour colour)
             {
-                Colour = new SRGBColour(colour);
+                Colour = colour;
                 Name = name;
                 Size = new Vector2(50);
             }

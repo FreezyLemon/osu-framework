@@ -58,6 +58,11 @@ namespace osu.Framework.Graphics
             Vector = new Vector4(r, g, b, a);
         }
 
+        private Colour4(byte r, byte g, byte b, byte a)
+        {
+            Vector = new Vector4(r, g, b, a) / byte.MaxValue;
+        }
+
         /// <summary>
         /// Creates a new <see cref="Colour4"/> with the specified <see cref="Vector4"/>,
         /// where XYZW maps to RGBA.
