@@ -11,7 +11,8 @@ using osuTK.Graphics;
 namespace osu.Framework.Graphics
 {
     /// <summary>
-    /// Represents an RGBA colour in the linear colour space, having colour components in the range 0-1.
+    /// An RGBA colour without any colour space information.
+    /// The colour components are in the range 0-1.
     /// Stored internally as a <see cref="Vector4"/> for performance.
     /// </summary>
     public readonly struct Colour4 : IEquatable<Colour4>
@@ -23,22 +24,22 @@ namespace osu.Framework.Graphics
         public readonly Vector4 Vector;
 
         /// <summary>
-        /// Represents the red component of the linear RGBA colour in the 0-1 range.
+        /// The red component of the colour in the 0-1 range.
         /// </summary>
         public float R => Vector.X;
 
         /// <summary>
-        /// Represents the green component of the linear RGBA colour in the 0-1 range.
+        /// The green component of the colour in the 0-1 range.
         /// </summary>
         public float G => Vector.Y;
 
         /// <summary>
-        /// Represents the blue component of the linear RGBA colour in the 0-1 range.
+        /// The blue component of the colour in the 0-1 range.
         /// </summary>
         public float B => Vector.Z;
 
         /// <summary>
-        /// Represents the alpha component of the RGBA colour in the 0-1 range.
+        /// The alpha component of the colour in the 0-1 range.
         /// </summary>
         public float A => Vector.W;
 
@@ -143,7 +144,7 @@ namespace osu.Framework.Graphics
         #region Operator Overloads
 
         /// <summary>
-        /// Multiplies two colours in the linear colour space.
+        /// Multiplies two colours.
         /// </summary>
         /// <param name="first">The left hand side of the multiplication.</param>
         /// <param name="second">The right hand side of the multiplication.</param>
@@ -151,7 +152,7 @@ namespace osu.Framework.Graphics
             new Colour4(first.Vector * second.Vector);
 
         /// <summary>
-        /// Adds two colours in the linear colour space. The final value is clamped to the 0-1 range.
+        /// Adds two colours. The final component values are clamped to the 0-1 range.
         /// </summary>
         /// <param name="first">The left hand side of the addition.</param>
         /// <param name="second">The right hand side of the addition.</param>
@@ -159,7 +160,7 @@ namespace osu.Framework.Graphics
             new Colour4(Vector4.Min(first.Vector + second.Vector, Vector4.One));
 
         /// <summary>
-        /// Subtracts two colours in the linear colour space. The final value is clamped to the 0-1 range.
+        /// Subtracts two colours. The final component values are clamped to the 0-1 range.
         /// </summary>
         /// <param name="first">The left hand side of the subtraction.</param>
         /// <param name="second">The right hand side of the subtraction.</param>
@@ -167,7 +168,7 @@ namespace osu.Framework.Graphics
             new Colour4(Vector4.Max(first.Vector - second.Vector, Vector4.Zero));
 
         /// <summary>
-        /// Linearly multiplies a colour by a scalar value. The final value is clamped to the 0-1 range.
+        /// Linearly multiplies a colour by a scalar value. The final component values are clamped to the 0-1 range.
         /// </summary>
         /// <param name="colour">The original colour.</param>
         /// <param name="scalar">The scalar value to multiply by. Must not be negative.</param>
@@ -181,7 +182,7 @@ namespace osu.Framework.Graphics
         }
 
         /// <summary>
-        /// Linearly divides a colour by a scalar value. The final value is clamped to the 0-1 range.
+        /// Linearly divides a colour by a scalar value. The final component values are clamped to the 0-1 range.
         /// </summary>
         /// <param name="colour">The original colour.</param>
         /// <param name="scalar">The scalar value to divide by. Must be positive.</param>
