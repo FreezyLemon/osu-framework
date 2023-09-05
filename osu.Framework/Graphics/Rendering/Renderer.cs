@@ -653,25 +653,25 @@ namespace osu.Framework.Graphics.Rendering
                     BorderColour = maskingInfo.BorderThickness > 0
                         ? new Matrix4(
                             // TopLeft
-                            maskingInfo.BorderColour.TopLeft.SRGB.R,
-                            maskingInfo.BorderColour.TopLeft.SRGB.G,
-                            maskingInfo.BorderColour.TopLeft.SRGB.B,
-                            maskingInfo.BorderColour.TopLeft.SRGB.A,
+                            maskingInfo.BorderColour.TopLeft.Raw.R,
+                            maskingInfo.BorderColour.TopLeft.Raw.G,
+                            maskingInfo.BorderColour.TopLeft.Raw.B,
+                            maskingInfo.BorderColour.TopLeft.Raw.A,
                             // BottomLeft
-                            maskingInfo.BorderColour.BottomLeft.SRGB.R,
-                            maskingInfo.BorderColour.BottomLeft.SRGB.G,
-                            maskingInfo.BorderColour.BottomLeft.SRGB.B,
-                            maskingInfo.BorderColour.BottomLeft.SRGB.A,
+                            maskingInfo.BorderColour.BottomLeft.Raw.R,
+                            maskingInfo.BorderColour.BottomLeft.Raw.G,
+                            maskingInfo.BorderColour.BottomLeft.Raw.B,
+                            maskingInfo.BorderColour.BottomLeft.Raw.A,
                             // TopRight
-                            maskingInfo.BorderColour.TopRight.SRGB.R,
-                            maskingInfo.BorderColour.TopRight.SRGB.G,
-                            maskingInfo.BorderColour.TopRight.SRGB.B,
-                            maskingInfo.BorderColour.TopRight.SRGB.A,
+                            maskingInfo.BorderColour.TopRight.Raw.R,
+                            maskingInfo.BorderColour.TopRight.Raw.G,
+                            maskingInfo.BorderColour.TopRight.Raw.B,
+                            maskingInfo.BorderColour.TopRight.Raw.A,
                             // BottomRight
-                            maskingInfo.BorderColour.BottomRight.SRGB.R,
-                            maskingInfo.BorderColour.BottomRight.SRGB.G,
-                            maskingInfo.BorderColour.BottomRight.SRGB.B,
-                            maskingInfo.BorderColour.BottomRight.SRGB.A)
+                            maskingInfo.BorderColour.BottomRight.Raw.R,
+                            maskingInfo.BorderColour.BottomRight.Raw.G,
+                            maskingInfo.BorderColour.BottomRight.Raw.B,
+                            maskingInfo.BorderColour.BottomRight.Raw.A)
                         : ShaderMaskingStack.CurrentBuffer[ShaderMaskingStack.CurrentOffset].BorderColour,
                     MaskingBlendRange = maskingInfo.BlendRange,
                     AlphaExponent = maskingInfo.AlphaExponent,

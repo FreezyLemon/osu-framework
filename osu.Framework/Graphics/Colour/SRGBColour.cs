@@ -7,7 +7,7 @@ using System.Numerics;
 namespace osu.Framework.Graphics.Colour
 {
     /// <summary>
-    /// A colour in gamma-corrected sRGB space. The colour values can be accessed by using the <see cref="SRGB"/> member.
+    /// A colour in gamma-corrected sRGB space. The colour values can be accessed by using the <see cref="Raw"/> member.
     /// To convert the colour into linearized sRGB space, use the <see cref="Linear"/> member.
     /// </summary>
     public struct SRGBColour : IEquatable<SRGBColour>
@@ -15,19 +15,19 @@ namespace osu.Framework.Graphics.Colour
         /// <summary>
         /// A <see cref="Colour4"/> representation of this colour in gamma-corrected sRGB space.
         /// </summary>
-        public Colour4 SRGB;
+        public Colour4 Raw;
 
         /// <summary>
         /// A <see cref="Colour4"/> representation of this colour in linearized sRGB space.
         /// </summary>
-        public Colour4 Linear => SRGB.ToLinear();
+        public Colour4 Linear => Raw.ToLinear();
 
-        public LinearColour ToLinear() => new LinearColour(SRGB.ToLinear());
+        public LinearColour ToLinear() => new LinearColour(Raw.ToLinear());
 
         /// <summary>
         /// The alpha component of this colour.
         /// </summary>
-        public float Alpha => SRGB.A;
+        public float Alpha => Raw.A;
 
         /// <summary>
         /// Create an instance of <see cref="SRGBColour"/> from 8-bit RGBA values.
@@ -38,14 +38,14 @@ namespace osu.Framework.Graphics.Colour
         /// <param name="a">The alpha component, in the 0-255 range.</param>
         public SRGBColour(byte r, byte g, byte b, byte a)
         {
-            SRGB = new Colour4(new Vector4(r, g, b, a) / byte.MaxValue);
+            Raw = new Colour4(new Vector4(r, g, b, a) / byte.MaxValue);
         }
 
         /// <summary>
         /// Create an instance of <see cref="SRGBColour"/> from a <see cref="Colour4"/> struct.
         /// </summary>
         /// <param name="colour">A <see cref="Colour4"/> struct representing the colour. This should contain gamma-corrected sRGB values.</param>
-        public SRGBColour(Colour4 colour) => SRGB = colour;
+        public SRGBColour(Colour4 colour) => Raw = colour;
 
         /// <summary>
         /// Multiplies the alpha value of this colour by the given alpha factor.
@@ -53,11 +53,11 @@ namespace osu.Framework.Graphics.Colour
         /// <param name="alpha">The alpha factor to multiply with.</param>
         public void MultiplyAlpha(float alpha)
         {
-            SRGB = SRGB.MultiplyAlpha(alpha);
+            Raw = Raw.MultiplyAlpha(alpha);
         }
 
-        public readonly bool Equals(SRGBColour other) => SRGB.Equals(other.SRGB);
-        public override string ToString() => $"srgb: {SRGB}, linear: {Linear}";
+        public readonly bool Equals(SRGBColour other) => Raw.Equals(other.Raw);
+        public override string ToString() => $"srgb: {Raw}, linear: {Linear}";
 
         #region Constants
 
