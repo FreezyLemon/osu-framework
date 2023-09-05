@@ -2,7 +2,6 @@
 // See the LICENCE file in the repository root for full licence text.
 
 using System;
-using System.Numerics;
 
 namespace osu.Framework.Graphics.Colour
 {
@@ -22,6 +21,8 @@ namespace osu.Framework.Graphics.Colour
         /// </summary>
         public Colour4 Linear => SRGB.ToLinear();
 
+        public LinearColour ToLinear() => new LinearColour(SRGB.ToLinear());
+
         /// <summary>
         /// The alpha component of this colour.
         /// </summary>
@@ -35,57 +36,11 @@ namespace osu.Framework.Graphics.Colour
             SRGB = new Colour4(r, g, b, a);
         }
 
-        public static implicit operator SRGBColour(Colour4 value) => new SRGBColour { SRGB = value };
-        public static implicit operator Colour4(SRGBColour value) => value.SRGB;
-
-        public static SRGBColour operator *(SRGBColour first, SRGBColour second)
-        {
-            var firstLinear = first.Linear;
-            var secondLinear = second.Linear;
-
-            return new SRGBColour
-            {
-                SRGB = new Colour4(
-                    firstLinear.R * secondLinear.R,
-                    firstLinear.G * secondLinear.G,
-                    firstLinear.B * secondLinear.B,
-                    firstLinear.A * secondLinear.A).ToSRGB(),
-            };
-        }
-
-        public static SRGBColour operator *(SRGBColour first, float second)
-        {
-            var firstLinear = first.Linear;
-
-            return new SRGBColour
-            {
-                SRGB = new Colour4(
-                    firstLinear.R * second,
-                    firstLinear.G * second,
-                    firstLinear.B * second,
-                    firstLinear.A * second).ToSRGB(),
-            };
-        }
-
-        public static SRGBColour operator /(SRGBColour first, float second) => first * (1 / second);
-
-        public static SRGBColour operator +(SRGBColour first, SRGBColour second)
-        {
-            var firstLinear = first.Linear;
-            var secondLinear = second.Linear;
-
-            return new SRGBColour
-            {
-                SRGB = new Colour4(
-                    firstLinear.R + secondLinear.R,
-                    firstLinear.G + secondLinear.G,
-                    firstLinear.B + secondLinear.B,
-                    firstLinear.A + secondLinear.A).ToSRGB(),
-            };
-        }
-
-        public readonly Vector4 ToVector() => new Vector4(SRGB.R, SRGB.G, SRGB.B, SRGB.A);
-        public static SRGBColour FromVector(Vector4 v) => new SRGBColour { SRGB = new Colour4(v.X, v.Y, v.Z, v.W) };
+        /// <summary>
+        /// Create an instance of <see cref="SRGBColour"/> from a <see cref="Colour4"/> struct.
+        /// </summary>
+        /// <param name="colour">A <see cref="Colour4"/> struct representing the colour. This should contain gamma-corrected sRGB values.</param>
+        public SRGBColour(Colour4 colour) => SRGB = colour;
 
         /// <summary>
         /// Multiplies the alpha value of this colour by the given alpha factor.
