@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.Linq;
 using NUnit.Framework;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Input.Events;
@@ -346,7 +347,7 @@ namespace osu.Framework.Tests.Visual.Containers
                         new Box
                         {
                             RelativeSizeAxes = Axes.Both,
-                            Colour = Colour4.Red,
+                            Colour = SRGBColour.Red,
                         },
                         scrollContainer = new BasicScrollContainer
                         {

@@ -5,6 +5,7 @@ using System;
 using ManagedBass;
 using ManagedBass.Mix;
 using osu.Framework.Audio;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
@@ -130,8 +131,8 @@ namespace osu.Framework.Graphics.Visualisation.Audio
             string maxPeakDisplay = maxPeak == 0 ? "-∞ " : $"{BassUtils.LevelToDb(maxPeak):F}";
             peakText.Text = $"curr: {peakDisplay}dB";
             maxPeakText.Text = $"peak: {maxPeakDisplay}dB";
-            peakText.Colour = BassUtils.LevelToDb(curPeak) > 0 ? Colour4.Red : Colour4.White;
-            maxPeakText.Colour = BassUtils.LevelToDb(maxPeak) > 0 ? Colour4.Red : Colour4.White;
+            peakText.Colour = BassUtils.LevelToDb(curPeak) > 0 ? SRGBColour.Red : SRGBColour.White;
+            maxPeakText.Colour = BassUtils.LevelToDb(maxPeak) > 0 ? SRGBColour.Red : SRGBColour.White;
             mixerLabel.Text = isOutputChannel ? "MIXER OUT" : " ";
         }
     }

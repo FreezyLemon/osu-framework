@@ -4,6 +4,7 @@
 using NUnit.Framework;
 using osu.Framework.Bindables;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 
 namespace osu.Framework.Tests.Bindables
 {
@@ -23,10 +24,10 @@ namespace osu.Framework.Tests.Bindables
 
         private static readonly object[][] hex_parsed_colours =
         {
-            new object[] { "#fff", Colour4.White },
-            new object[] { "#ff0000", Colour4.Red },
-            new object[] { "ffff0080", Colour4.Yellow.Opacity(half_alpha) },
-            new object[] { "00ff0080", Colour4.Lime.Opacity(half_alpha) },
+            new object[] { "#fff", SRGBColour.White },
+            new object[] { "#ff0000", SRGBColour.Red },
+            new object[] { "ffff0080", SRGBColour.Yellow.Opacity(half_alpha) },
+            new object[] { "00ff0080", SRGBColour.Lime.Opacity(half_alpha) },
             new object[] { "123", new Colour4(17, 34, 51, 255), },
             new object[] { "#123", new Colour4(17, 34, 51, 255) },
             new object[] { "1234", new Colour4(17, 34, 51, 68) },
@@ -48,10 +49,10 @@ namespace osu.Framework.Tests.Bindables
 
         private static readonly object[][] hex_serialized_colours =
         {
-            new object[] { Colour4.Black, "#000000" },
-            new object[] { Colour4.White, "#FFFFFF" },
-            new object[] { Colour4.Tan, "#D2B48C" },
-            new object[] { Colour4.CornflowerBlue.Opacity(half_alpha), "#6495ED80" }
+            new object[] { SRGBColour.Black, "#000000" },
+            new object[] { SRGBColour.White, "#FFFFFF" },
+            new object[] { SRGBColour.Tan, "#D2B48C" },
+            new object[] { SRGBColour.CornflowerBlue.Opacity(half_alpha), "#6495ED80" }
         };
 
         [TestCaseSource(nameof(hex_serialized_colours))]

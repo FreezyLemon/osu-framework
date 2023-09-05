@@ -7,6 +7,7 @@ using NUnit.Framework;
 using osu.Framework.Allocation;
 using osu.Framework.Configuration;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
@@ -45,7 +46,7 @@ namespace osu.Framework.Tests.Visual.Containers
                     Child = new Box
                     {
                         RelativeSizeAxes = Axes.Both,
-                        Colour = Colour4.Goldenrod
+                        Colour = SRGBColour.Goldenrod
                     }
                 });
 

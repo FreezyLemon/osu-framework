@@ -3,6 +3,7 @@
 
 using osu.Framework.Allocation;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 using osuTK;
@@ -52,7 +53,7 @@ namespace osu.Framework.Tests.Visual.Containers
             new Box
             {
                 RelativeSizeAxes = Axes.Both,
-                Colour = Colour4.Red
+                Colour = SRGBColour.Red
             },
             new CircularContainer
             {
@@ -64,7 +65,7 @@ namespace osu.Framework.Tests.Visual.Containers
                 Child = new Box
                 {
                     RelativeSizeAxes = Axes.Both,
-                    Colour = Colour4.Blue
+                    Colour = SRGBColour.Blue
                 }
             }
         };

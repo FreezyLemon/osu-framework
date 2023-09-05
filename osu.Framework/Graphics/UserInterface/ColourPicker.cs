@@ -2,6 +2,7 @@
 // See the LICENCE file in the repository root for full licence text.
 
 using osu.Framework.Bindables;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 
 namespace osu.Framework.Graphics.UserInterface
@@ -25,7 +26,7 @@ namespace osu.Framework.Graphics.UserInterface
 
         protected ColourPicker()
         {
-            Current.Value = Colour4.White;
+            Current.Value = SRGBColour.White;
             AutoSizeAxes = Axes.Y;
             Width = 300;
 

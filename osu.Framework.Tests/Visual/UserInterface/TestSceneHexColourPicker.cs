@@ -6,6 +6,7 @@
 using System.Linq;
 using NUnit.Framework;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
@@ -69,7 +70,7 @@ namespace osu.Framework.Tests.Visual.UserInterface
         [Test]
         public void TestExternalChange()
         {
-            Colour4 colour = Colour4.Yellow;
+            Colour4 colour = SRGBColour.Yellow;
 
             AddStep("set current colour", () => hexColourPicker.Current.Value = colour);
 
@@ -82,16 +83,16 @@ namespace osu.Framework.Tests.Visual.UserInterface
         {
             clickTextBox();
             AddStep("insert valid colour", () => hexColourPicker.HexCodeTextBox.Text = "#ff00ff");
-            assertPreviewUpdated(Colour4.Magenta);
-            AddAssert("current not changed yet", () => hexColourPicker.Current.Value == Colour4.White);
+            assertPreviewUpdated(SRGBColour.Magenta);
+            AddAssert("current not changed yet", () => hexColourPicker.Current.Value == SRGBColour.White);
 
             AddStep("commit text", () => InputManager.Key(Key.Enter));
-            AddAssert("current updated", () => hexColourPicker.Current.Value == Colour4.Magenta);
+            AddAssert("current updated", () => hexColourPicker.Current.Value == SRGBColour.Magenta);
 
             clickTextBox();
             AddStep("insert invalid colour", () => hexColourPicker.HexCodeTextBox.Text = "c0d0");
             AddStep("commit text", () => InputManager.Key(Key.Enter));
-            AddAssert("current not changed", () => hexColourPicker.Current.Value == Colour4.Magenta);
+            AddAssert("current not changed", () => hexColourPicker.Current.Value == SRGBColour.Magenta);
             AddAssert("old hex code restored", () => hexColourPicker.HexCodeTextBox.Text == "#FF00FF");
         }
 

@@ -7,6 +7,7 @@ using NUnit.Framework;
 using osu.Framework.Extensions;
 using osu.Framework.Extensions.ObjectExtensions;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Cursor;
 using osu.Framework.Graphics.Shapes;
@@ -39,14 +40,14 @@ namespace osu.Framework.Tests.Visual.UserInterface
                     Origin = Anchor.Centre,
                     Masking = true,
                     BorderThickness = 5,
-                    BorderColour = Colour4.White,
+                    BorderColour = SRGBColour.White,
                     Children = new Drawable[]
                     {
                         new Box
                         {
                             RelativeSizeAxes = Axes.Both,
                             AlwaysPresent = true,
-                            Colour = Colour4.Transparent
+                            Colour = SRGBColour.Transparent
                         },
                         popoverContainer = new PopoverContainer
                         {

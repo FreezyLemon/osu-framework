@@ -9,6 +9,7 @@ using NUnit.Framework;
 using osu.Framework.Allocation;
 using osu.Framework.Extensions.LocalisationExtensions;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
@@ -95,7 +96,7 @@ namespace osu.Framework.Tests.Visual.Localisation
                 textFlowContainer.AddText(new TranslatableString(rank_lost, rank_lost_default, player, beatmap, mode), text =>
                 {
                     text.Font = FontUsage.Default;
-                    text.Colour = Colour4.Red;
+                    text.Colour = SRGBColour.Red;
                 });
             });
 

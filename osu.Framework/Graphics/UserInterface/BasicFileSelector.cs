@@ -4,6 +4,7 @@
 #nullable disable
 
 using System.IO;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Sprites;
 using osuTK;
@@ -31,7 +32,7 @@ namespace osu.Framework.Graphics.UserInterface
 
         protected override void NotifySelectionError()
         {
-            this.FlashColour(Colour4.Red, 300);
+            this.FlashColour(SRGBColour.Red, 300);
         }
 
         private partial class BasicFilePiece : DirectoryListingFile

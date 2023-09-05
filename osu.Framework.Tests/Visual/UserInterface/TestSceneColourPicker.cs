@@ -6,6 +6,7 @@
 using System.Linq;
 using NUnit.Framework;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.UserInterface;
 using osu.Framework.Testing;
 
@@ -19,8 +20,8 @@ namespace osu.Framework.Tests.Visual.UserInterface
             ColourPicker colourPicker = null;
 
             AddStep("create picker", () => Child = colourPicker = new BasicColourPicker());
-            AddStep("set colour externally", () => colourPicker.Current.Value = Colour4.Goldenrod);
-            AddAssert("colour is correct", () => colourPicker.Current.Value == Colour4.Goldenrod);
+            AddStep("set colour externally", () => colourPicker.Current.Value = SRGBColour.Goldenrod);
+            AddAssert("colour is correct", () => colourPicker.Current.Value == SRGBColour.Goldenrod);
         }
 
         [Test]
@@ -30,9 +31,9 @@ namespace osu.Framework.Tests.Visual.UserInterface
 
             AddStep("create picker", () => Child = colourPicker = new BasicColourPicker
             {
-                Current = { Value = Colour4.Goldenrod }
+                Current = { Value = SRGBColour.Goldenrod }
             });
-            AddAssert("colour is correct", () => colourPicker.Current.Value == Colour4.Goldenrod);
+            AddAssert("colour is correct", () => colourPicker.Current.Value == SRGBColour.Goldenrod);
         }
 
         [Test]
@@ -46,7 +47,7 @@ namespace osu.Framework.Tests.Visual.UserInterface
 
             AddStep("create picker", () => Child = colourPicker = new BasicColourPicker
             {
-                Current = { Value = Colour4.Goldenrod }
+                Current = { Value = SRGBColour.Goldenrod }
             });
             AddStep("hide picker", () => colourPicker.Hide());
             AddStep("set HSV manually", () =>

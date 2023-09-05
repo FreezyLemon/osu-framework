@@ -2,6 +2,7 @@
 // See the LICENCE file in the repository root for full licence text.
 
 using osu.Framework.Bindables;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 
@@ -37,7 +38,7 @@ namespace osu.Framework.Graphics.UserInterface
         {
             Width = 300;
             AutoSizeAxes = Axes.Y;
-            Current.Value = Colour4.White;
+            Current.Value = SRGBColour.White;
 
             InternalChildren = new Drawable[]
             {

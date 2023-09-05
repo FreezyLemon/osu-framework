@@ -5,6 +5,7 @@ using System;
 using System.Numerics;
 using NUnit.Framework;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 
 namespace osu.Framework.Tests.Graphics
 {
@@ -15,57 +16,57 @@ namespace osu.Framework.Tests.Graphics
         public void TestFromHSL()
         {
             // test FromHSL that black and white are only affected by luminance
-            testConvertFromHSL(Colour4.White, (0f, 0.5f, 1f, 1f));
-            testConvertFromHSL(Colour4.White, (1f, 1f, 1f, 1f));
-            testConvertFromHSL(Colour4.White, (0.5f, 0.75f, 1f, 1f));
-            testConvertFromHSL(Colour4.Black, (0f, 0.5f, 0f, 1f));
-            testConvertFromHSL(Colour4.Black, (1f, 1f, 0f, 1f));
-            testConvertFromHSL(Colour4.Black, (0.5f, 0.75f, 0f, 1f));
+            testConvertFromHSL(SRGBColour.White, (0f, 0.5f, 1f, 1f));
+            testConvertFromHSL(SRGBColour.White, (1f, 1f, 1f, 1f));
+            testConvertFromHSL(SRGBColour.White, (0.5f, 0.75f, 1f, 1f));
+            testConvertFromHSL(SRGBColour.Black, (0f, 0.5f, 0f, 1f));
+            testConvertFromHSL(SRGBColour.Black, (1f, 1f, 0f, 1f));
+            testConvertFromHSL(SRGBColour.Black, (0.5f, 0.75f, 0f, 1f));
 
             // test FromHSL that grey is not affected by hue
-            testConvertFromHSL(Colour4.Gray, (0f, 0f, 0.5f, 1f));
-            testConvertFromHSL(Colour4.Gray, (0.5f, 0f, 0.5f, 1f));
-            testConvertFromHSL(Colour4.Gray, (1f, 0f, 0.5f, 1f));
+            testConvertFromHSL(SRGBColour.Gray, (0f, 0f, 0.5f, 1f));
+            testConvertFromHSL(SRGBColour.Gray, (0.5f, 0f, 0.5f, 1f));
+            testConvertFromHSL(SRGBColour.Gray, (1f, 0f, 0.5f, 1f));
 
             // test FromHSL that alpha is being passed through
-            testConvertFromHSL(Colour4.Black.Opacity(0.5f), (0f, 0f, 0f, 0.5f));
+            testConvertFromHSL(SRGBColour.Black.Opacity(0.5f), (0f, 0f, 0f, 0.5f));
 
             // test FromHSL with primaries
-            testConvertFromHSL(Colour4.Red, (0, 1f, 0.5f, 1f));
-            testConvertFromHSL(Colour4.Yellow, (1f / 6f, 1f, 0.5f, 1f));
-            testConvertFromHSL(Colour4.Lime, (2f / 6f, 1f, 0.5f, 1f));
-            testConvertFromHSL(Colour4.Cyan, (3f / 6f, 1f, 0.5f, 1f));
-            testConvertFromHSL(Colour4.Blue, (4f / 6f, 1f, 0.5f, 1f));
-            testConvertFromHSL(Colour4.Magenta, (5f / 6f, 1f, 0.5f, 1f));
-            testConvertFromHSL(Colour4.Red, (1f, 1f, 0.5f, 1f));
+            testConvertFromHSL(SRGBColour.Red, (0, 1f, 0.5f, 1f));
+            testConvertFromHSL(SRGBColour.Yellow, (1f / 6f, 1f, 0.5f, 1f));
+            testConvertFromHSL(SRGBColour.Lime, (2f / 6f, 1f, 0.5f, 1f));
+            testConvertFromHSL(SRGBColour.Cyan, (3f / 6f, 1f, 0.5f, 1f));
+            testConvertFromHSL(SRGBColour.Blue, (4f / 6f, 1f, 0.5f, 1f));
+            testConvertFromHSL(SRGBColour.Magenta, (5f / 6f, 1f, 0.5f, 1f));
+            testConvertFromHSL(SRGBColour.Red, (1f, 1f, 0.5f, 1f));
 
             // test FromHSL with some other knowns
-            testConvertFromHSL(Colour4.CornflowerBlue, (219f / 360f, 0.792f, 0.661f, 1f));
-            testConvertFromHSL(Colour4.Tan.Opacity(0.5f), (34f / 360f, 0.437f, 0.686f, 0.5f));
+            testConvertFromHSL(SRGBColour.CornflowerBlue, (219f / 360f, 0.792f, 0.661f, 1f));
+            testConvertFromHSL(SRGBColour.Tan.Opacity(0.5f), (34f / 360f, 0.437f, 0.686f, 0.5f));
         }
 
         [Test]
         public void TestToHSL()
         {
             // test ToHSL that black, white, and grey always return constant 0f for hue and saturation
-            testConvertToHSL((0f, 0f, 1f, 1f), Colour4.White);
-            testConvertToHSL((0f, 0f, 0f, 1f), Colour4.Black);
-            testConvertToHSL((0f, 0f, 0.5f, 1f), Colour4.Gray);
+            testConvertToHSL((0f, 0f, 1f, 1f), SRGBColour.White);
+            testConvertToHSL((0f, 0f, 0f, 1f), SRGBColour.Black);
+            testConvertToHSL((0f, 0f, 0.5f, 1f), SRGBColour.Gray);
 
             // test ToHSL that alpha is being passed through
-            testConvertToHSL((0f, 0f, 0f, 0.5f), Colour4.Black.Opacity(0.5f));
+            testConvertToHSL((0f, 0f, 0f, 0.5f), SRGBColour.Black.Opacity(0.5f));
 
             // test ToHSL with primaries
-            testConvertToHSL((0, 1f, 0.5f, 1f), Colour4.Red);
-            testConvertToHSL((1f / 6f, 1f, 0.5f, 1f), Colour4.Yellow);
-            testConvertToHSL((2f / 6f, 1f, 0.5f, 1f), Colour4.Lime);
-            testConvertToHSL((3f / 6f, 1f, 0.5f, 1f), Colour4.Cyan);
-            testConvertToHSL((4f / 6f, 1f, 0.5f, 1f), Colour4.Blue);
-            testConvertToHSL((5f / 6f, 1f, 0.5f, 1f), Colour4.Magenta);
+            testConvertToHSL((0, 1f, 0.5f, 1f), SRGBColour.Red);
+            testConvertToHSL((1f / 6f, 1f, 0.5f, 1f), SRGBColour.Yellow);
+            testConvertToHSL((2f / 6f, 1f, 0.5f, 1f), SRGBColour.Lime);
+            testConvertToHSL((3f / 6f, 1f, 0.5f, 1f), SRGBColour.Cyan);
+            testConvertToHSL((4f / 6f, 1f, 0.5f, 1f), SRGBColour.Blue);
+            testConvertToHSL((5f / 6f, 1f, 0.5f, 1f), SRGBColour.Magenta);
 
             // test ToHSL with some other knowns
-            testConvertToHSL((219f / 360f, 0.792f, 0.661f, 1f), Colour4.CornflowerBlue);
-            testConvertToHSL((34f / 360f, 0.437f, 0.686f, 0.5f), Colour4.Tan.Opacity(0.5f));
+            testConvertToHSL((219f / 360f, 0.792f, 0.661f, 1f), SRGBColour.CornflowerBlue);
+            testConvertToHSL((34f / 360f, 0.437f, 0.686f, 0.5f), SRGBColour.Tan.Opacity(0.5f));
         }
 
         private void testConvertFromHSL(Colour4 expected, (float, float, float, float) convert) =>
@@ -78,57 +79,57 @@ namespace osu.Framework.Tests.Graphics
         public void TestFromHSV()
         {
             // test FromHSV that black is only affected by luminance
-            testConvertFromHSV(Colour4.Black, (0f, 0.5f, 0f, 1f));
-            testConvertFromHSV(Colour4.Black, (1f, 1f, 0f, 1f));
-            testConvertFromHSV(Colour4.Black, (0.5f, 0.75f, 0f, 1f));
+            testConvertFromHSV(SRGBColour.Black, (0f, 0.5f, 0f, 1f));
+            testConvertFromHSV(SRGBColour.Black, (1f, 1f, 0f, 1f));
+            testConvertFromHSV(SRGBColour.Black, (0.5f, 0.75f, 0f, 1f));
 
             // test FromHSV that white and grey are not affected by hue
-            testConvertFromHSV(Colour4.White, (0f, 0f, 1f, 1f));
-            testConvertFromHSV(Colour4.White, (1f, 0f, 1f, 1f));
-            testConvertFromHSV(Colour4.White, (0.5f, 0f, 1f, 1f));
-            testConvertFromHSV(Colour4.Gray, (0f, 0f, 0.5f, 1f));
-            testConvertFromHSV(Colour4.Gray, (0.5f, 0f, 0.5f, 1f));
-            testConvertFromHSV(Colour4.Gray, (1f, 0f, 0.5f, 1f));
+            testConvertFromHSV(SRGBColour.White, (0f, 0f, 1f, 1f));
+            testConvertFromHSV(SRGBColour.White, (1f, 0f, 1f, 1f));
+            testConvertFromHSV(SRGBColour.White, (0.5f, 0f, 1f, 1f));
+            testConvertFromHSV(SRGBColour.Gray, (0f, 0f, 0.5f, 1f));
+            testConvertFromHSV(SRGBColour.Gray, (0.5f, 0f, 0.5f, 1f));
+            testConvertFromHSV(SRGBColour.Gray, (1f, 0f, 0.5f, 1f));
 
             // test FromHSV that alpha is being passed through
-            testConvertFromHSV(Colour4.Black.Opacity(0.5f), (0f, 0f, 0f, 0.5f));
+            testConvertFromHSV(SRGBColour.Black.Opacity(0.5f), (0f, 0f, 0f, 0.5f));
 
             // test FromHSV with primaries
-            testConvertFromHSV(Colour4.Red, (0, 1f, 1f, 1f));
-            testConvertFromHSV(Colour4.Yellow, (1f / 6f, 1f, 1f, 1f));
-            testConvertFromHSV(Colour4.Lime, (2f / 6f, 1f, 1f, 1f));
-            testConvertFromHSV(Colour4.Cyan, (3f / 6f, 1f, 1f, 1f));
-            testConvertFromHSV(Colour4.Blue, (4f / 6f, 1f, 1f, 1f));
-            testConvertFromHSV(Colour4.Magenta, (5f / 6f, 1f, 1f, 1f));
-            testConvertFromHSV(Colour4.Red, (1f, 1f, 1f, 1f));
+            testConvertFromHSV(SRGBColour.Red, (0, 1f, 1f, 1f));
+            testConvertFromHSV(SRGBColour.Yellow, (1f / 6f, 1f, 1f, 1f));
+            testConvertFromHSV(SRGBColour.Lime, (2f / 6f, 1f, 1f, 1f));
+            testConvertFromHSV(SRGBColour.Cyan, (3f / 6f, 1f, 1f, 1f));
+            testConvertFromHSV(SRGBColour.Blue, (4f / 6f, 1f, 1f, 1f));
+            testConvertFromHSV(SRGBColour.Magenta, (5f / 6f, 1f, 1f, 1f));
+            testConvertFromHSV(SRGBColour.Red, (1f, 1f, 1f, 1f));
 
             // test FromHSV with some other knowns
-            testConvertFromHSV(Colour4.CornflowerBlue, (219f / 360f, 0.578f, 0.929f, 1f));
-            testConvertFromHSV(Colour4.Tan.Opacity(0.5f), (34f / 360f, 0.333f, 0.824f, 0.5f));
+            testConvertFromHSV(SRGBColour.CornflowerBlue, (219f / 360f, 0.578f, 0.929f, 1f));
+            testConvertFromHSV(SRGBColour.Tan.Opacity(0.5f), (34f / 360f, 0.333f, 0.824f, 0.5f));
         }
 
         [Test]
         public void TestToHSV()
         {
             // test ToHSV that black, white, and grey always return constant 0f for hue and saturation
-            testConvertToHSV((0f, 0f, 1f, 1f), Colour4.White);
-            testConvertToHSV((0f, 0f, 0f, 1f), Colour4.Black);
-            testConvertToHSV((0f, 0f, 0.5f, 1f), Colour4.Gray);
+            testConvertToHSV((0f, 0f, 1f, 1f), SRGBColour.White);
+            testConvertToHSV((0f, 0f, 0f, 1f), SRGBColour.Black);
+            testConvertToHSV((0f, 0f, 0.5f, 1f), SRGBColour.Gray);
 
             // test ToHSV that alpha is being passed through
-            testConvertToHSV((0f, 0f, 1f, 0.5f), Colour4.White.Opacity(0.5f));
+            testConvertToHSV((0f, 0f, 1f, 0.5f), SRGBColour.White.Opacity(0.5f));
 
             // test ToHSV with primaries
-            testConvertToHSV((0, 1f, 1f, 1f), Colour4.Red);
-            testConvertToHSV((1f / 6f, 1f, 1f, 1f), Colour4.Yellow);
-            testConvertToHSV((2f / 6f, 1f, 1f, 1f), Colour4.Lime);
-            testConvertToHSV((3f / 6f, 1f, 1f, 1f), Colour4.Cyan);
-            testConvertToHSV((4f / 6f, 1f, 1f, 1f), Colour4.Blue);
-            testConvertToHSV((5f / 6f, 1f, 1f, 1f), Colour4.Magenta);
+            testConvertToHSV((0, 1f, 1f, 1f), SRGBColour.Red);
+            testConvertToHSV((1f / 6f, 1f, 1f, 1f), SRGBColour.Yellow);
+            testConvertToHSV((2f / 6f, 1f, 1f, 1f), SRGBColour.Lime);
+            testConvertToHSV((3f / 6f, 1f, 1f, 1f), SRGBColour.Cyan);
+            testConvertToHSV((4f / 6f, 1f, 1f, 1f), SRGBColour.Blue);
+            testConvertToHSV((5f / 6f, 1f, 1f, 1f), SRGBColour.Magenta);
 
             // test ToHSV with some other knowns
-            testConvertToHSV((219f / 360f, 0.578f, 0.929f, 1f), Colour4.CornflowerBlue);
-            testConvertToHSV((34f / 360f, 0.333f, 0.824f, 0.5f), Colour4.Tan.Opacity(0.5f));
+            testConvertToHSV((219f / 360f, 0.578f, 0.929f, 1f), SRGBColour.CornflowerBlue);
+            testConvertToHSV((34f / 360f, 0.333f, 0.824f, 0.5f), SRGBColour.Tan.Opacity(0.5f));
         }
 
         private void testConvertFromHSV(Colour4 expected, (float, float, float, float) convert) =>
@@ -140,17 +141,17 @@ namespace osu.Framework.Tests.Graphics
         [Test]
         public void TestToHex()
         {
-            Assert.AreEqual("#D2B48C", Colour4.Tan.ToHex());
-            Assert.AreEqual("#D2B48CFF", Colour4.Tan.ToHex(true));
-            Assert.AreEqual("#6495ED80", Colour4.CornflowerBlue.Opacity(half_alpha).ToHex());
+            Assert.AreEqual("#D2B48C", SRGBColour.Tan.ToHex());
+            Assert.AreEqual("#D2B48CFF", SRGBColour.Tan.ToHex(true));
+            Assert.AreEqual("#6495ED80", SRGBColour.CornflowerBlue.Opacity(half_alpha).ToHex());
         }
 
         private static readonly object[][] valid_hex_colours =
         {
-            new object[] { Colour4.White, "#fff" },
-            new object[] { Colour4.Red, "#ff0000" },
-            new object[] { Colour4.Yellow.Opacity(half_alpha), "ffff0080" },
-            new object[] { Colour4.Lime.Opacity(half_alpha), "00ff0080" },
+            new object[] { SRGBColour.White, "#fff" },
+            new object[] { SRGBColour.Red, "#ff0000" },
+            new object[] { SRGBColour.Yellow.Opacity(half_alpha), "ffff0080" },
+            new object[] { SRGBColour.Lime.Opacity(half_alpha), "00ff0080" },
             new object[] { new Colour4(17, 34, 51, 255), "123" },
             new object[] { new Colour4(17, 34, 51, 255), "#123" },
             new object[] { new Colour4(17, 34, 51, 68), "1234" },
@@ -194,21 +195,21 @@ namespace osu.Framework.Tests.Graphics
         {
             // test that Opacity replaces alpha channel rather than multiplying
             var expected1 = new Colour4(1f, 0f, 0f, 0.5f);
-            Assert.AreEqual(expected1, Colour4.Red.Opacity(0.5f));
+            Assert.AreEqual(expected1, SRGBColour.Red.Opacity(0.5f));
             Assert.AreEqual(expected1, expected1.Opacity(0.5f));
 
             // test that MultiplyAlpha multiplies existing alpha channel
             var expected2 = new Colour4(1f, 0f, 0f, 0.25f);
             Assert.AreEqual(expected2, expected1.MultiplyAlpha(0.5f));
-            Assert.Throws<ArgumentOutOfRangeException>(() => Colour4.White.MultiplyAlpha(-1f));
+            Assert.Throws<ArgumentOutOfRangeException>(() => SRGBColour.White.MultiplyAlpha(-1f));
 
             // test clamping all channels in either direction
-            Assert.AreEqual(Colour4.White, new Colour4(1.1f, 1.1f, 1.1f, 1.1f).Clamped());
-            Assert.AreEqual(Colour4.Black.Opacity(0f), new Colour4(-1.1f, -1.1f, -1.1f, -1.1f).Clamped());
+            Assert.AreEqual(SRGBColour.White, new Colour4(1.1f, 1.1f, 1.1f, 1.1f).Clamped());
+            Assert.AreEqual(SRGBColour.Black.Opacity(0f), new Colour4(-1.1f, -1.1f, -1.1f, -1.1f).Clamped());
 
             // test lighten and darken
-            assertAlmostEqual(new Colour4(0.431f, 0.642f, 1f, 1f).Vector, Colour4.CornflowerBlue.Lighten(0.1f).Vector);
-            assertAlmostEqual(new Colour4(0.356f, 0.531f, 0.845f, 1f).Vector, Colour4.CornflowerBlue.Darken(0.1f).Vector);
+            assertAlmostEqual(new Colour4(0.431f, 0.642f, 1f, 1f).Vector, SRGBColour.CornflowerBlue.Lighten(0.1f).Vector);
+            assertAlmostEqual(new Colour4(0.356f, 0.531f, 0.845f, 1f).Vector, SRGBColour.CornflowerBlue.Darken(0.1f).Vector);
         }
 
         [Test]
@@ -219,7 +220,7 @@ namespace osu.Framework.Tests.Graphics
             assertAlmostEqual(new Vector4(0.4f, 0.3f, 0.2f, 0.1f), (colour - new Colour4(0.1f, 0.2f, 0.3f, 0.4f)).Vector);
             assertAlmostEqual(new Vector4(0.25f, 0.25f, 0.25f, 0.25f), (colour * colour).Vector);
             assertAlmostEqual(new Vector4(0.25f, 0.25f, 0.25f, 0.25f), (colour / 2f).Vector);
-            assertAlmostEqual(Colour4.White.Vector, (colour * 2f).Vector);
+            assertAlmostEqual(SRGBColour.White.Vector, (colour * 2f).Vector);
             Assert.Throws<ArgumentOutOfRangeException>(() => _ = colour * -1f);
             Assert.Throws<ArgumentOutOfRangeException>(() => _ = colour / -1f);
             Assert.Throws<ArgumentOutOfRangeException>(() => _ = colour / 0f);
@@ -229,15 +230,15 @@ namespace osu.Framework.Tests.Graphics
         public void TestOtherConversions()
         {
             // test uint conversions
-            Assert.AreEqual(0x6495ED80, Colour4.CornflowerBlue.Opacity(half_alpha).ToRGBA());
-            Assert.AreEqual(0x806495ED, Colour4.CornflowerBlue.Opacity(half_alpha).ToARGB());
-            Assert.AreEqual(Colour4.CornflowerBlue.Opacity(half_alpha), Colour4.FromRGBA(0x6495ED80));
-            Assert.AreEqual(Colour4.CornflowerBlue.Opacity(half_alpha), Colour4.FromARGB(0x806495ED));
+            Assert.AreEqual(0x6495ED80, SRGBColour.CornflowerBlue.Opacity(half_alpha).ToRGBA());
+            Assert.AreEqual(0x806495ED, SRGBColour.CornflowerBlue.Opacity(half_alpha).ToARGB());
+            Assert.AreEqual(SRGBColour.CornflowerBlue.Opacity(half_alpha), Colour4.FromRGBA(0x6495ED80));
+            Assert.AreEqual(SRGBColour.CornflowerBlue.Opacity(half_alpha), Colour4.FromARGB(0x806495ED));
 
             // test SRGB
             var srgb = new Vector4(0.659f, 0.788f, 0.968f, 1f);
-            assertAlmostEqual(srgb, Colour4.CornflowerBlue.ToSRGB().Vector);
-            assertAlmostEqual(Colour4.CornflowerBlue.Vector, new Colour4(srgb).ToLinear().Vector);
+            assertAlmostEqual(srgb, SRGBColour.CornflowerBlue.ToSRGB().Vector);
+            assertAlmostEqual(SRGBColour.CornflowerBlue.Vector, new Colour4(srgb).ToLinear().Vector);
         }
 
         private void assertAlmostEqual(Vector4 expected, Vector4 actual, string type = "RGBA")

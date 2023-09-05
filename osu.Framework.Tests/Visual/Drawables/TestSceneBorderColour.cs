@@ -15,25 +15,25 @@ namespace osu.Framework.Tests.Visual.Drawables
     public partial class TestSceneBorderColour : FrameworkTestScene
     {
         [Test]
-        public void TestSolidBorder() => createBorderTest(Colour4.Blue, Colour4.Red);
+        public void TestSolidBorder() => createBorderTest(SRGBColour.Blue, SRGBColour.Red);
 
         [Test]
-        public void TestVerticalGradientBorder() => createBorderTest(Colour4.Green, ColourInfo.GradientVertical(Colour4.Black, Colour4.White));
+        public void TestVerticalGradientBorder() => createBorderTest(SRGBColour.Green, ColourInfo.GradientVertical(SRGBColour.Black, SRGBColour.White));
 
         [Test]
         public void TestHorizontalGradientBorder() => createBorderTest(
-            ColourInfo.GradientVertical(Colour4.White, Colour4.Black),
-            ColourInfo.GradientHorizontal(Colour4.Red, Colour4.Blue));
+            ColourInfo.GradientVertical(SRGBColour.White, SRGBColour.Black),
+            ColourInfo.GradientHorizontal(SRGBColour.Red, SRGBColour.Blue));
 
         [Test]
         public void TestAllFourCorners() => createBorderTest(
-            Colour4.Aquamarine,
+            SRGBColour.Aquamarine,
             new ColourInfo
             {
-                TopLeft = Colour4.Red,
-                TopRight = Colour4.Yellow,
-                BottomLeft = Colour4.Magenta,
-                BottomRight = Colour4.Blue
+                TopLeft = SRGBColour.Red,
+                TopRight = SRGBColour.Yellow,
+                BottomLeft = SRGBColour.Magenta,
+                BottomRight = SRGBColour.Blue
             });
 
         private void createBorderTest(ColourInfo fillColour, ColourInfo borderColour)

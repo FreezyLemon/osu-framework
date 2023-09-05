@@ -5,6 +5,7 @@ using osu.Framework.Allocation;
 using osu.Framework.Bindables;
 using osu.Framework.Configuration;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Sprites;
 using osuTK;
@@ -55,7 +56,7 @@ namespace osu.Framework.Tests.Visual.Platform
             bindable.BindValueChanged(_ => Scheduler.AddOnce(() =>
             {
                 updateText();
-                this.FlashColour(Colour4.Yellow, 1000, Easing.OutQuart);
+                this.FlashColour(SRGBColour.Yellow, 1000, Easing.OutQuart);
             }));
         }
 

@@ -8,6 +8,7 @@ using NUnit.Framework;
 using osu.Framework.Extensions.Color4Extensions;
 using osu.Framework.Extensions.IEnumerableExtensions;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
@@ -96,7 +97,7 @@ namespace osu.Framework.Tests.Visual.Containers
             assertSpriteTextCount(0);
 
             AddStep("add text", () => part = textContainer.AddText("this is some text"));
-            AddStep("set text colour to red manually", () => part.Drawables.ForEach(p => p.Colour = Colour4.Red));
+            AddStep("set text colour to red manually", () => part.Drawables.ForEach(p => p.Colour = SRGBColour.Red));
             assertSpriteTextCount(4);
 
             AddStep("add more text", () => textContainer.AddText("and some more of it too"));

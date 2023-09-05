@@ -6,6 +6,7 @@
 using System.Linq;
 using NUnit.Framework;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.UserInterface;
 using osu.Framework.Testing;
 using osu.Framework.Utils;
@@ -150,7 +151,7 @@ namespace osu.Framework.Tests.Visual.UserInterface
             assertHue(1, 0);
 
             AddStep("set hue to 1", () => colourPicker.HueControl.Hue.Value = 1);
-            AddStep("set colour externally", () => colourPicker.Current.Value = Colour4.Red);
+            AddStep("set colour externally", () => colourPicker.Current.Value = SRGBColour.Red);
             assertHue(1, 0);
         }
 
