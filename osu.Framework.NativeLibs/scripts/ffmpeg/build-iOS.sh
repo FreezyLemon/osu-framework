@@ -68,12 +68,38 @@ prep_ffmpeg "iOS-$arch"
 build_ffmpeg
 popd > /dev/null
 
-# Rename dylibs that have a full version string (A.B.C) in their filename
-# Example: avcodec.58.10.72.dylib -> avcodec.58.dylib
+# Create framework bundle
 pushd . > /dev/null
 cd "iOS-$arch"
 for f in *.*.*.*.dylib; do
     [ -f "$f" ] || continue
-    mv -v "$f" "${f%.*.*.*}.dylib"
+
+    # [avcodec].58.10.72.dylib
+    lib_name="${f%.*.*.*.*}"
+
+    # avcodec.[58.10.72].dylib
+    tmp=${f#*.}
+    version_string="${tmp%.*}"
+
+    framework_dir="$lib_name.framework"
+    mkdir "$framework_dir"
+
+    mv -v "$f" "$framework_dir/$lib_name"
+    
+    plist_file="$framework_dir/Info.plist"
+    
+    plutil -create xml1 "$plist_file"
+    plutil -insert CFBundleDevelopmentRegion -string en "$plist_file"
+    plutil -insert CFBundleExecutable -string "$lib_name" "$plist_file"
+    plutil -insert CFBundleIdentifier -string "sh.ppy.osu.Framework.iOS.$lib_name" "$plist_file"
+    plutil -insert CFBundleInfoDictionaryVersion -string '6.0' "$plist_file"
+    plutil -insert CFBundleName -string "$lib_name" "$plist_file"
+    plutil -insert CFBundlePackageType -string FMWK "$plist_file"
+    plutil -insert CFBundleShortVersionString -string "$version_string" "$plist_file"
+    plutil -insert CFBundleVersion -string "$version_string" "$plist_file"
+    plutil -insert MinimumOSVersion -string "$DEPLOYMENT_TARGET" "$plist_file"
+    plutil -insert CFBundleSupportedPlatforms -array "$plist_file"
+    plutil -insert CFBundleSupportedPlatforms -string iPhoneOS -append "$plist_file"
+
 done
 popd > /dev/null
