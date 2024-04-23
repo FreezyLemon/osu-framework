@@ -8,14 +8,14 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        arch:
-          - x86_64
-          - arm64
+        arch: [x86_64, arm64]
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
       - uses: ilammy/setup-nasm@v1
+        if: matrix.arch == 'x86_64'
 
       - name: Build
         run: osu.Framework.NativeLibs/scripts/ffmpeg/build-macOS.sh
@@ -120,9 +120,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        arch:
-          - x86
-          - x64
+        arch: [x86, x64]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
