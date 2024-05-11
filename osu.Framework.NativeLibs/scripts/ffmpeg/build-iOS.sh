@@ -72,6 +72,8 @@ FFMPEG_FLAGS+=(
     --as="$as"
     --extra-cflags="-arch $cross_arch $cflags"
     --extra-ldflags="-arch $cross_arch $cflags"
+    
+    --install-name-dir='@rpath'
 )
 
 pushd . > /dev/null
