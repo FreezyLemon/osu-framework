@@ -80,6 +80,11 @@ jobs:
         env:
           arch: ${{ matrix.arch }}
 
+      - name: (TEMP) Show otool information
+        run: |
+          otool -h iOS-${{ matrix.arch }}/*
+          otool -D iOS-${{ matrix.arch }}/*
+
       - name: Upload
         uses: actions/upload-artifact@v4
         with:
