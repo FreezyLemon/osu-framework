@@ -69,6 +69,7 @@ bin_path="$toolchain_path/bin"
 
 FFMPEG_FLAGS+=(
     --enable-jni
+    --enable-mediacodec
 
     --enable-cross-compile
     --target-os=android
